@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#FBF8F4">
+<title>Winnifer 養美研究室</title>
+<meta name="description" content="溫妮佛的 30+ 養美小工具：拍照看看今天的膚況、測出你的膚質、算算你的肌膚年齡，再給你一份適合你的保養重點">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Winnifer 養美研究室｜你的皮膚，現在幾歲？">
+<meta property="og:description" content="拍照看膚況・膚質測驗・肌膚年齡 ~ 30+ 女生的養美日常">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Serif+TC:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+/* 乳霜質感：奶白、裸粉、香檳金 ~ 刻意只有一套淺色 */
+:root{
+  --milk:#FBF8F4; --cream:#F3ECE4; --porcelain:#FFFFFF; --nude:#EBDCD2; --rose:#C4907F; --rose-deep:#A8705F;
+  --cocoa:#3D302B; --taupe:#8A7A71; --gold:#B8956E; --line:#ECE2D9; --sage:#9DAA97;
+  --serif:"Noto Serif TC","Songti TC",serif; --sans:"Noto Sans TC",-apple-system,"PingFang TC",sans-serif; --latin:"Cormorant Garamond","Times New Roman",serif;
+  --glow:0 1px 0 rgba(255,255,255,.9) inset, 0 14px 30px rgba(120,90,70,.10);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--milk);color:var(--cocoa);font:15px/1.75 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+[hidden]{display:none!important}
+.app{max-width:460px;margin:0 auto;min-height:100%;padding:0 20px calc(96px + env(safe-area-inset-bottom,0px));
+  background:radial-gradient(120% 60% at 50% -10%,#fff 0,rgba(255,255,255,0) 60%),var(--milk)}
+@media(min-width:520px){body{background:#EFE7DF}.app{box-shadow:0 0 60px rgba(90,60,40,.08)}}
+
+/* 頁首 */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;justify-content:space-between;
+  margin:0 -20px;padding:14px 20px;background:rgba(251,248,244,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(236,226,217,.7)}
+.brand{display:flex;align-items:baseline;gap:8px}
+.brand b{font-family:var(--latin);font-size:22px;font-weight:600;letter-spacing:.5px}
+.brand span{font-family:var(--serif);font-size:13px;color:var(--taupe)}
+.back{display:none;width:36px;height:36px;border:0;border-radius:50%;background:var(--porcelain);box-shadow:var(--glow);font-size:18px;cursor:pointer}
+.app.inner .back{display:grid;place-items:center}
+.app.inner .brand span{display:none}
+
+/* 共用 */
+.eyebrow{font-family:var(--latin);font-style:italic;font-size:15px;color:var(--gold);letter-spacing:.5px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance}
+.lead{color:var(--taupe);font-size:14px;margin:8px 0 0}
+.section{margin-top:34px}
+.section>h2{font-size:20px}
+.section>.lead{margin-bottom:14px}
+.cream{background:linear-gradient(160deg,#fff 0%,#FCF8F4 55%,#F7EFE8 100%);border:1px solid var(--line);border-radius:26px;box-shadow:var(--glow)}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border:0;border-radius:999px;cursor:pointer;font-weight:700;font-size:15px;
+  background:linear-gradient(180deg,#D3A898,#B8826F);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.45) inset,0 10px 22px rgba(168,112,95,.28)}
+.pill.ghost{background:var(--porcelain);color:var(--cocoa);box-shadow:var(--glow);border:1px solid var(--line)}
+.pill.line{background:linear-gradient(180deg,#25D366,#06B551);box-shadow:0 10px 22px rgba(6,181,81,.22)}
+.pill.block{display:flex;width:100%}
+.pill:focus-visible,.opt:focus-visible,.tool:focus-visible,.nav button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.small{font-size:12px;color:var(--taupe);line-height:1.7}
+
+/* 首頁 */
+.hero{padding:30px 2px 6px;text-align:center}
+.hero h1{font-size:31px;line-height:1.35;margin-top:6px}
+.hero h1 em{font-style:normal;color:var(--rose-deep)}
+.jar{position:relative;width:132px;height:132px;margin:22px auto 6px;border-radius:50%;
+  background:radial-gradient(circle at 35% 28%,#fff 0 12%,#FBF3EE 34%,#EFD9CE 70%,#E3C3B4 100%);
+  box-shadow:0 1px 0 #fff inset,0 -10px 24px rgba(184,130,111,.18) inset,0 20px 40px rgba(168,112,95,.18)}
+.jar:after{content:"";position:absolute;left:30px;top:22px;width:44px;height:16px;border-radius:50%;background:rgba(255,255,255,.75);filter:blur(3px);transform:rotate(-24deg)}
+.jar span{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--latin);font-size:18px;font-style:italic;color:#9A6E60}
+.tools{display:grid;gap:12px;margin-top:22px}
+.tool{display:grid;grid-template-columns:56px 1fr auto;gap:14px;align-items:center;padding:16px;text-align:left;cursor:pointer;width:100%;border:1px solid var(--line)}
+.tool .ic{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(160deg,#fff,#F3E6DE);box-shadow:var(--glow)}
+.tool .ic svg{width:28px;height:28px;stroke:var(--rose-deep);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tool b{display:block;font-family:var(--serif);font-size:17px}
+.tool small{display:block;color:var(--taupe);font-size:12.5px;line-height:1.6}
+.tool i{font-style:normal;color:var(--gold);font-size:20px}
+.tool.first{background:linear-gradient(150deg,#fff 0%,#F8EDE6 100%)}
+.tool.first .tag{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:99px;background:var(--rose);color:#fff;font-family:var(--sans);font-size:10.5px;vertical-align:2px}
+.keys{display:flex;flex-wrap:wrap;gap:8px}
+.keys button{padding:9px 16px;border-radius:99px;border:1px solid var(--line);background:var(--porcelain);cursor:pointer;font-family:var(--serif);font-size:15px;box-shadow:var(--glow)}
+.about{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:center;padding:18px}
+.about .av{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-family:var(--latin);font-size:26px;font-style:italic;color:#fff;background:linear-gradient(150deg,#D7B0A1,#B38171)}
+.about b{font-family:var(--serif);font-size:16px}
+.about p{margin:2px 0 0;font-size:13px;color:var(--taupe);line-height:1.7}
+.about .row{display:flex;gap:8px;grid-column:1/-1;margin-top:4px}
+.about .row a{flex:1;padding:10px;font-size:13.5px}
+
+/* 測驗 */
+.quiz-head{padding:22px 0 6px}
+.quiz-head h2{font-size:24px;margin-top:4px}
+.bar{height:4px;border-radius:99px;background:var(--line);overflow:hidden;margin:18px 0 22px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--nude),var(--rose));transition:width .4s}
+.q{font-family:var(--serif);font-size:20px;line-height:1.55;margin:0 0 6px}
+.q-note{font-size:13px;color:var(--taupe);margin:0 0 14px}
+.opts{display:grid;gap:10px}
+.opt{display:block;width:100%;text-align:left;padding:15px 18px;border-radius:18px;border:1px solid var(--line);background:var(--porcelain);cursor:pointer;box-shadow:var(--glow);font-size:15px;line-height:1.55;transition:transform .12s,border-color .2s}
+.opt:active{transform:scale(.985)}
+.opt.on{border-color:var(--rose);background:#FBF1EC}
+.age-pick{padding:22px;text-align:center}
+.age-pick output{display:block;font-family:var(--latin);font-size:64px;line-height:1;color:var(--rose-deep)}
+.age-pick input{width:100%;accent-color:var(--rose);margin:16px 0 4px}
+.qnav{display:flex;justify-content:space-between;margin-top:18px}
+.qnav button{border:0;background:none;color:var(--taupe);cursor:pointer;font-size:14px;padding:6px 0}
+
+/* 結果 */
+.result{padding:26px 22px;text-align:center;margin-top:18px}
+.result .big{font-family:var(--latin);font-size:76px;line-height:1;color:var(--rose-deep);margin:10px 0 2px}
+.result .big small{font-family:var(--serif);font-size:20px;color:var(--cocoa);margin-left:4px}
+.result h2{font-size:26px;margin-top:6px}
+.result p{font-size:14px;color:var(--taupe);margin:10px 0 0}
+.compare{display:flex;justify-content:center;gap:10px;margin-top:14px}
+.compare span{padding:6px 14px;border-radius:99px;background:var(--cream);font-size:13px}
+.blk{margin-top:16px;padding:18px 20px}
+.blk h3{font-size:17px;margin-bottom:8px}
+.blk ul{margin:0;padding-left:1.1em}
+.blk li{margin:4px 0;font-size:14px}
+.blk li b{color:var(--rose-deep)}
+.routine{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.routine div{padding:12px;border-radius:16px;background:var(--milk);border:1px solid var(--line)}
+.routine b{font-family:var(--serif);font-size:14px}
+.routine ol{margin:6px 0 0;padding-left:1.2em;font-size:13px;line-height:1.75}
+.meters{display:grid;gap:12px;text-align:left}
+.meter b{display:flex;justify-content:space-between;font-size:14px;font-weight:600}
+.meter b span{font-family:var(--latin);font-size:18px;color:var(--rose-deep)}
+.meter .tr{height:8px;border-radius:99px;background:var(--cream);overflow:hidden;margin-top:4px}
+.meter .tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#E8CFC3,var(--rose))}
+.meter small{display:block;color:var(--taupe);font-size:12.5px;margin-top:3px;line-height:1.6}
+.cta{margin-top:20px;padding:20px;text-align:center}
+.cta h3{font-size:18px}
+.cta p{font-size:13px;color:var(--taupe);margin:6px 0 14px}
+.disclaim{margin-top:18px;font-size:11.5px;color:var(--taupe);line-height:1.75;text-align:center}
+
+/* 拍照 */
+.cam{position:relative;margin-top:16px;border-radius:28px;overflow:hidden;background:#2A2320;aspect-ratio:3/4;box-shadow:var(--glow)}
+.cam video,.cam img.shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cam video{transform:scaleX(-1)}
+.cam .mask{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 34% 30% at 50% 45%,transparent 98%,rgba(30,22,18,.55) 100%)}
+.cam .oval{position:absolute;left:16%;right:16%;top:15%;height:60%;border:2px dashed rgba(255,255,255,.8);border-radius:50%;pointer-events:none}
+.cam .hint{position:absolute;left:0;right:0;bottom:16px;text-align:center;color:#fff;font-size:13px;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.cam .idle{position:absolute;inset:0;display:grid;place-content:center;gap:12px;padding:24px;text-align:center;color:#F3E6DE;background:radial-gradient(circle at 50% 40%,#4A3A33,#2A2320)}
+.cam .idle b{font-family:var(--serif);font-size:19px;color:#fff}
+.cam .spot{position:absolute;transform:translate(-50%,-50%);border:1.5px solid rgba(255,255,255,.9);border-radius:50%;display:grid;place-items:center;color:#fff;font-size:10px;text-shadow:0 1px 3px rgba(0,0,0,.6);box-shadow:0 0 0 3px rgba(196,144,127,.35);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(196,144,127,.12)}}
+.cam .busy{position:absolute;inset:0;display:grid;place-items:center;background:rgba(42,35,32,.55);color:#fff;font-family:var(--serif);font-size:17px}
+.cam-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.tips{margin-top:16px;padding:16px 18px}
+.tips ul{margin:6px 0 0;padding-left:1.1em;font-size:13.5px}
+.privacy{display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding:12px 14px;border-radius:16px;background:#F1F4EF;color:#5F6E5A;font-size:12.5px;line-height:1.7}
+
+/* 保養 */
+.care{margin-top:12px;padding:0;overflow:hidden}
+.care summary{display:flex;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;list-style:none}
+.care summary::-webkit-details-marker{display:none}
+.care summary b{font-family:var(--serif);font-size:18px}
+.care summary small{display:block;color:var(--taupe);font-size:12.5px}
+.care summary i{margin-left:auto;font-style:normal;color:var(--gold);transition:transform .2s}
+.care[open] summary i{transform:rotate(45deg)}
+.care .body{padding:0 18px 18px}
+.care ol{margin:0;padding-left:1.2em;font-size:14px}
+.care ol li{margin:6px 0}
+.care .k{font-family:var(--latin);font-size:24px;font-style:italic;color:var(--rose)}
+
+/* 底部導覽 */
+.nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);z-index:30;width:min(460px,100%);display:grid;grid-template-columns:repeat(4,1fr);
+  padding:8px 10px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(251,248,244,.92);backdrop-filter:blur(16px);border-top:1px solid var(--line)}
+.nav button{border:0;background:none;display:grid;justify-items:center;gap:2px;font-size:11.5px;color:var(--taupe);cursor:pointer;padding:4px 0}
+.nav button svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.nav button.on{color:var(--rose-deep);font-weight:700}
+.view{animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}}
+@media(prefers-reduced-motion:reduce){.view{animation:none}.bar i{transition:none}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="top">
+    <button class="back" id="back" aria-label="回上一頁">‹</button>
+    <div class="brand"><b>Winnifer</b><span>養美研究室</span></div>
+    <span style="width:36px"></span>
+  </header>
+  <main id="main"></main>
+</div>
+
+<nav class="nav" id="nav" aria-label="主選單">
+  <button data-go="home" class="on"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>首頁</button>
+  <button data-go="scan"><svg viewBox="0 0 24 24"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3.5"/></svg>拍照測</button>
+  <button data-go="tests"><svg viewBox="0 0 24 24"><path d="M7 4h10v16H7z"/><path d="M10 8h4M10 12h4M10 16h2"/></svg>測驗</button>
+  <button data-go="care"><svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/></svg>保養</button>
+</nav>
+
+<script>
+(() => {
+  // ── 設定：溫妮佛的 LINE 官方帳號連結（還沒有的話留空，按鈕會改成 IG）──
+  const LINE_URL = '';
+  const IG_URL = 'https://www.instagram.com/hiwinnifer';
+  const $ = s => document.querySelector(s);
+  const main = $('#main'), app = $('#app');
+  let 歷史 = [];
+
+  const icon = {
+    cam: '<svg viewBox="0 0 24 24"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3.5"/></svg>',
+    drop: '<svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg>',
+    clock: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>'
+  };
+  const 聯絡鈕 = (文 = '加 LINE 領完整保養建議') => LINE_URL
+    ? `<a class="pill line block" href="${LINE_URL}" target="_blank" rel="noopener">${文}</a>`
+    : `<a class="pill block" href="${IG_URL}" target="_blank" rel="noopener">到 IG 私訊溫妮佛「保養」</a>`;
+
+  // ── 畫面切換 ──
+  function go(name, 參 = {}, 推 = true) {
+    if (推) 歷史.push(name);
+    app.classList.toggle('inner', !['home', 'tests', 'care', 'scan'].includes(name));
+    document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('on', b.dataset.go === name || (name.startsWith('quiz') && b.dataset.go === 'tests')));
+    停相機();
+    main.innerHTML = ''; const v = document.createElement('div'); v.className = 'view'; main.append(v);
+    views[name](v, 參);
+    scrollTo({ top: 0 });
+  }
+  $('#back').onclick = () => { 歷史.pop(); go(歷史.pop() || 'home'); };
+  document.querySelectorAll('.nav button').forEach(b => b.onclick = () => { 歷史 = []; go(b.dataset.go); });
+
+  // ═════════════ 首頁 ═════════════
+  const views = {};
+  views.home = v => {
+    v.innerHTML = `
+      <section class="hero">
+        <span class="eyebrow">Skin check · 30+</span>
+        <h1>今天的你<br>皮膚<em>幾歲</em>了？</h1>
+        <div class="jar" aria-hidden="true"><span>W.</span></div>
+        <p class="lead">30 歲之後，保養不是越多越好<br>先看懂自己的皮膚，再對症照顧</p>
+      </section>
+      <div class="tools">
+        <button class="tool cream first" data-go="scan"><span class="ic">${icon.cam}</span><span><b>拍照看今天的膚況<span class="tag">推薦</span></b><small>透亮・均勻・泛紅・油光・細緻，照片不上傳</small></span><i>›</i></button>
+        <button class="tool cream" data-go="quiz-type"><span class="ic">${icon.drop}</span><span><b>我是哪一種膚質？</b><small>8 題，1 分鐘測出乾、油、混合或敏感肌</small></span><i>›</i></button>
+        <button class="tool cream" data-go="quiz-age"><span class="ic">${icon.clock}</span><span><b>我的肌膚年齡</b><small>12 題，看看皮膚比實際年齡大還是小</small></span><i>›</i></button>
+      </div>
+      <section class="section">
+        <h2>妳最在意的是？</h2>
+        <p class="lead">點一個，看溫妮佛的日常保養重點</p>
+        <div class="keys">${關心們.map(c => `<button data-care="${c.id}">${c.名}</button>`).join('')}</div>
+      </section>
+      <section class="section">
+        <div class="about cream">
+          <span class="av">W</span>
+          <div><b>Winnifer 溫妮佛｜養美教主</b><p>人生苦短，漂亮優先 ~ 分享 30+ 抗老保養、臉部按摩和氣色養成的日常</p></div>
+          <div class="row"><a class="pill ghost" href="${IG_URL}" target="_blank" rel="noopener">追蹤 IG</a>${LINE_URL ? `<a class="pill line" href="${LINE_URL}" target="_blank" rel="noopener">加 LINE</a>` : ''}</div>
+        </div>
+      </section>`;
+    v.querySelectorAll('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
+    v.querySelectorAll('[data-care]').forEach(b => b.onclick = () => { 歷史 = []; go('care', { open: b.dataset.care }); });
+  };
+  views.tests = v => {
+    v.innerHTML = `<div class="quiz-head"><span class="eyebrow">Self test</span><h2>養美小測驗</h2><p class="lead">不用化妝、不用拍照，回答幾題就知道</p></div>
+      <div class="tools">
+        <button class="tool cream" data-go="quiz-type"><span class="ic">${icon.drop}</span><span><b>我是哪一種膚質？</b><small>8 題・約 1 分鐘</small></span><i>›</i></button>
+        <button class="tool cream" data-go="quiz-age"><span class="ic">${icon.clock}</span><span><b>我的肌膚年齡</b><small>12 題・約 2 分鐘</small></span><i>›</i></button>
+        <button class="tool cream" data-go="scan"><span class="ic">${icon.cam}</span><span><b>拍照看今天的膚況</b><small>用鏡頭看看透亮度和泛紅</small></span><i>›</i></button>
+      </div>`;
+    v.querySelectorAll('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
+  };
+
+  // ═════════════ 問答引擎 ═════════════
+  function 問答(v, 設定) {
+    const 答 = [];
+    let i = 0;
+    function 畫() {
+      const q = 設定.題[i];
+      v.innerHTML = `<div class="quiz-head"><span class="eyebrow">${設定.英}</span><h2>${設定.名}</h2></div>
+        <div class="bar"><i style="width:${(i / 設定.題.length) * 100}%"></i></div>
+        <p class="q">${i + 1}. ${q.q}</p>${q.note ? `<p class="q-note">${q.note}</p>` : ''}
+        <div class="opts">${q.a.map((a, k) => `<button class="opt${答[i] === k ? ' on' : ''}" data-k="${k}">${a[0]}</button>`).join('')}</div>
+        <div class="qnav"><button id="prev" ${i ? '' : 'hidden'}>‹ 上一題</button><span class="small">${i + 1} / ${設定.題.length}</span></div>`;
+      v.querySelectorAll('.opt').forEach(b => b.onclick = () => {
+        答[i] = +b.dataset.k; b.classList.add('on');
+        setTimeout(() => { if (++i < 設定.題.length) 畫(); else 設定.完成(答.map((k, n) => 設定.題[n].a[k])); }, 180);
+      });
+      const p = v.querySelector('#prev'); if (p) p.onclick = () => { i--; 畫(); };
+    }
+    畫();
+  }
+
+  // ═════════════ 膚質測驗 ═════════════
+  // 每個選項：[文字, 油分(負=乾), 敏感]
+  const 膚質題 = [
+    { q: '洗完臉什麼都不擦，30 分鐘後感覺？', a: [['緊繃、有點乾', -2, 0], ['舒服，沒什麼感覺', 0, 0], ['額頭和鼻子開始有點油', 1, 0], ['整張臉都油油亮亮', 2, 0]] },
+    { q: '中午照鏡子的時候，臉？', a: [['還是乾乾的', -2, 0], ['一點點油，還好', 0, 0], ['T 字出油，臉頰還好', 1, 0], ['全臉都在出油', 2, 0]] },
+    { q: '妳的毛孔？', note: '素顏照鏡子看看', a: [['幾乎看不到', -1, 0], ['鼻子周圍比較明顯', 1, 0], ['鼻子和臉頰都很明顯', 2, 0]] },
+    { q: '上妝幾個小時後？', a: [['浮粉、卡在細紋裡', -2, 0], ['持妝不錯', 0, 0], ['鼻子額頭先脫妝', 1, 0], ['整臉都脫妝', 2, 0]] },
+    { q: '換季或換新保養品的時候？', a: [['常常泛紅、刺刺癢癢', 0, 2], ['偶爾會', 0, 1], ['很少有感覺', 0, 0]] },
+    { q: '臉頰容易泛紅，或看得到紅血絲嗎？', a: [['常常', 0, 2], ['偶爾，曬太陽或喝酒才會', 0, 1], ['不會', 0, 0]] },
+    { q: '會脫皮、乾癢嗎？', a: [['常常', -2, 1], ['冬天才會', -1, 0], ['不會', 0, 0]] },
+    { q: '長痘痘的頻率？', a: [['常常冒', 1, 1], ['生理期前後才會', 0, 0], ['很少', 0, 0]] },
+  ];
+  const 膚質結果 = {
+    乾: { 名: '乾性肌', 英: 'Dry skin', 說: '皮脂分泌比較少，水分也容易流失 ~ 容易緊繃、卡粉，細紋也比較早被看見', 要: ['洗臉用溫和、不緊繃的洗面乳，一天一次就好', '化妝水後一定要鎖水，乳液或乳霜不能省', '晚上可以多一層精華油或保濕面膜'], 避: ['熱水洗臉', '一直去角質'], 早: ['溫水洗臉', '保濕化妝水', '保濕精華', '乳霜', '防曬'], 晚: ['溫和洗面乳', '保濕化妝水', '修護精華', '乳霜或晚安面膜'] },
+    中: { 名: '中性肌', 英: 'Normal skin', 說: '油水平衡得不錯 ~ 恭喜妳，現在最重要的是「維持」，30 歲後把重點放在預防老化', 要: ['基礎保濕做好就很夠', '每天防曬，是最划算的抗老', '季節交替時依膚況微調'], 避: ['一次用太多新產品', '忽略防曬'], 早: ['洗臉', '化妝水', '精華', '乳液', '防曬'], 晚: ['洗臉', '化妝水', '抗老精華', '乳液'] },
+    混合: { 名: '混合肌', 英: 'Combination', 說: 'T 字容易出油、臉頰偏乾，是台灣女生最常見的膚質 ~ 重點是「分區照顧」', 要: ['T 字用清爽的質地，臉頰加強保濕', '每週一次溫和清潔 T 字的粉刺', '用質地輕的乳液，不要整臉都擦很厚'], 避: ['為了控油整臉用很強的洗面乳', '跳過保濕'], 早: ['洗臉', '化妝水', '清爽精華', '乳液（臉頰多一點）', '防曬'], 晚: ['洗臉', '化妝水', '保濕精華', '乳液或局部乳霜'] },
+    油: { 名: '油性肌', 英: 'Oily skin', 說: '皮脂分泌旺盛 ~ 毛孔和痘痘比較困擾，但好消息是，細紋通常比較晚出現', 要: ['油性肌也要保濕，缺水反而會更油', '選清爽、不悶的質地', '定期清潔毛孔，但不要過度'], 避: ['一天洗臉超過 2 次', '用很乾的控油產品'], 早: ['洗臉', '清爽化妝水', '輕透精華', '凝露', '清爽防曬'], 晚: ['卸妝洗臉', '化妝水', '控油保濕精華', '凝露'] },
+  };
+  views['quiz-type'] = v => 問答(v, {
+    名: '我是哪一種膚質？', 英: 'Skin type', 題: 膚質題,
+    完成: 選 => {
+      const 油 = 選.reduce((s, a) => s + a[1], 0), 敏 = 選.reduce((s, a) => s + a[2], 0);
+      const T = 油 <= -4 ? '乾' : 油 <= 1 ? '中' : 油 <= 5 ? '混合' : '油';
+      go('result-type', { T, 敏: 敏 >= 3 }, false);
+    }
+  });
+  views['result-type'] = (v, { T, 敏 }) => {
+    const r = 膚質結果[T];
+    v.innerHTML = `<div class="result cream">
+        <span class="eyebrow">${r.英}${敏 ? ' · Sensitive' : ''}</span>
+        <h2>妳是「${r.名}」${敏 ? '<br>而且偏敏感' : ''}</h2>
+        <p>${r.說}</p>
+        ${敏 ? '<p style="color:var(--rose-deep)">妳的皮膚比較容易受刺激 ~ 新產品先擦在耳後試 2～3 天，成分越單純越好</p>' : ''}
+      </div>
+      <div class="blk cream"><h3>妳的保養重點</h3><ul>${r.要.map(x => `<li>${x}</li>`).join('')}</ul></div>
+      <div class="blk cream"><h3>先別這樣做</h3><ul>${r.避.map(x => `<li>${x}</li>`).join('')}${敏 ? '<li>酒精、香精多的產品</li>' : ''}</ul></div>
+      <div class="blk cream"><h3>早晚保養順序</h3><div class="routine"><div><b>☀️ 早上</b><ol>${r.早.map(x => `<li>${x}</li>`).join('')}</ol></div><div><b>🌙 晚上</b><ol>${r.晚.map(x => `<li>${x}</li>`).join('')}</ol></div></div></div>
+      <div class="cta cream"><h3>想要一份專屬妳的保養菜單？</h3><p>告訴溫妮佛妳的膚質「${r.名}」，幫妳挑適合的保養重點</p>${聯絡鈕('加 LINE 領我的保養菜單')}</div>
+      <div class="tools" style="margin-top:14px"><button class="tool cream" data-go="quiz-age"><span class="ic">${icon.clock}</span><span><b>接著測：我的肌膚年齡</b><small>12 題，看看皮膚比實際年齡大還是小</small></span><i>›</i></button></div>
+      <p class="disclaim">這是依照妳的回答整理的參考，不是醫療診斷 ~ 有皮膚問題請找皮膚科醫師</p>`;
+    v.querySelectorAll('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
+  };
+
+  // ═════════════ 肌膚年齡 ═════════════
+  // 每個選項：[文字, 加減幾歲, 歸類]
+  const 年齡題 = [
+    { q: '防曬？', a: [['每天都擦，陰天也擦', -2, '防曬'], ['出門曬太陽才擦', 0], ['很少擦', 3, '防曬']] },
+    { q: '平常睡多久？', a: [['7 小時以上', -1, '睡眠'], ['5～7 小時', 1, '睡眠'], ['常常熬夜，5 小時以下', 3, '睡眠']] },
+    { q: '輕輕捏一下臉頰再放開', note: '現在就捏捏看 ~ 皮膚彈回去要多久？', a: [['馬上彈回去', -2, '彈性'], ['1～2 秒', 0], ['超過 2 秒，還看得到痕跡', 2, '彈性']] },
+    { q: '眼睛周圍的細紋？', a: [['沒有', -1, '細紋'], ['笑的時候才有', 0], ['不笑也看得到', 2, '細紋']] },
+    { q: '法令紋？', a: [['幾乎看不到', -1, '法令紋'], ['淡淡的', 1, '法令紋'], ['很明顯', 3, '法令紋']] },
+    { q: '下巴和臉頰的輪廓？', note: '側臉照鏡子看看', a: [['線條很清楚', -1, '輪廓'], ['有一點點模糊', 1, '輪廓'], ['看得出來往下垂', 2, '輪廓']] },
+    { q: '一天喝多少水？', a: [['2000cc 以上', -1, '喝水'], ['1000～2000cc', 0], ['不到 1000cc', 1, '喝水']] },
+    { q: '甜食或含糖飲料？', a: [['很少吃', -1, '糖分'], ['偶爾', 0], ['幾乎每天', 2, '糖分']] },
+    { q: '最近的壓力？', a: [['還好，很放鬆', 0], ['有一點', 1, '壓力'], ['很大', 2, '壓力']] },
+    { q: '保濕做得如何？', a: [['早晚都有擦', -1, '保濕'], ['想到才擦', 1, '保濕'], ['幾乎沒有', 2, '保濕']] },
+    { q: '抽菸嗎？', a: [['不抽', 0], ['偶爾', 2, '抽菸'], ['每天', 4, '抽菸']] },
+    { q: '有在做臉部按摩或運動嗎？', a: [['每週 3 次以上', -2, '按摩'], ['偶爾', -1, '按摩'], ['沒有', 0]] },
+  ];
+  const 年齡建議 = {
+    防曬: '每天擦防曬，陰天也要 ~ 陽光是讓皮膚變老最大的原因', 睡眠: '盡量 12 點前睡，睡滿 7 小時，皮膚晚上才有時間修護',
+    彈性: '加強保濕，搭配溫妮佛的臉部按摩，幫皮膚找回彈性', 細紋: '眼周用專門的眼霜，擦的時候用無名指輕點、不要拉扯',
+    法令紋: '試試溫妮佛的「法令紋 4 個開關」按摩，搭配保濕', 輪廓: '每天早上 3 分鐘臉部提拉按摩，從下往上、從內往外',
+    喝水: '一天至少 2000cc，放一個水瓶在桌上提醒自己', 糖分: '少喝含糖飲料，改成無糖茶或氣泡水',
+    壓力: '每天留 10 分鐘給自己，深呼吸、伸展或泡澡', 保濕: '化妝水之後一定要擦乳液或乳霜，把水分鎖住', 抽菸: '能少一根是一根，皮膚和氣色都會感謝妳',
+    按摩: '繼續保持！臉部按摩是妳的凍齡祕密'
+  };
+  views['quiz-age'] = v => {
+    v.innerHTML = `<div class="quiz-head"><span class="eyebrow">Skin age</span><h2>我的肌膚年齡</h2><p class="lead">先告訴我妳的實際年齡</p></div>
+      <div class="age-pick cream"><output id="ageOut">35</output><span class="small">歲</span><input type="range" id="ageIn" min="20" max="65" value="35" aria-label="實際年齡"><p class="small">拉一下調整</p></div>
+      <button class="pill block" id="ageGo" style="margin-top:18px">開始測驗</button>
+      <p class="disclaim">12 題・約 2 分鐘 ~ 準備一面鏡子會更準</p>`;
+    const inp = v.querySelector('#ageIn'); inp.oninput = () => v.querySelector('#ageOut').textContent = inp.value;
+    v.querySelector('#ageGo').onclick = () => {
+      const 實際 = +inp.value;
+      問答(v, { 名: '我的肌膚年齡', 英: 'Skin age', 題: 年齡題, 完成: 選 => go('result-age', { 實際, 選 }, false) });
+    };
+  };
+  views['result-age'] = (v, { 實際, 選 }) => {
+    const 加 = 選.reduce((s, a) => s + a[1], 0);
+    const 肌 = Math.max(18, Math.min(實際 + 12, Math.max(實際 - 8, 實際 + 加)));
+    const 差 = 肌 - 實際;
+    const 好 = 選.filter(a => a[1] < 0 && a[2]).map(a => a[2]);
+    const 壞 = 選.filter(a => a[1] > 0 && a[2]).sort((a, b) => b[1] - a[1]).map(a => a[2]);
+    const 標 = 差 <= -3 ? '凍齡女神' : 差 < 0 ? '比同齡更年輕' : 差 === 0 ? '跟實際年齡一樣' : 差 <= 3 ? '皮膚偷偷老了一點' : '皮膚需要妳多照顧';
+    v.innerHTML = `<div class="result cream">
+        <span class="eyebrow">Your skin age</span>
+        <div class="big">${肌}<small>歲</small></div>
+        <h2>${標}</h2>
+        <div class="compare"><span>實際 ${實際} 歲</span><span>${差 === 0 ? '剛剛好' : 差 < 0 ? `年輕 ${-差} 歲` : `多了 ${差} 歲`}</span></div>
+      </div>
+      ${好.length ? `<div class="blk cream"><h3>✨ 讓妳年輕的好習慣</h3><ul>${好.map(k => `<li><b>${k}</b> ~ 繼續保持</li>`).join('')}</ul></div>` : ''}
+      ${壞.length ? `<div class="blk cream"><h3>讓皮膚偷偷變老的地方</h3><ul>${壞.slice(0, 4).map(k => `<li><b>${k}</b> ~ ${年齡建議[k]}</li>`).join('')}</ul></div>` : '<div class="blk cream"><h3>太棒了</h3><p class="small">妳的習慣幾乎都在幫皮膚加分 ~ 記得每天防曬，維持下去</p></div>'}
+      <div class="cta cream"><h3>想把肌膚年齡往回調？</h3><p>溫妮佛整理了一份 30+ 凍齡保養菜單，跟著做 4 週再回來測一次</p>${聯絡鈕('加 LINE 領凍齡保養菜單')}</div>
+      <div class="tools" style="margin-top:14px"><button class="tool cream" data-go="scan"><span class="ic">${icon.cam}</span><span><b>接著拍照看今天的膚況</b><small>透亮・均勻・泛紅・油光・細緻</small></span><i>›</i></button></div>
+      <p class="disclaim">肌膚年齡是依照妳的回答和生活習慣估算的趣味參考，不是醫學檢測 ~ 有皮膚問題請找皮膚科醫師</p>`;
+    v.querySelectorAll('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
+  };
+
+  // ═════════════ 拍照看膚況（只在手機上分析）═════════════
+  let 串流 = null;
+  function 停相機() { if (串流) { 串流.getTracks().forEach(t => t.stop()); 串流 = null; } }
+  views.scan = v => {
+    v.innerHTML = `<div class="quiz-head"><span class="eyebrow">Skin scan</span><h2>拍照看今天的膚況</h2><p class="lead">素顏、面向窗戶的自然光，把臉放進虛線框裡</p></div>
+      <div class="cam" id="cam">
+        <div class="idle" id="idle"><b>準備好了嗎？</b><span>卸妝後效果最準 ~ 頭髮撥到耳後</span></div>
+        <div class="mask"></div><div class="oval"></div><p class="hint" id="hint" hidden>把臉放進框裡，不要開美顏</p>
+      </div>
+      <div class="cam-btns"><button class="pill" id="openCam">打開鏡頭</button><label class="pill ghost" for="upload">上傳照片</label></div>
+      <input type="file" id="upload" accept="image/*" capture="user" hidden>
+      <div class="privacy"><span>🔒</span><span>照片只在妳的手機上分析，<b>不會上傳、也不會保存</b> ~ 關掉頁面就消失了</span></div>
+      <div class="tips cream"><b style="font-family:var(--serif)">拍出準確結果的小祕訣</b><ul><li>素顏，或卸妝後 30 分鐘</li><li>面向窗戶的自然光，不要背光、不要黃燈</li><li>手機拿在眼睛高度，臉不要太遠</li><li>關掉美顏和濾鏡</li></ul></div>`;
+    const cam = v.querySelector('#cam');
+    v.querySelector('#openCam').onclick = async () => {
+      if (串流) return 拍(v);
+      try {
+        串流 = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 1706 } }, audio: false });
+        const vid = document.createElement('video'); vid.playsInline = true; vid.muted = true; vid.srcObject = 串流; vid.id = 'vid';
+        cam.prepend(vid); await vid.play();
+        v.querySelector('#idle').hidden = true; v.querySelector('#hint').hidden = false;
+        v.querySelector('#openCam').textContent = '拍照分析';
+        模型();   // 先在背景準備辨識臉部的工具
+      } catch (e) { alert2(v, '打不開鏡頭 ~ 請允許使用相機，或改用「上傳照片」'); }
+    };
+    v.querySelector('#upload').onchange = e => {
+      const f = e.target.files[0]; if (!f) return;
+      const img = new Image(); img.onload = () => 分析(v, img, false); img.src = URL.createObjectURL(f);
+    };
+  };
+  function alert2(v, t) { const p = document.createElement('p'); p.className = 'privacy'; p.style.background = '#FBEDE8'; p.style.color = '#9A5A4A'; p.textContent = t; v.querySelector('.cam-btns').after(p); setTimeout(() => p.remove(), 6000); }
+  function 拍(v) {
+    const vid = v.querySelector('#vid'); if (!vid) return;
+    const c = document.createElement('canvas'); c.width = vid.videoWidth; c.height = vid.videoHeight;
+    const g = c.getContext('2d'); g.translate(c.width, 0); g.scale(-1, 1); g.drawImage(vid, 0, 0);
+    停相機(); 分析(v, c, true);
+  }
+
+  // 辨識臉部位置的工具（Google MediaPipe，在手機上執行）
+  let 臉模型 = null, 載入中 = null;
+  function 模型() {
+    if (載入中) return 載入中;
+    載入中 = (async () => {
+      try {
+        const m = await import('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/vision_bundle.mjs');
+        const fs = await m.FilesetResolver.forVisionTasks('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm');
+        臉模型 = await m.FaceLandmarker.createFromOptions(fs, { baseOptions: { modelAssetPath: 'https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task' }, runningMode: 'IMAGE', numFaces: 1 });
+      } catch (e) { 臉模型 = null; }
+      return 臉模型;
+    })();
+    return 載入中;
+  }
+
+  async function 分析(v, 圖, 從鏡頭) {
+    const cam = v.querySelector('#cam');
+    cam.querySelector('#vid')?.remove(); cam.querySelector('#idle').hidden = true; v.querySelector('#hint').hidden = true;
+    const shot = document.createElement('img'); shot.className = 'shot'; shot.src = 圖 instanceof HTMLCanvasElement ? 圖.toDataURL('image/jpeg', .9) : 圖.src; cam.prepend(shot);
+    const busy = document.createElement('div'); busy.className = 'busy'; busy.textContent = '分析中…'; cam.append(busy);
+    // 縮成固定大小再算，速度和結果比較穩定
+    const W = 720, H = Math.round((圖.naturalHeight || 圖.height) / (圖.naturalWidth || 圖.width) * W);
+    const c = document.createElement('canvas'); c.width = W; c.height = H; const g = c.getContext('2d', { willReadFrequently: true }); g.drawImage(圖, 0, 0, W, H);
+    await 模型();
+    let 區 = null, 找到臉 = false;
+    if (臉模型) {
+      try {
+        const r = 臉模型.detect(c);
+        const L = r.faceLandmarks && r.faceLandmarks[0];
+        if (L) {
+          找到臉 = true;
+          const P = i => [L[i].x * W, L[i].y * H];
+          const 臉寬 = Math.hypot(P(454)[0] - P(234)[0], P(454)[1] - P(234)[1]);
+          const s = 臉寬 * .13;
+          const mid = (a, b) => [(P(a)[0] + P(b)[0]) / 2, (P(a)[1] + P(b)[1]) / 2];
+          區 = { 額頭: [mid(10, 151), s * 1.2], 左頰: [P(50), s], 右頰: [P(280), s], 鼻子: [P(4), s * .6], 下巴: [P(199), s * .8], 臉寬 };
+        }
+      } catch (e) {}
+    }
+    if (!區) {   // 找不到臉：照虛線框的位置估
+      const cx = W / 2, cy = H * .45, rx = W * .34, ry = H * .3, s = rx * .26;
+      區 = { 額頭: [[cx, cy - ry * .55], s * 1.2], 左頰: [[cx - rx * .5, cy + ry * .12], s], 右頰: [[cx + rx * .5, cy + ry * .12], s], 鼻子: [[cx, cy + ry * .05], s * .6], 下巴: [[cx, cy + ry * .75], s * .8], 臉寬: rx * 2 };
+    }
+    const 結果 = 計算(g, 區, W, H);
+    busy.remove();
+    // 拍完：拿掉虛線框，在臉上標出分析的位置
+    cam.querySelector('.mask')?.remove(); cam.querySelector('.oval')?.remove();
+    const 寬 = cam.clientWidth, 高 = cam.clientHeight, 比 = Math.max(寬 / W, 高 / H), 偏x = (W * 比 - 寬) / 2, 偏y = (H * 比 - 高) / 2;
+    for (const k of ['額頭', '左頰', '右頰', '鼻子', '下巴']) {
+      const [[x, y], r] = 區[k], d = document.createElement('span');
+      d.className = 'spot'; d.textContent = k === '左頰' || k === '右頰' ? '臉頰' : k;
+      d.style.left = (x * 比 - 偏x) + 'px'; d.style.top = (y * 比 - 偏y) + 'px'; d.style.width = d.style.height = Math.max(26, r * 2 * 比) + 'px';
+      cam.append(d);
+    }
+    畫結果(v, 結果, 找到臉, 從鏡頭);
+  }
+
+  // ── 把每一塊皮膚的顏色換成 Lab 再算指標 ──
+  function lab(r, g, b) {
+    const f = c => { c /= 255; return c > .04045 ? Math.pow((c + .055) / 1.055, 2.4) : c / 12.92; };
+    const R = f(r), G = f(g), B = f(b);
+    let x = (R * .4124 + G * .3576 + B * .1805) / .95047, y = R * .2126 + G * .7152 + B * .0722, z = (R * .0193 + G * .1192 + B * .9505) / 1.08883;
+    const h = t => t > .008856 ? Math.cbrt(t) : 7.787 * t + 16 / 116;
+    x = h(x); y = h(y); z = h(z);
+    return [116 * y - 16, 500 * (x - y), 200 * (y - z)];
+  }
+  function 取塊(g, [[cx, cy], s], W, H) {
+    const x0 = Math.max(0, Math.round(cx - s)), y0 = Math.max(0, Math.round(cy - s)), w = Math.min(W - x0, Math.round(s * 2)), h = Math.min(H - y0, Math.round(s * 2));
+    if (w < 6 || h < 6) return null;
+    const d = g.getImageData(x0, y0, w, h).data, px = [];
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const i = (y * w + x) * 4; px.push(lab(d[i], d[i + 1], d[i + 2])); }
+    const 平均 = k => px.reduce((s, p) => s + p[k], 0) / px.length;
+    const L = 平均(0), A = 平均(1), B = 平均(2);
+    const 標準差 = Math.sqrt(px.reduce((s, p) => s + (p[0] - L) ** 2, 0) / px.length);
+    // 細紋與毛孔：亮度的細小變化（拉普拉斯）
+    let lap = 0, n = 0;
+    for (let y = 1; y < h - 1; y++) for (let x = 1; x < w - 1; x++) {
+      const c = px[y * w + x][0], v = 4 * c - px[(y - 1) * w + x][0] - px[(y + 1) * w + x][0] - px[y * w + x - 1][0] - px[y * w + x + 1][0];
+      lap += v * v; n++;
+    }
+    const 亮點 = px.filter(p => p[0] > L + 2.2 * 標準差 && p[0] > 70 && Math.hypot(p[1], p[2]) < 22).length / px.length;
+    return { L, A, B, 標準差, 紋理: Math.sqrt(lap / Math.max(1, n)), 亮點 };
+  }
+  function 計算(g, 區, W, H) {
+    const 塊 = {}; for (const k of ['額頭', '左頰', '右頰', '鼻子', '下巴']) 塊[k] = 取塊(g, 區[k], W, H);
+    const 有 = Object.values(塊).filter(Boolean);
+    const avg = (arr, f) => arr.reduce((s, x) => s + f(x), 0) / arr.length;
+    const 頰 = [塊.左頰, 塊.右頰].filter(Boolean), T = [塊.額頭, 塊.鼻子].filter(Boolean);
+    const L平均 = avg(有, x => x.L);
+    const 夾 = x => Math.round(Math.max(5, Math.min(98, x)));
+    const 透亮 = 夾((L平均 - 42) / 30 * 100);
+    const 塊間差 = Math.sqrt(avg(有, x => (x.L - L平均) ** 2));
+    const 均勻 = 夾(100 - (avg(有, x => x.標準差) * 6 + 塊間差 * 3.5));
+    const 泛紅 = 夾((avg(頰, x => x.A) - (塊.額頭 ? 塊.額頭.A : avg(有, x => x.A)) + 1.5) / 8 * 100 + (avg(頰, x => x.A) - 12) * 3);
+    const 油光 = 夾(avg(T, x => x.亮點) * 900);
+    const 細緻 = 夾(100 - (avg(頰, x => x.紋理) / Math.max(20, L平均) * 100 - 8) * 7);
+    return { 透亮, 均勻, 泛紅, 油光, 細緻, 光線: L平均 };
+  }
+  function 畫結果(v, r, 找到臉, 從鏡頭) {
+    const 光 = r.光線 < 38 ? '光線有點暗，結果可能偏暗沉 ~ 面向窗戶再拍一次會更準' : r.光線 > 82 ? '光線太亮，可能看不出細節 ~ 避開直射的強光再拍一次' : '';
+    const 指標 = [
+      ['透亮度', r.透亮, r.透亮 >= 65 ? '氣色很好，看起來很有光澤' : r.透亮 >= 45 ? '還不錯，睡飽一點會更亮' : '有點暗沉，可能是疲勞或缺水'],
+      ['均勻度', r.均勻, r.均勻 >= 65 ? '膚色很均勻' : r.均勻 >= 45 ? '有一點點不均，可能是斑點或痘印' : '膚色比較不均，防曬要更認真'],
+      ['泛紅', r.泛紅, r.泛紅 <= 35 ? '很穩定，沒有明顯泛紅' : r.泛紅 <= 60 ? '臉頰有一點紅，可能是比較敏感' : '臉頰偏紅，保養品要選溫和的'],
+      ['油光', r.油光, r.油光 <= 35 ? '油水平衡' : r.油光 <= 60 ? 'T 字有一點油光' : 'T 字出油比較明顯'],
+      ['細緻度', r.細緻, r.細緻 >= 65 ? '皮膚很細緻' : r.細緻 >= 45 ? '毛孔或細紋有一點點' : '毛孔或細紋比較明顯，保濕要加強'],
+    ];
+    const 重點 = 指標.filter(([k, s]) => (k === '泛紅' || k === '油光') ? s > 55 : s < 50).map(x => x[0]);
+    const 建議 = { 透亮度: '睡飽、多喝水，早上用溫和的去角質讓氣色亮起來', 均勻度: '每天防曬，陰天也擦 ~ 這是讓膚色均勻最重要的一步', 泛紅: '選成分單純、無香精的保養品，洗臉用溫水', 油光: 'T 字用清爽的保濕，不要為了控油過度清潔', 細緻度: '化妝水後一定要鎖水，晚上可以敷保濕面膜' };
+    const box = document.createElement('div');
+    box.innerHTML = `<div class="result cream" style="text-align:left">
+        <span class="eyebrow">Today's skin</span><h2 style="font-size:22px;margin-bottom:14px">今天的膚況</h2>
+        <div class="meters">${指標.map(([k, s, t]) => `<div class="meter"><b>${k}<span>${s}</span></b><div class="tr"><i style="width:${s}%"></i></div><small>${t}</small></div>`).join('')}</div>
+        ${光 ? `<p class="privacy" style="background:#FBF3E6;color:#8A6A3A">💡 ${光}</p>` : ''}
+        ${!找到臉 ? '<p class="privacy" style="background:#FBF3E6;color:#8A6A3A">💡 沒有偵測到完整的臉，是照虛線框的位置估算的 ~ 正面、臉放進框裡再拍一次會更準</p>' : ''}
+      </div>
+      <div class="blk cream"><h3>${重點.length ? '今天可以多照顧的地方' : '今天的皮膚狀態很好'}</h3><ul>${(重點.length ? 重點 : ['均勻度']).slice(0, 3).map(k => `<li><b>${k}</b> ~ ${重點.length ? 建議[k] : '繼續保持防曬和保濕，就是最好的保養'}</li>`).join('')}</ul></div>
+      <div class="cta cream"><h3>想知道該用什麼保養？</h3><p>把這份結果截圖傳給溫妮佛，幫妳看看下一步</p>${聯絡鈕('加 LINE 問溫妮佛')}</div>
+      <div class="cam-btns"><button class="pill ghost" id="again">再拍一次</button><button class="pill ghost" id="toAge">測肌膚年齡</button></div>
+      <p class="disclaim">膚況分析只在妳的手機上計算，受光線和鏡頭影響，是生活保養的參考，不是醫療檢測 ~ 有皮膚問題請找皮膚科醫師</p>`;
+    v.querySelectorAll(':scope > .privacy, :scope > .tips').forEach(e => e.remove());
+    v.querySelector('.cam-btns').replaceWith(box);
+    box.querySelector('#again').onclick = () => go('scan', {}, false);
+    box.querySelector('#toAge').onclick = () => go('quiz-age');
+    box.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // ═════════════ 保養 ═════════════
+  const 關心們 = [
+    { id: 'firm', 名: '緊緻', 英: 'Firming', 說: '皮膚摸起來有彈性、不鬆垮', 招: ['保濕是緊緻的基礎，水分足皮膚才撐得起來', '每天早上 3 分鐘臉部按摩，從下巴往耳朵方向推', '睡覺時盡量平躺，減少側睡壓臉', '防曬每天擦，紫外線會讓皮膚失去彈性'] },
+    { id: 'lift', 名: '拉提', 英: 'Lifting', 說: '讓輪廓線條往上、不下垂', 招: ['按摩方向永遠是「由下往上、由內往外」', '用指節沿著下顎線往耳下推，每邊 10 次', '咬肌常常很緊的，可以輕輕揉開', '低頭滑手機的時間少一點，脖子和下巴線會感謝妳'] },
+    { id: 'young', 名: '凍齡', 英: 'Ageless', 說: '讓皮膚看起來比實際年齡年輕', 招: ['防曬是最划算的凍齡保養，陰天也要擦', '睡滿 7 小時，12 點前上床', '少糖，含糖飲料是皮膚老化的推手', '固定的保養習慣，比偶爾用很貴的產品更有用'] },
+    { id: 'anti', 名: '抗老', 英: 'Anti-aging', 說: '細紋、法令紋、眼周的日常照顧', 招: ['眼霜用無名指輕點，不要拉扯眼周', '法令紋按摩先打開周圍的穴位，不要直接用力推', '晚上的保養可以加入抗老精華，從低濃度開始', '多做表情沒關係，但記得表情後要保濕'] },
+    { id: 'moist', 名: '保濕', 英: 'Hydration', 說: '所有保養的第一步', 招: ['洗完臉 3 分鐘內就擦化妝水，不要等到緊繃', '化妝水之後一定要用乳液或乳霜把水分鎖住', '冷氣房裡放一瓶保濕噴霧', '一天喝 2000cc 的水，從身體裡面補'] },
+  ];
+  views.care = (v, 參 = {}) => {
+    v.innerHTML = `<div class="quiz-head"><span class="eyebrow">Daily care</span><h2>溫妮佛的養美重點</h2><p class="lead">30+ 女生最在意的五件事，每天做一點點</p></div>
+      ${關心們.map(c => `<details class="care cream" id="care-${c.id}" ${參.open === c.id ? 'open' : ''}><summary><span class="k">${c.英}</span><span><b>${c.名}</b><small>${c.說}</small></span><i>＋</i></summary><div class="body"><ol>${c.招.map(x => `<li>${x}</li>`).join('')}</ol></div></details>`).join('')}
+      <div class="cta cream"><h3>想看溫妮佛示範？</h3><p>臉部按摩、法令紋、提拉手法，IG 上都有影片</p><a class="pill ghost block" href="${IG_URL}" target="_blank" rel="noopener">看溫妮佛的按摩影片</a><div style="height:10px"></div>${LINE_URL ? 聯絡鈕('加 LINE 問保養問題') : ''}</div>
+      <p class="disclaim">以上是日常保養分享，不是醫療建議 ~ 有皮膚問題請找皮膚科醫師</p>`;
+    if (參.open) setTimeout(() => document.getElementById('care-' + 參.open)?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+  };
+
+  go('home');
+})();
+</script>
+</body>
+</html>
