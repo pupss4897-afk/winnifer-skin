@@ -180,13 +180,13 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 .care .k{min-width:62px;font-family:var(--latin);font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 8px;border-radius:9px;background:var(--holo);text-align:center}
 
 /* 第一屏 */
-.hero1{position:relative;margin:0 -20px;min-height:min(640px,calc(100svh - 150px));display:flex;align-items:flex-end;overflow:hidden}
-.first-img{position:absolute;inset:0;background:
+.hero1{position:relative;margin:0 -20px;display:flex;flex-direction:column;overflow:hidden}
+.first-img{position:relative;height:min(520px,62svh);background:
   linear-gradient(180deg,rgba(247,243,238,0) 40%,rgba(247,243,238,.9) 82%,#F7F3EE 100%),
   linear-gradient(105deg,transparent 0 30%,rgba(255,255,255,.55) 30% 33%,transparent 33% 46%,rgba(255,255,255,.45) 46% 49%,transparent 49%),
   radial-gradient(120% 80% at 75% 20%,#FFFFFF 0,#F4EFEA 45%,#E9E1E7 100%)}
-.first-img.has{background:linear-gradient(180deg,rgba(247,243,238,0) 45%,rgba(247,243,238,.92) 85%,#F7F3EE 100%),var(--photo) center/cover no-repeat}
-.first-txt{position:relative;padding:0 24px 30px;width:100%}
+.first-img.has{background:linear-gradient(180deg,rgba(247,243,238,0) 78%,#F7F3EE 100%),var(--photo) center 40%/cover no-repeat}
+.first-txt{position:relative;padding:4px 24px 8px;width:100%;margin-top:-34px}
 .hero1 h1{font-size:38px;line-height:1.25;font-weight:900;letter-spacing:.02em}
 .hero1 p{margin:12px 0 20px;font-size:14.5px;color:var(--mute);letter-spacing:.06em}
 .hero1 .pill{padding:15px 26px;font-size:15.5px}
@@ -279,7 +279,7 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
   // ── 設定：溫妮佛的 LINE 官方帳號連結（還沒有的話留空，按鈕會改成 IG）──
   const LINE_URL = 'https://agentone.metaepoch.life/link/channels/Z6GoGaOl';
   // 第一屏的生活照：放好圖片檔後填檔名（例如 'winnifer-hero.jpg'），沒有的話會顯示奶油白光影
-  const HERO_PHOTO = '';
+  const HERO_PHOTO = 'winnifer-hero.jpg';
   const IG_URL = 'https://www.instagram.com/hiwinnifer';
   const $ = s => document.querySelector(s);
   const main = $('#main'), app = $('#app');
