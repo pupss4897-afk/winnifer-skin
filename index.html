@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#FBF8F4">
+<meta name="theme-color" content="#F6F7FB">
 <title>Winnifer 養美研究室</title>
 <meta name="description" content="溫妮佛的 30+ 養美小工具：拍照看看今天的膚況、測出你的膚質、算算你的肌膚年齡，再給你一份適合你的保養重點">
 <meta property="og:type" content="website">
@@ -11,169 +11,189 @@
 <meta property="og:description" content="拍照看膚況・膚質測驗・肌膚年齡 ~ 30+ 女生的養美日常">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Serif+TC:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap">
 <style>
-/* 乳霜質感：奶白、裸粉、香檳金 ~ 刻意只有一套淺色 */
+/* 科技時尚・韓系：冷白、全像漸層、黑色重點 ~ 刻意只有一套淺色 */
 :root{
-  --milk:#FBF8F4; --cream:#F3ECE4; --porcelain:#FFFFFF; --nude:#EBDCD2; --rose:#C4907F; --rose-deep:#A8705F;
-  --cocoa:#3D302B; --taupe:#8A7A71; --gold:#B8956E; --line:#ECE2D9; --sage:#9DAA97;
-  --serif:"Noto Serif TC","Songti TC",serif; --sans:"Noto Sans TC",-apple-system,"PingFang TC",sans-serif; --latin:"Cormorant Garamond","Times New Roman",serif;
-  --glow:0 1px 0 rgba(255,255,255,.9) inset, 0 14px 30px rgba(120,90,70,.10);
+  --bg:#F6F7FB; --white:#FFFFFF; --ink:#111216; --mute:#6C7080; --soft:#9AA0B1; --line:rgba(17,18,22,.08);
+  --violet:#7A6BFF; --pink:#FF8FB8; --ice:#8FD3FF; --mint:#7FE3C4;
+  --holo:linear-gradient(120deg,#E8E3FF 0%,#D9F0FF 34%,#FFE4F0 68%,#FFF4DA 100%);
+  --holo-strong:linear-gradient(120deg,#B9ADFF 0%,#9EDBFF 35%,#FFB2D0 70%,#FFE3A6 100%);
+  --sans:"Noto Sans TC",-apple-system,"PingFang TC",sans-serif; --latin:"Manrope","Helvetica Neue",Arial,sans-serif;
+  --card:0 1px 0 rgba(255,255,255,.9) inset,0 12px 32px rgba(40,44,80,.07);
 }
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0;background:var(--milk);color:var(--cocoa);font:15px/1.75 var(--sans);-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 var(--sans);-webkit-font-smoothing:antialiased;letter-spacing:.01em}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit}
 [hidden]{display:none!important}
-.app{max-width:460px;margin:0 auto;min-height:100%;padding:0 20px calc(96px + env(safe-area-inset-bottom,0px));
-  background:radial-gradient(120% 60% at 50% -10%,#fff 0,rgba(255,255,255,0) 60%),var(--milk)}
-@media(min-width:520px){body{background:#EFE7DF}.app{box-shadow:0 0 60px rgba(90,60,40,.08)}}
+.app{position:relative;max-width:460px;margin:0 auto;min-height:100%;padding:0 20px calc(98px + env(safe-area-inset-bottom,0px));overflow:hidden;background:var(--bg)}
+.app:before{content:"";position:absolute;width:420px;height:420px;right:-220px;top:-160px;border-radius:50%;background:var(--holo-strong);filter:blur(70px);opacity:.45;pointer-events:none}
+@media(min-width:520px){body{background:#ECEEF5}.app{box-shadow:0 0 60px rgba(40,44,80,.08)}}
 
 /* 頁首 */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;justify-content:space-between;
-  margin:0 -20px;padding:14px 20px;background:rgba(251,248,244,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(236,226,217,.7)}
-.brand{display:flex;align-items:baseline;gap:8px}
-.brand b{font-family:var(--latin);font-size:22px;font-weight:600;letter-spacing:.5px}
-.brand span{font-family:var(--serif);font-size:13px;color:var(--taupe)}
-.back{display:none;width:36px;height:36px;border:0;border-radius:50%;background:var(--porcelain);box-shadow:var(--glow);font-size:18px;cursor:pointer}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;justify-content:space-between;margin:0 -20px;padding:14px 20px;background:rgba(246,247,251,.72);backdrop-filter:blur(18px) saturate(1.4);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:8px}
+.brand b{font-family:var(--latin);font-size:17px;font-weight:800;letter-spacing:.18em}
+.brand span{font-size:10.5px;font-weight:700;letter-spacing:.12em;color:var(--mute);padding:3px 8px;border:1px solid var(--line);border-radius:99px;background:rgba(255,255,255,.7)}
+.back{display:none;width:36px;height:36px;border:1px solid var(--line);border-radius:12px;background:var(--white);font-size:18px;cursor:pointer}
 .app.inner .back{display:grid;place-items:center}
 .app.inner .brand span{display:none}
 
 /* 共用 */
-.eyebrow{font-family:var(--latin);font-style:italic;font-size:15px;color:var(--gold);letter-spacing:.5px}
-h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance}
-.lead{color:var(--taupe);font-size:14px;margin:8px 0 0}
-.section{margin-top:34px}
-.section>h2{font-size:20px}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;font-family:var(--latin);font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--violet)}
+.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--holo-strong);box-shadow:0 0 0 3px rgba(122,107,255,.12)}
+h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.lead{color:var(--mute);font-size:14px;margin:8px 0 0}
+.section{position:relative;margin-top:34px}
+.section>h2{font-size:19px}
 .section>.lead{margin-bottom:14px}
-.cream{background:linear-gradient(160deg,#fff 0%,#FCF8F4 55%,#F7EFE8 100%);border:1px solid var(--line);border-radius:26px;box-shadow:var(--glow)}
-.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border:0;border-radius:999px;cursor:pointer;font-weight:700;font-size:15px;
-  background:linear-gradient(180deg,#D3A898,#B8826F);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.45) inset,0 10px 22px rgba(168,112,95,.28)}
-.pill.ghost{background:var(--porcelain);color:var(--cocoa);box-shadow:var(--glow);border:1px solid var(--line)}
-.pill.line{background:linear-gradient(180deg,#25D366,#06B551);box-shadow:0 10px 22px rgba(6,181,81,.22)}
+.cream{position:relative;background:rgba(255,255,255,.78);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.9);border-radius:22px;box-shadow:var(--card)}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border:0;border-radius:16px;cursor:pointer;font-weight:700;font-size:15px;background:var(--ink);color:#fff;box-shadow:0 10px 24px rgba(17,18,22,.18)}
+.pill.ghost{background:var(--white);color:var(--ink);box-shadow:none;border:1px solid var(--line)}
+.pill.line{background:#06C755;box-shadow:0 10px 22px rgba(6,199,85,.22)}
 .pill.block{display:flex;width:100%}
-.pill:focus-visible,.opt:focus-visible,.tool:focus-visible,.nav button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-.small{font-size:12px;color:var(--taupe);line-height:1.7}
+.pill:focus-visible,.opt:focus-visible,.tool:focus-visible,.nav button:focus-visible,.keys button:focus-visible{outline:3px solid var(--violet);outline-offset:3px}
+.small{font-size:12px;color:var(--mute);line-height:1.7}
 
 /* 首頁 */
-.hero{padding:30px 2px 6px;text-align:center}
-.hero h1{font-size:31px;line-height:1.35;margin-top:6px}
-.hero h1 em{font-style:normal;color:var(--rose-deep)}
-.jar{position:relative;width:132px;height:132px;margin:22px auto 6px;border-radius:50%;
-  background:radial-gradient(circle at 35% 28%,#fff 0 12%,#FBF3EE 34%,#EFD9CE 70%,#E3C3B4 100%);
-  box-shadow:0 1px 0 #fff inset,0 -10px 24px rgba(184,130,111,.18) inset,0 20px 40px rgba(168,112,95,.18)}
-.jar:after{content:"";position:absolute;left:30px;top:22px;width:44px;height:16px;border-radius:50%;background:rgba(255,255,255,.75);filter:blur(3px);transform:rotate(-24deg)}
-.jar span{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--latin);font-size:18px;font-style:italic;color:#9A6E60}
-.tools{display:grid;gap:12px;margin-top:22px}
-.tool{display:grid;grid-template-columns:56px 1fr auto;gap:14px;align-items:center;padding:16px;text-align:left;cursor:pointer;width:100%;border:1px solid var(--line)}
-.tool .ic{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(160deg,#fff,#F3E6DE);box-shadow:var(--glow)}
-.tool .ic svg{width:28px;height:28px;stroke:var(--rose-deep);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.tool b{display:block;font-family:var(--serif);font-size:17px}
-.tool small{display:block;color:var(--taupe);font-size:12.5px;line-height:1.6}
-.tool i{font-style:normal;color:var(--gold);font-size:20px}
-.tool.first{background:linear-gradient(150deg,#fff 0%,#F8EDE6 100%)}
-.tool.first .tag{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:99px;background:var(--rose);color:#fff;font-family:var(--sans);font-size:10.5px;vertical-align:2px}
+.hero{position:relative;padding:34px 2px 4px}
+.hero h1{font-size:34px;line-height:1.22;margin-top:12px}
+.hero h1 em{font-style:normal;background:var(--holo-strong);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .en{display:block;font-family:var(--latin);font-weight:300;font-size:13px;letter-spacing:.3em;color:var(--soft);margin-top:10px}
+.jar{position:relative;width:100%;height:190px;margin:24px 0 4px;border-radius:26px;overflow:hidden;background:#0F1016}
+.jar:before{content:"";position:absolute;width:210px;height:210px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:conic-gradient(from 200deg,#B9ADFF,#9EDBFF,#FFB2D0,#FFE3A6,#B9ADFF);filter:blur(28px);opacity:.85;animation:spin 14s linear infinite}
+.jar:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 0 49%,rgba(255,255,255,.06) 50%,transparent 51%) 0 0/100% 18px,linear-gradient(90deg,transparent 0 49%,rgba(255,255,255,.06) 50%,transparent 51%) 0 0/18px 100%}
+.jar span{position:absolute;inset:0;display:grid;place-content:center;text-align:center;color:#fff;z-index:1}
+.jar span b{font-family:var(--latin);font-size:46px;font-weight:300;letter-spacing:.04em;line-height:1}
+.jar span small{font-family:var(--latin);font-size:10.5px;font-weight:700;letter-spacing:.32em;opacity:.8;margin-top:8px}
+.jar i{position:absolute;left:0;right:0;height:2px;top:20%;z-index:1;background:linear-gradient(90deg,transparent,#fff,transparent);box-shadow:0 0 18px #9EDBFF;animation:scanline 3.2s ease-in-out infinite}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes scanline{0%,100%{top:16%}50%{top:82%}}
+.tools{position:relative;display:grid;gap:10px;margin-top:20px}
+.tool{display:grid;grid-template-columns:52px 1fr auto;gap:14px;align-items:center;padding:15px;text-align:left;cursor:pointer;width:100%}
+.tool .ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--holo)}
+.tool .ic svg{width:26px;height:26px;stroke:var(--ink);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tool b{display:block;font-size:16px;font-weight:700}
+.tool small{display:block;color:var(--mute);font-size:12.5px;line-height:1.55}
+.tool i{font-style:normal;color:var(--soft);font-family:var(--latin);font-size:18px}
+.tool.first{background:#111216;color:#fff;border-color:#111216}
+.tool.first small{color:rgba(255,255,255,.62)}
+.tool.first .ic{background:var(--holo-strong)}
+.tool.first i{color:rgba(255,255,255,.6)}
+.tool.first .tag{display:inline-block;margin-left:7px;padding:1px 8px;border-radius:6px;background:var(--holo-strong);color:#111;font-family:var(--latin);font-size:10px;font-weight:800;letter-spacing:.08em;vertical-align:2px}
 .keys{display:flex;flex-wrap:wrap;gap:8px}
-.keys button{padding:9px 16px;border-radius:99px;border:1px solid var(--line);background:var(--porcelain);cursor:pointer;font-family:var(--serif);font-size:15px;box-shadow:var(--glow)}
-.about{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:center;padding:18px}
-.about .av{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-family:var(--latin);font-size:26px;font-style:italic;color:#fff;background:linear-gradient(150deg,#D7B0A1,#B38171)}
-.about b{font-family:var(--serif);font-size:16px}
-.about p{margin:2px 0 0;font-size:13px;color:var(--taupe);line-height:1.7}
+.keys button{padding:9px 16px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.8);cursor:pointer;font-weight:700;font-size:14px}
+.about{display:grid;grid-template-columns:60px 1fr;gap:14px;align-items:center;padding:18px}
+.about .av{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;font-family:var(--latin);font-size:24px;font-weight:800;color:#111;background:var(--holo-strong)}
+.about b{font-size:15.5px}
+.about p{margin:2px 0 0;font-size:13px;color:var(--mute);line-height:1.7}
 .about .row{display:flex;gap:8px;grid-column:1/-1;margin-top:4px}
-.about .row a{flex:1;padding:10px;font-size:13.5px}
+.about .row a{flex:1;padding:11px;font-size:13.5px}
 
 /* 測驗 */
-.quiz-head{padding:22px 0 6px}
-.quiz-head h2{font-size:24px;margin-top:4px}
-.bar{height:4px;border-radius:99px;background:var(--line);overflow:hidden;margin:18px 0 22px}
-.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--nude),var(--rose));transition:width .4s}
-.q{font-family:var(--serif);font-size:20px;line-height:1.55;margin:0 0 6px}
-.q-note{font-size:13px;color:var(--taupe);margin:0 0 14px}
-.opts{display:grid;gap:10px}
-.opt{display:block;width:100%;text-align:left;padding:15px 18px;border-radius:18px;border:1px solid var(--line);background:var(--porcelain);cursor:pointer;box-shadow:var(--glow);font-size:15px;line-height:1.55;transition:transform .12s,border-color .2s}
+.quiz-head{position:relative;padding:24px 0 6px}
+.quiz-head h2{font-size:25px;margin-top:8px}
+.bar{position:relative;height:3px;border-radius:99px;background:var(--line);overflow:hidden;margin:18px 0 22px}
+.bar i{display:block;height:100%;background:var(--holo-strong);transition:width .4s}
+.q{font-size:19px;font-weight:700;line-height:1.55;margin:0 0 6px}
+.q-note{font-size:13px;color:var(--mute);margin:0 0 14px}
+.opts{display:grid;gap:9px}
+.opt{display:block;width:100%;text-align:left;padding:15px 18px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.85);cursor:pointer;font-size:15px;line-height:1.55;transition:transform .12s,border-color .2s,background .2s}
 .opt:active{transform:scale(.985)}
-.opt.on{border-color:var(--rose);background:#FBF1EC}
-.age-pick{padding:22px;text-align:center}
-.age-pick output{display:block;font-family:var(--latin);font-size:64px;line-height:1;color:var(--rose-deep)}
-.age-pick input{width:100%;accent-color:var(--rose);margin:16px 0 4px}
+.opt.on{border-color:var(--ink);background:var(--ink);color:#fff}
+.age-pick{padding:24px;text-align:center}
+.age-pick output{display:block;font-family:var(--latin);font-weight:300;font-size:72px;line-height:1}
+.age-pick input{width:100%;accent-color:var(--ink);margin:16px 0 4px}
 .qnav{display:flex;justify-content:space-between;margin-top:18px}
-.qnav button{border:0;background:none;color:var(--taupe);cursor:pointer;font-size:14px;padding:6px 0}
+.qnav button{border:0;background:none;color:var(--mute);cursor:pointer;font-size:14px;padding:6px 0}
 
 /* 結果 */
-.result{padding:26px 22px;text-align:center;margin-top:18px}
-.result .big{font-family:var(--latin);font-size:76px;line-height:1;color:var(--rose-deep);margin:10px 0 2px}
-.result .big small{font-family:var(--serif);font-size:20px;color:var(--cocoa);margin-left:4px}
-.result h2{font-size:26px;margin-top:6px}
-.result p{font-size:14px;color:var(--taupe);margin:10px 0 0}
-.compare{display:flex;justify-content:center;gap:10px;margin-top:14px}
-.compare span{padding:6px 14px;border-radius:99px;background:var(--cream);font-size:13px}
-.blk{margin-top:16px;padding:18px 20px}
-.blk h3{font-size:17px;margin-bottom:8px}
+.result{padding:26px 22px;text-align:center;margin-top:18px;overflow:hidden}
+.result:before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:var(--holo-strong)}
+.result .big{font-family:var(--latin);font-weight:300;font-size:84px;line-height:1;margin:12px 0 2px;letter-spacing:-.02em}
+.result .big small{font-family:var(--sans);font-size:18px;font-weight:700;margin-left:4px}
+.result h2{font-size:24px;margin-top:6px}
+.result p{font-size:14px;color:var(--mute);margin:10px 0 0}
+.compare{display:flex;justify-content:center;gap:8px;margin-top:14px}
+.compare span{padding:6px 12px;border-radius:10px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700}
+.blk{margin-top:12px;padding:18px 20px}
+.blk h3{font-size:16px;margin-bottom:8px}
 .blk ul{margin:0;padding-left:1.1em}
 .blk li{margin:4px 0;font-size:14px}
-.blk li b{color:var(--rose-deep)}
+.blk li b{color:var(--violet)}
 .routine{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
-.routine div{padding:12px;border-radius:16px;background:var(--milk);border:1px solid var(--line)}
-.routine b{font-family:var(--serif);font-size:14px}
+.routine div{padding:12px;border-radius:14px;background:var(--bg);border:1px solid var(--line)}
+.routine b{font-size:13.5px}
 .routine ol{margin:6px 0 0;padding-left:1.2em;font-size:13px;line-height:1.75}
 .meters{display:grid;gap:12px;text-align:left}
-.meter b{display:flex;justify-content:space-between;font-size:14px;font-weight:600}
-.meter b span{font-family:var(--latin);font-size:18px;color:var(--rose-deep)}
-.meter .tr{height:8px;border-radius:99px;background:var(--cream);overflow:hidden;margin-top:4px}
-.meter .tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#E8CFC3,var(--rose))}
-.meter small{display:block;color:var(--taupe);font-size:12.5px;margin-top:3px;line-height:1.6}
-.cta{margin-top:20px;padding:20px;text-align:center}
-.cta h3{font-size:18px}
-.cta p{font-size:13px;color:var(--taupe);margin:6px 0 14px}
-.disclaim{margin-top:18px;font-size:11.5px;color:var(--taupe);line-height:1.75;text-align:center}
+.meter b{display:flex;justify-content:space-between;font-size:14px;font-weight:700}
+.meter b span{font-family:var(--latin);font-size:17px;font-weight:600}
+.meter .tr{height:6px;border-radius:99px;background:var(--bg);overflow:hidden;margin-top:5px}
+.meter .tr i{display:block;height:100%;border-radius:99px;background:var(--holo-strong)}
+.meter small{display:block;color:var(--mute);font-size:12.5px;margin-top:3px;line-height:1.6}
+.score{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;text-align:left;margin-bottom:16px}
+.score .ring{width:104px;height:104px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#7A6BFF var(--p),#ECEEF5 0)}
+.score .ring span{width:84px;height:84px;border-radius:50%;display:grid;place-content:center;background:#fff;text-align:center}
+.score .ring b{font-family:var(--latin);font-size:30px;font-weight:300;line-height:1}
+.score .ring small{font-family:var(--latin);font-size:9px;font-weight:800;letter-spacing:.2em;color:var(--soft)}
+.radar{display:block;width:100%;max-width:300px;margin:0 auto 14px}
+.cta{margin-top:16px;padding:20px;text-align:center}
+.cta h3{font-size:17px}
+.cta p{font-size:13px;color:var(--mute);margin:6px 0 14px}
+.disclaim{position:relative;margin-top:18px;font-size:11.5px;color:var(--soft);line-height:1.75;text-align:center}
 
 /* 拍照 */
-.cam{position:relative;margin-top:16px;border-radius:28px;overflow:hidden;background:#2A2320;aspect-ratio:3/4;box-shadow:var(--glow)}
+.cam{position:relative;margin-top:16px;border-radius:26px;overflow:hidden;background:#0F1016;aspect-ratio:3/4}
 .cam video,.cam img.shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .cam video{transform:scaleX(-1)}
-.cam .mask{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 34% 30% at 50% 45%,transparent 98%,rgba(30,22,18,.55) 100%)}
-.cam .oval{position:absolute;left:16%;right:16%;top:15%;height:60%;border:2px dashed rgba(255,255,255,.8);border-radius:50%;pointer-events:none}
-.cam .hint{position:absolute;left:0;right:0;bottom:16px;text-align:center;color:#fff;font-size:13px;text-shadow:0 1px 6px rgba(0,0,0,.5)}
-.cam .idle{position:absolute;inset:0;display:grid;place-content:center;gap:12px;padding:24px;text-align:center;color:#F3E6DE;background:radial-gradient(circle at 50% 40%,#4A3A33,#2A2320)}
-.cam .idle b{font-family:var(--serif);font-size:19px;color:#fff}
-.cam .spot{position:absolute;transform:translate(-50%,-50%);border:1.5px solid rgba(255,255,255,.9);border-radius:50%;display:grid;place-items:center;color:#fff;font-size:10px;text-shadow:0 1px 3px rgba(0,0,0,.6);box-shadow:0 0 0 3px rgba(196,144,127,.35);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(196,144,127,.12)}}
-.cam .busy{position:absolute;inset:0;display:grid;place-items:center;background:rgba(42,35,32,.55);color:#fff;font-family:var(--serif);font-size:17px}
-.cam-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
-.tips{margin-top:16px;padding:16px 18px}
+.cam .mask{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 34% 30% at 50% 45%,transparent 98%,rgba(15,16,22,.6) 100%)}
+.cam .oval{position:absolute;left:16%;right:16%;top:15%;height:60%;border:1.5px solid rgba(255,255,255,.85);border-radius:50%;pointer-events:none;box-shadow:0 0 30px rgba(158,219,255,.35)}
+.cam:before,.cam:after{content:"";position:absolute;z-index:2;width:28px;height:28px;border:2px solid rgba(255,255,255,.9);pointer-events:none}
+.cam:before{left:16px;top:16px;border-right:0;border-bottom:0;border-radius:8px 0 0 0}
+.cam:after{right:16px;bottom:16px;border-left:0;border-top:0;border-radius:0 0 8px 0}
+.cam .sweep{position:absolute;left:0;right:0;height:2px;z-index:2;background:linear-gradient(90deg,transparent,#fff,transparent);box-shadow:0 0 20px #9EDBFF;animation:scanline 2.6s ease-in-out infinite;pointer-events:none}
+.cam .hint{position:absolute;left:0;right:0;bottom:18px;text-align:center;color:#fff;font-size:13px;text-shadow:0 1px 6px rgba(0,0,0,.5);z-index:2}
+.cam .idle{position:absolute;inset:0;display:grid;place-content:center;gap:10px;padding:24px;text-align:center;color:rgba(255,255,255,.7);background:radial-gradient(circle at 50% 42%,rgba(122,107,255,.35),transparent 60%),#0F1016}
+.cam .idle b{font-family:var(--latin);font-size:13px;font-weight:800;letter-spacing:.3em;color:#fff}
+.cam .busy{position:absolute;inset:0;z-index:3;display:grid;place-content:center;gap:8px;text-align:center;background:rgba(15,16,22,.45);color:#fff;font-family:var(--latin);font-size:12px;font-weight:800;letter-spacing:.3em}
+.cam .mesh{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.cam .spot{position:absolute;z-index:2;transform:translate(-50%,-50%);border:1.5px solid rgba(255,255,255,.95);border-radius:50%;display:grid;place-items:center;color:#fff;font-size:10px;font-weight:700;background:rgba(122,107,255,.18);text-shadow:0 1px 3px rgba(0,0,0,.5);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(158,219,255,.15)}}
+.cam-btns{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.tips{margin-top:12px;padding:16px 18px}
 .tips ul{margin:6px 0 0;padding-left:1.1em;font-size:13.5px}
-.privacy{display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding:12px 14px;border-radius:16px;background:#F1F4EF;color:#5F6E5A;font-size:12.5px;line-height:1.7}
+.privacy{position:relative;display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding:12px 14px;border-radius:14px;background:#EEF7F3;color:#3E6B5C;font-size:12.5px;line-height:1.7}
 
 /* 保養 */
-.care{margin-top:12px;padding:0;overflow:hidden}
-.care summary{display:flex;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;list-style:none}
+.care{margin-top:10px;padding:0;overflow:hidden}
+.care summary{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;list-style:none}
 .care summary::-webkit-details-marker{display:none}
-.care summary b{font-family:var(--serif);font-size:18px}
-.care summary small{display:block;color:var(--taupe);font-size:12.5px}
-.care summary i{margin-left:auto;font-style:normal;color:var(--gold);transition:transform .2s}
+.care summary b{font-size:17px}
+.care summary small{display:block;color:var(--mute);font-size:12.5px}
+.care summary i{margin-left:auto;font-style:normal;font-family:var(--latin);color:var(--soft);transition:transform .2s}
 .care[open] summary i{transform:rotate(45deg)}
 .care .body{padding:0 18px 18px}
 .care ol{margin:0;padding-left:1.2em;font-size:14px}
 .care ol li{margin:6px 0}
-.care .k{font-family:var(--latin);font-size:24px;font-style:italic;color:var(--rose)}
+.care .k{min-width:62px;font-family:var(--latin);font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 8px;border-radius:9px;background:var(--holo);text-align:center}
 
 /* 底部導覽 */
-.nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);z-index:30;width:min(460px,100%);display:grid;grid-template-columns:repeat(4,1fr);
-  padding:8px 10px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(251,248,244,.92);backdrop-filter:blur(16px);border-top:1px solid var(--line)}
-.nav button{border:0;background:none;display:grid;justify-items:center;gap:2px;font-size:11.5px;color:var(--taupe);cursor:pointer;padding:4px 0}
-.nav button svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.nav button.on{color:var(--rose-deep);font-weight:700}
-.view{animation:fade .35s ease}
+.nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);z-index:30;width:min(460px,100%);display:grid;grid-template-columns:repeat(4,1fr);padding:8px 10px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(246,247,251,.82);backdrop-filter:blur(18px) saturate(1.4);border-top:1px solid var(--line)}
+.nav button{border:0;background:none;display:grid;justify-items:center;gap:2px;font-size:11px;font-weight:700;color:var(--soft);cursor:pointer;padding:4px 0}
+.nav button svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.nav button.on{color:var(--ink)}
+.view{position:relative;animation:fade .35s ease}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}}
-@media(prefers-reduced-motion:reduce){.view{animation:none}.bar i{transition:none}}
+@media(prefers-reduced-motion:reduce){.view,.jar:before,.jar i,.cam .sweep,.cam .spot{animation:none}.bar i{transition:none}}
 </style>
 </head>
 <body>
 <div class="app" id="app">
   <header class="top">
     <button class="back" id="back" aria-label="回上一頁">‹</button>
-    <div class="brand"><b>Winnifer</b><span>養美研究室</span></div>
+    <div class="brand"><b>WINNIFER</b><span>SKIN LAB</span></div>
     <span style="width:36px"></span>
   </header>
   <main id="main"></main>
@@ -222,10 +242,11 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance}
   views.home = v => {
     v.innerHTML = `
       <section class="hero">
-        <span class="eyebrow">Skin check · 30+</span>
-        <h1>今天的你<br>皮膚<em>幾歲</em>了？</h1>
-        <div class="jar" aria-hidden="true"><span>W.</span></div>
-        <p class="lead">30 歲之後，保養不是越多越好<br>先看懂自己的皮膚，再對症照顧</p>
+        <span class="eyebrow">AI Skin Lab · 30+</span>
+        <h1>今天的妳<br>皮膚<em>幾歲</em>了？</h1>
+        <span class="en">KNOW YOUR SKIN FIRST</span>
+        <div class="jar" aria-hidden="true"><i></i><span><b>SKIN</b><small>SCAN · TYPE · AGE</small></span></div>
+        <p class="lead">30 歲之後，保養不是越多越好 ~ 先看懂自己的皮膚，再對症照顧</p>
       </section>
       <div class="tools">
         <button class="tool cream first" data-go="scan"><span class="ic">${icon.cam}</span><span><b>拍照看今天的膚況<span class="tag">推薦</span></b><small>透亮・均勻・泛紅・油光・細緻，照片不上傳</small></span><i>›</i></button>
@@ -309,7 +330,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance}
         <span class="eyebrow">${r.英}${敏 ? ' · Sensitive' : ''}</span>
         <h2>妳是「${r.名}」${敏 ? '<br>而且偏敏感' : ''}</h2>
         <p>${r.說}</p>
-        ${敏 ? '<p style="color:var(--rose-deep)">妳的皮膚比較容易受刺激 ~ 新產品先擦在耳後試 2～3 天，成分越單純越好</p>' : ''}
+        ${敏 ? '<p style="color:var(--violet)">妳的皮膚比較容易受刺激 ~ 新產品先擦在耳後試 2～3 天，成分越單純越好</p>' : ''}
       </div>
       <div class="blk cream"><h3>妳的保養重點</h3><ul>${r.要.map(x => `<li>${x}</li>`).join('')}</ul></div>
       <div class="blk cream"><h3>先別這樣做</h3><ul>${r.避.map(x => `<li>${x}</li>`).join('')}${敏 ? '<li>酒精、香精多的產品</li>' : ''}</ul></div>
@@ -382,13 +403,13 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance}
   views.scan = v => {
     v.innerHTML = `<div class="quiz-head"><span class="eyebrow">Skin scan</span><h2>拍照看今天的膚況</h2><p class="lead">素顏、面向窗戶的自然光，把臉放進虛線框裡</p></div>
       <div class="cam" id="cam">
-        <div class="idle" id="idle"><b>準備好了嗎？</b><span>卸妝後效果最準 ~ 頭髮撥到耳後</span></div>
+        <div class="idle" id="idle"><b>READY TO SCAN</b><span>卸妝後效果最準 ~ 頭髮撥到耳後</span></div>
         <div class="mask"></div><div class="oval"></div><p class="hint" id="hint" hidden>把臉放進框裡，不要開美顏</p>
       </div>
       <div class="cam-btns"><button class="pill" id="openCam">打開鏡頭</button><label class="pill ghost" for="upload">上傳照片</label></div>
       <input type="file" id="upload" accept="image/*" capture="user" hidden>
       <div class="privacy"><span>🔒</span><span>照片只在妳的手機上分析，<b>不會上傳、也不會保存</b> ~ 關掉頁面就消失了</span></div>
-      <div class="tips cream"><b style="font-family:var(--serif)">拍出準確結果的小祕訣</b><ul><li>素顏，或卸妝後 30 分鐘</li><li>面向窗戶的自然光，不要背光、不要黃燈</li><li>手機拿在眼睛高度，臉不要太遠</li><li>關掉美顏和濾鏡</li></ul></div>`;
+      <div class="tips cream"><b>拍出準確結果的小祕訣</b><ul><li>素顏，或卸妝後 30 分鐘</li><li>面向窗戶的自然光，不要背光、不要黃燈</li><li>手機拿在眼睛高度，臉不要太遠</li><li>關掉美顏和濾鏡</li></ul></div>`;
     const cam = v.querySelector('#cam');
     v.querySelector('#openCam').onclick = async () => {
       if (串流) return 拍(v);
@@ -396,7 +417,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance}
         串流 = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 1706 } }, audio: false });
         const vid = document.createElement('video'); vid.playsInline = true; vid.muted = true; vid.srcObject = 串流; vid.id = 'vid';
         cam.prepend(vid); await vid.play();
-        v.querySelector('#idle').hidden = true; v.querySelector('#hint').hidden = false;
+        v.querySelector('#idle').hidden = true; v.querySelector('#hint').hidden = false; const sw = document.createElement('i'); sw.className = 'sweep'; cam.append(sw);
         v.querySelector('#openCam').textContent = '拍照分析';
         模型();   // 先在背景準備辨識臉部的工具
       } catch (e) { alert2(v, '打不開鏡頭 ~ 請允許使用相機，或改用「上傳照片」'); }
@@ -433,18 +454,18 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance}
     const cam = v.querySelector('#cam');
     cam.querySelector('#vid')?.remove(); cam.querySelector('#idle').hidden = true; v.querySelector('#hint').hidden = true;
     const shot = document.createElement('img'); shot.className = 'shot'; shot.src = 圖 instanceof HTMLCanvasElement ? 圖.toDataURL('image/jpeg', .9) : 圖.src; cam.prepend(shot);
-    const busy = document.createElement('div'); busy.className = 'busy'; busy.textContent = '分析中…'; cam.append(busy);
+    const busy = document.createElement('div'); busy.className = 'busy'; busy.innerHTML = '<span>ANALYZING</span><span style="font-family:var(--sans);letter-spacing:.05em;font-weight:500;font-size:13px">正在分析妳的膚況</span>'; cam.append(busy); const sw = document.createElement('i'); sw.className = 'sweep'; cam.append(sw);
     // 縮成固定大小再算，速度和結果比較穩定
     const W = 720, H = Math.round((圖.naturalHeight || 圖.height) / (圖.naturalWidth || 圖.width) * W);
     const c = document.createElement('canvas'); c.width = W; c.height = H; const g = c.getContext('2d', { willReadFrequently: true }); g.drawImage(圖, 0, 0, W, H);
     await 模型();
-    let 區 = null, 找到臉 = false;
+    let 區 = null, 找到臉 = false, 網格 = null;
     if (臉模型) {
       try {
         const r = 臉模型.detect(c);
         const L = r.faceLandmarks && r.faceLandmarks[0];
         if (L) {
-          找到臉 = true;
+          找到臉 = true; 網格 = L.map(q => [q.x * W, q.y * H]);
           const P = i => [L[i].x * W, L[i].y * H];
           const 臉寬 = Math.hypot(P(454)[0] - P(234)[0], P(454)[1] - P(234)[1]);
           const s = 臉寬 * .13;
@@ -459,9 +480,14 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance}
     }
     const 結果 = 計算(g, 區, W, H);
     busy.remove();
-    // 拍完：拿掉虛線框，在臉上標出分析的位置
-    cam.querySelector('.mask')?.remove(); cam.querySelector('.oval')?.remove();
+    // 拍完：拿掉虛線框，在臉上畫出偵測到的網格點和分析的位置
+    cam.querySelector('.mask')?.remove(); cam.querySelector('.oval')?.remove(); cam.querySelectorAll('.sweep').forEach(e => e.remove());
     const 寬 = cam.clientWidth, 高 = cam.clientHeight, 比 = Math.max(寬 / W, 高 / H), 偏x = (W * 比 - 寬) / 2, 偏y = (H * 比 - 高) / 2;
+    if (網格) {
+      const m = document.createElement('canvas'); m.className = 'mesh'; m.width = 寬 * 2; m.height = 高 * 2; cam.append(m);
+      const mg = m.getContext('2d'); mg.scale(2, 2); mg.fillStyle = 'rgba(220,240,255,.85)'; mg.shadowColor = '#9EDBFF'; mg.shadowBlur = 4;
+      網格.forEach(([x, y], n) => { if (n % 3) return; mg.beginPath(); mg.arc(x * 比 - 偏x, y * 比 - 偏y, .9, 0, 7); mg.fill(); });
+    }
     for (const k of ['額頭', '左頰', '右頰', '鼻子', '下巴']) {
       const [[x, y], r] = 區[k], d = document.createElement('span');
       d.className = 'spot'; d.textContent = k === '左頰' || k === '右頰' ? '臉頰' : k;
@@ -524,8 +550,21 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance}
     const 重點 = 指標.filter(([k, s]) => (k === '泛紅' || k === '油光') ? s > 55 : s < 50).map(x => x[0]);
     const 建議 = { 透亮度: '睡飽、多喝水，早上用溫和的去角質讓氣色亮起來', 均勻度: '每天防曬，陰天也擦 ~ 這是讓膚色均勻最重要的一步', 泛紅: '選成分單純、無香精的保養品，洗臉用溫水', 油光: 'T 字用清爽的保濕，不要為了控油過度清潔', 細緻度: '化妝水後一定要鎖水，晚上可以敷保濕面膜' };
     const box = document.createElement('div');
+    const 分 = Math.round((r.透亮 + r.均勻 + (100 - r.泛紅) + (100 - r.油光) + r.細緻) / 5);
+    const 軸 = [['透亮', r.透亮], ['均勻', r.均勻], ['穩定', 100 - r.泛紅], ['清爽', 100 - r.油光], ['細緻', r.細緻]];
+    const 點 = (i, k) => { const a = -Math.PI / 2 + i * 2 * Math.PI / 5; return [150 + Math.cos(a) * 92 * k, 128 + Math.sin(a) * 92 * k]; };
+    const 環 = k => 軸.map((_, i) => 點(i, k).join(',')).join(' ');
+    const 雷達 = `<svg class="radar" viewBox="0 0 300 262" role="img" aria-label="膚況雷達圖">
+      <defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B9ADFF" stop-opacity=".75"/><stop offset=".5" stop-color="#9EDBFF" stop-opacity=".6"/><stop offset="1" stop-color="#FFB2D0" stop-opacity=".7"/></linearGradient></defs>
+      ${[.25, .5, .75, 1].map(k => `<polygon points="${環(k)}" fill="none" stroke="#E3E5EE" stroke-width="1"/>`).join('')}
+      ${軸.map((_, i) => `<line x1="150" y1="128" x2="${點(i, 1)[0]}" y2="${點(i, 1)[1]}" stroke="#E3E5EE"/>`).join('')}
+      <polygon points="${軸.map(([, v], i) => 點(i, Math.max(.06, v / 100)).join(',')).join(' ')}" fill="url(#rg)" stroke="#7A6BFF" stroke-width="1.5"/>
+      ${軸.map(([k, v], i) => { const [x, y] = 點(i, 1.2); return `<text x="${x}" y="${y + 4}" text-anchor="middle" font-size="12" font-weight="700" fill="#111216">${k} <tspan fill="#7A6BFF" font-family="Manrope">${v}</tspan></text>`; }).join('')}
+    </svg>`;
     box.innerHTML = `<div class="result cream" style="text-align:left">
-        <span class="eyebrow">Today's skin</span><h2 style="font-size:22px;margin-bottom:14px">今天的膚況</h2>
+        <span class="eyebrow">Today's skin</span>
+        <div class="score" style="margin-top:12px"><div class="ring" style="--p:${分}%"><span><b>${分}</b><small>SCORE</small></span></div><div><h2 style="font-size:21px">今天的膚況</h2><p style="margin-top:4px">${分 >= 75 ? '狀態很好，繼續保持' : 分 >= 55 ? '還不錯，有幾個地方可以多照顧' : '今天皮膚有點累，給它多一點保濕和休息'}</p></div></div>
+        ${雷達}
         <div class="meters">${指標.map(([k, s, t]) => `<div class="meter"><b>${k}<span>${s}</span></b><div class="tr"><i style="width:${s}%"></i></div><small>${t}</small></div>`).join('')}</div>
         ${光 ? `<p class="privacy" style="background:#FBF3E6;color:#8A6A3A">💡 ${光}</p>` : ''}
         ${!找到臉 ? '<p class="privacy" style="background:#FBF3E6;color:#8A6A3A">💡 沒有偵測到完整的臉，是照虛線框的位置估算的 ~ 正面、臉放進框裡再拍一次會更準</p>' : ''}
