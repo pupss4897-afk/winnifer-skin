@@ -265,6 +265,50 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 .layer-hero span{position:absolute;font-size:10.5px;font-weight:800;color:#3A3435;background:rgba(255,255,255,.88);padding:2px 7px;border-radius:7px;white-space:nowrap}
 .atlas .sw.pic{height:auto;aspect-ratio:1}
 .atlas .sw.pic img{width:100%;height:100%;object-fit:cover;display:block}
+/* 養美筆記文章 */
+.note-hero{position:relative;margin:0 -20px;height:300px;overflow:hidden}
+.note-hero img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.note-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,#F7F3EE 100%)}
+.note-head{position:relative;margin-top:-60px;z-index:1}
+.note-head h2{font-size:27px;line-height:1.3;margin-top:8px}
+.note-head p{color:var(--mute);margin:8px 0 0;font-size:14px}
+.steps{display:grid;gap:12px;margin-top:16px}
+.step{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center;padding:12px;border-radius:20px;background:rgba(255,255,255,.85);box-shadow:var(--card)}
+.step img{width:110px;height:130px;object-fit:cover;border-radius:14px;display:block}
+.step .no{font-family:var(--latin);font-size:22px;font-weight:300;color:var(--violet);line-height:1}
+.step b{display:block;font-size:16px;margin-top:4px}
+.step p{margin:4px 0 0;font-size:13px;color:var(--mute);line-height:1.65}
+.step .tm{display:inline-block;margin-top:6px;padding:2px 9px;border-radius:8px;background:var(--lav);font-size:11.5px;font-weight:700;color:var(--violet)}
+.twin{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.twin>div{padding:14px;border-radius:20px;background:rgba(255,255,255,.85);box-shadow:var(--card)}
+.twin img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;margin-bottom:10px}
+.twin h3{font-size:16px}
+.twin small{display:block;color:var(--violet);font-size:11.5px;font-weight:700;margin-bottom:6px}
+.twin ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.twin li{font-size:13px;line-height:1.5}
+.twin li span{display:block;color:var(--mute);font-size:11.5px}
+.quote{margin:22px 0 4px;padding:22px;border-radius:22px;text-align:center;background:linear-gradient(150deg,#FFFFFF,#EAE4ED)}
+.quote p{margin:0;font-size:17px;line-height:1.8;font-weight:500}
+.quote b{background:linear-gradient(120deg,#8C7898,#B89A72);-webkit-background-clip:text;background-clip:text;color:transparent}
+.quote span{display:block;margin-top:8px;font-family:var(--latin);font-size:11px;letter-spacing:.2em;color:var(--soft)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.flow div{padding:10px 6px;border-radius:14px;background:rgba(255,255,255,.85);text-align:center;font-size:12px;line-height:1.45}
+.flow b{display:block;font-size:13px}
+.more-full{display:block;margin:16px auto 0;border:0;background:none;color:var(--violet);font-weight:700;font-size:13.5px;cursor:pointer}
+/* 選美好物 */
+.shop-tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:14px 0 4px}
+.shop-tabs button{flex:none;padding:8px 14px;border-radius:11px;border:1px solid var(--line);background:rgba(255,255,255,.85);font-weight:700;font-size:13px;cursor:pointer}
+.shop-tabs button.on{background:var(--violet);border-color:var(--violet);color:#fff}
+.goods{display:grid;gap:12px;margin-top:12px}
+.good{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:12px;border-radius:22px;background:rgba(255,255,255,.88);box-shadow:var(--card)}
+.good .ph{width:120px;height:140px;border-radius:16px;overflow:hidden;background:linear-gradient(160deg,#FFFFFF,#EAE4ED);display:grid;place-items:center}
+.good .ph img{width:100%;height:100%;object-fit:cover}
+.good .ph svg{width:46px;height:46px;stroke:var(--violet);fill:none;stroke-width:1.3}
+.good .cat{font-family:var(--latin);font-size:10.5px;font-weight:800;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}
+.good b{display:block;font-size:16px;margin-top:2px}
+.good p{margin:4px 0 0;font-size:12.5px;color:var(--mute);line-height:1.6}
+.good .how{margin-top:6px;padding:7px 9px;border-radius:10px;background:var(--lav);font-size:12px;line-height:1.55}
+.good a{display:inline-flex;margin-top:8px;padding:8px 13px;border-radius:11px;background:linear-gradient(180deg,#86605F,#765151);color:#fff;font-size:12.5px;font-weight:700}
 /* 溫妮佛懶人包 */
 .guides{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;margin:10px 0 0;padding:0 0 6px;scroll-snap-type:x mandatory}
 .club{position:relative;overflow:hidden;padding:22px 20px;border-radius:24px;background:linear-gradient(140deg,#8C7898,#5E5066);color:#fff;box-shadow:0 14px 30px rgba(94,80,102,.25)}
@@ -285,7 +329,7 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 .lightbox img{display:block;width:100%;max-width:600px;margin:0 auto}
 .lightbox button{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:14px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;font-size:20px;cursor:pointer}
 /* 底部導覽 */
-.nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);z-index:30;width:min(460px,100%);display:grid;grid-template-columns:repeat(4,1fr);padding:8px 10px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(246,247,251,.82);backdrop-filter:blur(18px) saturate(1.4);border-top:1px solid var(--line)}
+.nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);z-index:30;width:min(460px,100%);display:grid;grid-template-columns:repeat(5,1fr);padding:8px 10px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(246,247,251,.82);backdrop-filter:blur(18px) saturate(1.4);border-top:1px solid var(--line)}
 .nav button{border:0;background:none;display:grid;justify-items:center;gap:2px;font-size:11px;font-weight:700;color:var(--soft);cursor:pointer;padding:4px 0}
 .nav button svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .nav button.on{color:var(--ink)}
@@ -309,6 +353,7 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
   <button data-go="scan"><svg viewBox="0 0 24 24"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3.5"/></svg>拍照測</button>
   <button data-go="tests"><svg viewBox="0 0 24 24"><path d="M7 4h10v16H7z"/><path d="M10 8h4M10 12h4M10 16h2"/></svg>自測</button>
   <button data-go="care"><svg viewBox="0 0 24 24"><path d="M5 5h6a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H5z"/><path d="M19 5h-6a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h6z"/></svg>知識</button>
+  <button data-go="shop"><svg viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>選物</button>
 </nav>
 
 <script>
@@ -338,9 +383,9 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
   // ── 畫面切換 ──
   function go(name, 參 = {}, 推 = true) {
     if (推) 歷史.push(name);
-    app.classList.toggle('inner', !['home', 'tests', 'care', 'scan'].includes(name));
+    app.classList.toggle('inner', !['home', 'tests', 'care', 'scan', 'shop'].includes(name));
     app.classList.toggle('is-home', name === 'home');
-    document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('on', b.dataset.go === name || (['skin', 'body', 'life'].includes(name) && b.dataset.go === 'home') || ((name.startsWith('quiz') || name.startsWith('result')) && b.dataset.go === 'tests')));
+    document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('on', b.dataset.go === name || (['skin', 'body', 'life'].includes(name) && b.dataset.go === 'home') || ((name.startsWith('quiz') || name.startsWith('result')) && b.dataset.go === 'tests') || (name.startsWith('note') && b.dataset.go === 'care')));
     停相機();
     main.innerHTML = ''; const v = document.createElement('div'); v.className = 'view'; main.append(v);
     views[name](v, 參);
@@ -375,9 +420,14 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
       </div>
 
       <section class="section">
-        <h2>溫妮佛的養美懶人包</h2>
-        <p class="lead">點開看大圖 可以截圖收藏</p>
+        <h2>溫妮佛養美筆記</h2>
+        <p class="lead">我自己每天在做的 一篇一篇整理給妳</p>
         ${懶人包列('g-home')}
+      </section>
+      <section class="section">
+        <h2>選美好物</h2>
+        <p class="lead">我自己平常在用的精油 面膜和小工具</p>
+        <button class="tool cream" data-go="shop" style="margin-top:4px"><span class="ic">${好物圖示}</span><span><b>看溫妮佛的愛用清單</b><small>每一樣都附上我的用法</small></span><i>›</i></button>
       </section>
       <section class="section">${社群卡()}</section>
       <section class="section">
@@ -473,8 +523,7 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
         <div><b>22:00</b><p>卸妝、保養、臉部按摩<em>3 分鐘由下往上提拉</em></p></div>
         <div class="me"><b>23:30</b><p>放下手機 準備睡覺<em>睡滿 7 小時 是最便宜的保養品</em></p></div>
       </div>
-      <div class="guide-full"><img src="img/guide-1.jpg" alt="女生養脾胃 氣色真的差很多" data-g="1" loading="lazy"></div>
-      <div class="guide-full"><img src="img/guide-2.jpg" alt="想要好氣色 我不只養身體" data-g="2" loading="lazy"></div>
+      <div class="tools" style="margin-top:14px">${筆記們.slice(0, 2).map(g => `<button class="tool cream" data-note="${g.頁}"><span class="ic" style="overflow:hidden;padding:0"><img src="img/${g.封}.jpg" alt="" style="width:100%;height:100%;object-fit:cover"></span><span><b>${g.名}</b><small>${g.小}</small></span><i>›</i></button>`).join('')}</div>
       <div class="ktitle"><h3>好氣色的 5 個習慣</h3></div>
       <div class="atlas">
         ${[['睡得好', '12 點前睡、睡滿 7 小時'], ['喝夠水', '一天 2000cc 小口慢慢喝'], ['少糖', '甜食和含糖飲料 是讓皮膚變老的推手'], ['動一動', '每週 3 次讓自己流點汗'], ['心情好', '每天留 10 分鐘給自己']].map(([n, t]) => `<div><b>${n}</b><small>${t}</small></div>`).join('')}
@@ -799,14 +848,54 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
     box.scrollIntoView({ behavior: 'smooth' });
   }
 
-  // ═════════════ 溫妮佛懶人包 ═════════════
-  const 懶人包 = [
-    { 圖: 1, 名: '女生養脾胃 氣色真的差很多', 小: '日常先做好這 5 件事' },
-    { 圖: 2, 名: '想要好氣色 我不只養身體', 小: '內養＋外養 睡前習慣' },
-    { 圖: 3, 名: '每天 5 分鐘輪廓按摩', 小: '5 個動作在家跟著按' },
-    { 圖: 4, 名: '法令紋保養懶人包', 小: '按摩方向和日常重點' },
+  // ═════════════ 溫妮佛養美筆記 ═════════════
+  const 筆記們 = [
+    { 圖: 1, 頁: 'note-1', 封: 'n1-hero', 名: '女生養脾胃 氣色真的差很多', 小: '日常先做好這 5 件事' },
+    { 圖: 2, 頁: 'note-2', 封: 'n2-hero', 名: '想要好氣色 我不只養身體', 小: '內養＋外養 睡前習慣' },
+    { 圖: 3, 頁: 'note-3', 封: 'n3-2', 名: '每天 5 分鐘輪廓按摩', 小: '5 個動作在家跟著按' },
+    { 圖: 4, 頁: 'note-4', 封: 'n4-hero', 名: '法令紋日常保養', 小: '按摩方向和日常重點' },
   ];
-  function 懶人包列(id) { return `<div class="guides" id="${id}">${懶人包.map(g => `<button class="guide" data-g="${g.圖}"><img src="img/guide-${g.圖}-cover.jpg" alt="${g.名}" loading="lazy"><b>${g.名}</b><small>${g.小}</small></button>`).join('')}</div>`; }
+  function 懶人包列(id) { return `<div class="guides" id="${id}">${筆記們.map(g => `<button class="guide" data-note="${g.頁}"><img src="img/${g.封}.jpg" alt="${g.名}" loading="lazy"><b>${g.名}</b><small>${g.小}</small></button>`).join('')}</div>`; }
+  document.addEventListener('click', e => { const n = e.target.closest('[data-note]'); if (n) go(n.dataset.note); });
+  const 筆記頭 = (封, 英, 名, 副) => `<div class="note-hero"><img src="img/${封}.jpg" alt=""></div><div class="note-head"><span class="eyebrow">${英}</span><h2>${名}</h2><p>${副}</p></div>`;
+  const 筆記尾 = n => `<button class="more-full" data-g="${n}">看完整圖卡 可以存下來 ›</button>
+      <div class="cta cream"><h3>想要溫妮佛陪妳一起養？</h3><p>每天打卡保養 有問題直接問</p>${聯絡鈕('加 LINE 開始我的養美計畫')}</div>
+      <p class="disclaim">以上是日常保養與生活習慣分享 不是醫療建議 ~ 有身體或皮膚狀況請先詢問醫師</p>`;
+  views['note-1'] = v => {
+    const 五 = [['三餐規律', '幫助維持消化與能量穩定'], ['蛋白質吃夠', '維持體力 肌肉與日常營養需求'], ['少空腹咖啡 少冰冷刺激', '腸胃敏感的人比較不容易增加不適'], ['飯後走一走', '幫助餐後消化 也增加日常活動量'], ['少熬夜 睡眠顧好', '隔天精神 氣色看起來會差很多']];
+    v.innerHTML = 筆記頭('n1-hero', 'Beauty note 01', '女生養脾胃<br>氣色真的差很多', '從生活小習慣 養出穩定的好氣色') +
+      `<div class="ktitle"><h3>日常可以先做好這 5 件事</h3></div><div class="steps">${五.map(([t, d], i) => `<div class="step"><img src="img/n1-${i + 1}.jpg" alt="" loading="lazy"><div><span class="no">0${i + 1}</span><b>${t}</b><p>${d}</p></div></div>`).join('')}</div>
+      <div class="quote"><p>「養」不是今天喝一杯補湯就完成<br>而是把 <b>吃飯 睡眠 活動</b><br>慢慢養成習慣</p><span>— WINNIFER</span></div>` + 筆記尾(1);
+  };
+  views['note-2'] = v => {
+    v.innerHTML = 筆記頭('n2-hero', 'Beauty note 02', '想要好氣色<br>我不只養身體', '內外並行 養出穩定透亮的自己') +
+      `<div class="twin">
+        <div><img src="img/n2-in.jpg" alt="" loading="lazy"><small>INNER CARE</small><h3>內養</h3><p class="small" style="margin:0 0 8px">把狀態養回來</p><ul><li>飲食均衡<span>補充身體所需營養</span></li><li>補充足夠水分<span>幫助代謝 維持好狀態</span></li><li>規律睡眠<span>讓氣色與精神更穩定</span></li><li>適度活動 少久坐<span>促進循環 維持代謝</span></li></ul></div>
+        <div><img src="img/n2-out.jpg" alt="" loading="lazy"><small>OUTER CARE</small><h3>外養</h3><p class="small" style="margin:0 0 8px">把疲憊感卸下來</p><ul><li>做好清潔＋補水<span>維持肌膚乾淨透亮</span></li><li>精華油加強保濕<span>以油養膚 讓肌膚更柔嫩</span></li><li>睡前 3–5 分鐘臉部按摩<span>幫助放鬆</span></li><li>白天做好防曬<span>減少外在刺激</span></li></ul></div>
+      </div>
+      <div class="step" style="margin-top:14px"><img src="img/n2-night.jpg" alt="" loading="lazy"><div><span class="no">NIGHT</span><b>我的睡前習慣</b><p>補水後搭配精華油按摩<br>臉頰 → 下顎線 → 耳後 → 頸部 輕輕帶過</p></div></div>
+      <div class="quote"><p>氣色不是靠遮<br>是每天一點點 <b>養出來的</b></p><span>— WINNIFER</span></div>` + 筆記尾(2);
+  };
+  views['note-3'] = v => {
+    const 動 = [['耳後 → 鎖骨', '打開循環 先放鬆頸部緊繃', '從耳後沿著頸側線 輕柔向下滑到鎖骨 重複數次', '30 秒'], ['下巴 → 耳下', '照顧下顎線', '從下巴中央沿著下顎線 向上滑到耳下 手法輕柔緩慢', '左右各 10 次'], ['嘴角 → 耳前', '照顧蘋果肌和嘴邊', '從嘴角沿著臉頰弧線 向上往耳前滑動 方向往上往外', '左右各 10 次'], ['臉頰 → 顴骨外側', '讓臉部看起來更有精神', '從鼻翼兩側或臉頰中央 向上往顴骨外側滑動', '左右各 10 次'], ['耳後 → 鎖骨收尾', '再一次放鬆頸部', '重複第一步 從耳後沿著頸側輕柔向下滑到鎖骨', '30 秒']];
+    v.innerHTML = 筆記頭('n3-2', 'Face massage', '每天 5 分鐘<br>輪廓按摩', '5 個簡單動作 在家跟著按') +
+      `<div class="steps">${動.map(([t, w, d, tm], i) => `<div class="step"><img src="img/n3-${i + 1}.jpg" alt="" loading="lazy"><div><span class="no">0${i + 1}</span><b>${t}</b><p>${w}<br>${d}</p><span class="tm">${tm}</span></div></div>`).join('')}</div>
+      <div class="ktitle"><h3>搭配精華油 按起來更順</h3></div>
+      <div class="pics" style="grid-template-columns:repeat(3,1fr)">${['取 2–3 滴於掌心', '雙手搓熱 均勻塗抹', '搭配按摩 由下往上'].map((t, i) => `<figure><img src="img/n3-s${i + 1}.jpg" alt="" loading="lazy"><figcaption>${t}</figcaption></figure>`).join('')}</div>
+      <div class="ktitle"><h3>我的日常保養流程</h3></div>
+      <div class="flow"><div><b>基礎保養</b>化妝水 精華 乳霜</div><div><b>精華油</b>2–3 滴</div><div><b>臉部按摩</b>3–5 分鐘</div><div><b>敷臉</b>有時間再加強保濕</div></div>
+      <div class="blk cream"><h3>按摩小提醒</h3><ul><li>手法以輕柔 向外 向上帶為主</li><li>不需要大力拉扯肌膚</li><li>肌膚發炎 破皮或按摩時有疼痛感 請先暫停</li><li>搭配日常保養與充足睡眠</li></ul></div>
+      <div class="quote"><p>力道不用大<br>舒服 輕柔 <b>持續做最重要</b></p><span>— WINNIFER</span></div>` + 筆記尾(3);
+  };
+  views['note-4'] = v => {
+    v.innerHTML = 筆記頭('n4-hero', 'Beauty note 04', '法令紋<br>日常保養', '不是只看年紀 日常保養與習慣也很重要') +
+      `<div class="twin">
+        <div><small>WHY</small><h3>為什麼會明顯？</h3><ul style="margin-top:8px"><li>肌膚乾燥<span>紋路更容易卡住</span></li><li>膠原流失<span>支撐感下降</span></li><li>表情習慣多<span>鼻翼兩側容易加深</span></li><li>浮腫 鬆弛<span>也會讓線條更明顯</span></li></ul></div>
+        <div><small>DAILY</small><h3>日常照顧重點</h3><ul style="margin-top:8px"><li>補水保濕要做足</li><li>搭配精華油加強滋潤</li><li>按摩時記得往上帶</li><li>白天防曬 減少光老化</li></ul></div>
+      </div>
+      <div class="step" style="margin-top:14px;grid-template-columns:130px 1fr"><img src="img/n4-steps.jpg" alt="" loading="lazy" style="width:130px;height:200px"><div><span class="no">HOW TO</span><b>按摩方向這樣做</b><p>1 與鼻旁輕柔按壓<br>2 沿著法令紋往上滑<br>3 帶到顴骨外側提拉<br>4 最後往耳前帶開放鬆</p></div></div>
+      <div class="quote"><p>法令紋不是急救<br>而是 <b>每天一點點</b> 把狀態養回來</p><span>— WINNIFER</span></div>` + 筆記尾(4);
+  };
   function 看大圖(n) {
     const d = document.createElement('div'); d.className = 'lightbox';
     d.innerHTML = `<button aria-label="關閉">×</button><img src="img/guide-${n}.jpg" alt="">`;
@@ -814,6 +903,28 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
     document.body.append(d);
   }
   document.addEventListener('click', e => { const g = e.target.closest('[data-g]'); if (g) 看大圖(g.dataset.g); });
+
+  // ═════════════ 選美好物（溫妮佛自己在用的）═════════════
+  // 新增商品：在這裡加一筆 圖片放 img/ 資料夾 連結填商品頁或 LINE
+  const 好物們 = [
+    { 類: '精華油', 英: 'Face oil', 名: '【待填】按摩精華油', 說: '按摩前一定會用 讓手法更滑順 不拉扯肌膚', 用: '每晚化妝水後取 2–3 滴 搭配 5 分鐘輪廓按摩', 圖: '', 連: '' },
+    { 類: '面膜', 英: 'Mask', 名: '【待填】保濕面膜', 說: '熬夜或換季時的加強保濕', 用: '每週 2–3 次 敷完接著擦乳液把水分鎖住', 圖: '', 連: '' },
+    { 類: '按摩工具', 英: 'Tool', 名: '【待填】臉部按摩滾輪', 說: '手酸的時候用它輔助 力道比較平均', 用: '搭配精華油 由下往上 由內往外輕推', 圖: '', 連: '' },
+    { 類: '防曬', 英: 'Sunscreen', 名: '【待填】日常防曬', 說: '每天出門前的最後一步 陰天也擦', 用: '每 2–3 小時補一次', 圖: '', 連: '' },
+  ];
+  const 好物圖示 = '<svg viewBox="0 0 48 48"><path d="M20 6h8v6h-8z"/><path d="M17 12h14l2 6v22a2 2 0 0 1-2 2H17a2 2 0 0 1-2-2V18z"/><path d="M15 24h18"/></svg>';
+  views.shop = v => {
+    const 類們 = ['全部', ...new Set(好物們.map(x => x.類))];
+    v.innerHTML = `<div class="quiz-head"><span class="eyebrow">Winnifer's picks</span><h2>選美好物</h2><p class="lead">我自己平常真的在用的 怎麼用也一起告訴妳</p></div>
+      <div class="shop-tabs">${類們.map((c, i) => `<button data-c="${c}" class="${i ? '' : 'on'}">${c}</button>`).join('')}</div>
+      <div class="goods" id="goods"></div>
+      <div class="cta cream"><h3>不知道哪個適合妳？</h3><p>先做膚質測驗 再告訴溫妮佛妳的結果</p><button class="pill ghost block" data-go="quiz-type">測我的膚質</button><div style="height:10px"></div>${聯絡鈕('加 LINE 問溫妮佛')}</div>
+      <p class="disclaim">以上是個人使用分享 每個人膚況不同 使用前請先在耳後試用 ~ 化粧品不能取代醫療</p>`;
+    const 畫 = c => { v.querySelector('#goods').innerHTML = 好物們.filter(x => c === '全部' || x.類 === c).map(x => `<div class="good"><div class="ph">${x.圖 ? `<img src="img/${x.圖}" alt="${x.名}" loading="lazy">` : 好物圖示}</div><div><span class="cat">${x.英}</span><b>${x.名}</b><p>${x.說}</p><div class="how"><b style="display:inline;font-size:12px">我的用法</b> ${x.用}</div><a href="${x.連 || LINE_URL}" target="_blank" rel="noopener">${x.連 ? '看看這個 →' : '私訊溫妮佛 →'}</a></div></div>`).join(''); };
+    v.querySelectorAll('.shop-tabs button').forEach(b => b.onclick = () => { v.querySelectorAll('.shop-tabs button').forEach(x => x.classList.toggle('on', x === b)); 畫(b.dataset.c); });
+    v.querySelectorAll('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
+    畫('全部');
+  };
 
   // ═════════════ 9 大顯老元兇 ═════════════
   const 臉圖 = (畫) => `<svg viewBox="0 0 200 250" aria-hidden="true">
@@ -943,7 +1054,7 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
   ];
   views.care = (v, 參 = {}) => {
     v.innerHTML = `<div class="quiz-head"><span class="eyebrow">Skin knowledge</span><h2>看懂皮膚 再開始保養</h2><p class="lead">30+ 女生最常問的 一次整理給妳</p></div>
-      <div class="ktitle" style="margin-top:18px"><h3>溫妮佛的懶人包</h3><span class="small">點開看大圖</span></div>
+      <div class="ktitle" style="margin-top:18px"><h3>溫妮佛養美筆記</h3><span class="small">點開看完整內容</span></div>
       ${懶人包列('g-know')}
       <nav class="mini-nav"><a href="#k-life">皮膚的一生</a><a href="#k-layer">老化 6 層</a><a href="#k-atlas">膚況圖鑑</a><a href="#k-dark">黑眼圈 3 型</a><a href="#k-care">保養重點</a></nav>
 
@@ -976,8 +1087,7 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
         <button class="pill ghost block" data-go="quiz-eye" style="margin-top:12px">測測看我是哪一型</button></div>
 
       <div class="ktitle"><h3>跟著溫妮佛按摩</h3></div>
-      <div class="guide-full"><img src="img/guide-3.jpg" alt="每天 5 分鐘輪廓按摩" data-g="3" loading="lazy"></div>
-      <div class="guide-full"><img src="img/guide-4.jpg" alt="法令紋保養懶人包" data-g="4" loading="lazy"></div>
+      <div class="tools" style="margin-top:8px">${筆記們.slice(2).map(g => `<button class="tool cream" data-note="${g.頁}"><span class="ic" style="overflow:hidden;padding:0"><img src="img/${g.封}.jpg" alt="" style="width:100%;height:100%;object-fit:cover"></span><span><b>${g.名}</b><small>${g.小}</small></span><i>›</i></button>`).join('')}</div>
       <div class="section" style="margin-top:22px">${社群卡()}</div>
       <div class="ktitle" id="k-care"><h3>溫妮佛的養美重點</h3><span class="small">每天做一點點</span></div>
       ${關心們.map(c => `<details class="care cream" id="care-${c.id}" ${參.open === c.id ? 'open' : ''}><summary><span class="k">${c.英}</span><span><b>${c.名}</b><small>${c.說}</small></span><i>＋</i></summary><div class="body"><ol>${c.招.map(x => `<li>${x}</li>`).join('')}</ol></div></details>`).join('')}
