@@ -247,6 +247,24 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 .mini-nav a{flex:none;padding:8px 13px;border-radius:11px;border:1px solid var(--line);background:rgba(255,253,250,.9);font-size:13px;font-weight:700}
 .ktitle{display:flex;align-items:baseline;gap:8px;margin:30px 0 4px}
 .ktitle h3{font-size:19px}
+/* 圖片 */
+.chk.ph{grid-template-columns:22px 64px 1fr;align-items:center}
+.chk.ph img{width:64px;height:64px;border-radius:12px;object-fit:cover;display:block}
+.face-wrap.ph{grid-template-columns:1fr}
+.face-wrap.ph .face{display:none}
+.pics{display:grid;gap:6px;margin:10px 0 4px}
+.pics img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;display:block}
+.pics figure{margin:0}
+.pics figcaption{font-size:12px;font-weight:700;text-align:center;margin-top:4px}
+.life-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:6px 0 10px;border-radius:16px;overflow:hidden}
+.life-strip img{width:100%;aspect-ratio:2/5;object-fit:cover;display:block}
+.life div.lp{grid-template-columns:52px 64px 1fr}
+.life div.lp img{width:52px;height:64px;object-fit:cover;object-position:center 30%;border-radius:10px}
+.layer-hero{position:relative;margin:6px 0 10px;border-radius:20px;overflow:hidden}
+.layer-hero img{width:100%;display:block}
+.layer-hero span{position:absolute;font-size:10.5px;font-weight:800;color:#3A3435;background:rgba(255,255,255,.88);padding:2px 7px;border-radius:7px;white-space:nowrap}
+.atlas .sw.pic{height:auto;aspect-ratio:1}
+.atlas .sw.pic img{width:100%;height:100%;object-fit:cover;display:block}
 /* 底部導覽 */
 .nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);z-index:30;width:min(460px,100%);display:grid;grid-template-columns:repeat(4,1fr);padding:8px 10px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(246,247,251,.82);backdrop-filter:blur(18px) saturate(1.4);border-top:1px solid var(--line)}
 .nav button{border:0;background:none;display:grid;justify-items:center;gap:2px;font-size:11px;font-weight:700;color:var(--soft);cursor:pointer;padding:4px 0}
@@ -397,6 +415,7 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
       <button class="pill block" id="done" style="margin-top:16px">看我的體態建議</button>
       <div id="out"></div>
       <div class="ktitle"><h3>每天 5 分鐘・養美伸展</h3></div>
+      <div class="pics" style="grid-template-columns:repeat(3,1fr)">${['靠牆站', '門框伸展', '臀橋'].map((t, i) => `<figure><img src="img/body-${i + 1}.jpg" alt="${t}示範" loading="lazy" style="aspect-ratio:3/4"><figcaption>${t}</figcaption></figure>`).join('')}</div>
       <div class="life cream" style="padding:6px 16px">
         <div><b>1<small>分鐘</small></b><p>靠牆站<em>找回正確站姿的感覺</em></p></div>
         <div><b>1<small>分鐘</small></b><p>收下巴＋轉肩膀<em>放鬆肩頸、拉回往前的頭</em></p></div>
@@ -774,8 +793,8 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
   views['quiz-old9'] = v => {
     const 選 = new Set();
     v.innerHTML = `<div class="quiz-head"><span class="eyebrow">Aging signs</span><h2>9 大顯老元兇<br>妳中了幾條？</h2><p class="lead">拿一面鏡子 在自然光下對照 ~ 有的就勾起來</p></div>
-      <div class="face-wrap"><div class="face" id="face">${臉圖(顯老.map(x => `<g class="z" data-z="${x.id}">${x.z}</g>`).join(''))}</div>
-      <div class="checks">${顯老.map(x => `<button class="chk" data-id="${x.id}"><span class="box">✓</span><span><b>${x.名}${x.結 ? '<span class="tagx">結構</span>' : ''}</b><small>${x.看}</small></span></button>`).join('')}</div></div>
+      <div class="face-wrap ph"><div class="face" id="face">${臉圖(顯老.map(x => `<g class="z" data-z="${x.id}">${x.z}</g>`).join(''))}</div>
+      <div class="checks">${顯老.map((x, i) => `<button class="chk ph" data-id="${x.id}"><span class="box">✓</span><img src="img/old9-${i + 1}.jpg" alt="${x.名}示意" loading="lazy"><span><b>${x.名}${x.結 ? '<span class="tagx">結構</span>' : ''}</b><small>${x.看}</small></span></button>`).join('')}</div></div>
       <button class="pill block" id="done" style="margin-top:18px">看結果</button>`;
     v.querySelectorAll('.chk').forEach(b => b.onclick = () => {
       const id = b.dataset.id; 選.has(id) ? 選.delete(id) : 選.add(id);
@@ -792,6 +811,7 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
         <h2 style="margin-top:8px">${標}</h2>
         <div class="face" style="position:static;width:150px;margin:14px auto 0">${臉圖(中.map(x => `<g>${x.z}</g>`).join(''))}</div>
       </div>
+      ${n ? `<div class="pics" style="grid-template-columns:repeat(${Math.min(3, n)},1fr)">${中.map(x => `<figure><img src="img/old9-${顯老.indexOf(x) + 1}.jpg" alt=""><figcaption>${x.名}</figcaption></figure>`).join('')}</div>` : ''}
       ${n ? `<div class="blk cream"><h3>妳中的這幾條 可以這樣照顧</h3><ul>${中.map(x => `<li><b>${x.名}</b> ~ ${x.建}</li>`).join('')}</ul></div>` : '<div class="blk cream"><h3>太棒了</h3><p class="small">一條都沒中 ~ 每天防曬和保濕 就是最好的凍齡保養</p></div>'}
       ${中.some(x => x.結) ? '<div class="blk cream"><h3>什麼是「結構」問題？</h3><p class="small" style="font-size:13px">淚溝、凹陷這類 是皮膚底下的脂肪和骨頭支撐慢慢改變造成的 ~ 保養品主要照顧皮膚表面 這類問題能做的是作息、按摩和修飾 想更明顯改善可以諮詢專業醫師</p></div>' : ''}
       <div class="cta cream"><h3>想要一份針對妳的保養菜單？</h3><p>把結果截圖傳給溫妮佛 告訴妳先從哪裡開始</p>${聯絡鈕('加 LINE 問溫妮佛')}</div>
@@ -810,7 +830,7 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
   views['quiz-eye'] = v => {
     const 選 = new Set();
     v.innerHTML = `<div class="quiz-head"><span class="eyebrow">Eye check</span><h2>眼周年輕度自測</h2><p class="lead">眼睛是最早透露年齡的地方 ~ 對著鏡子 有的就勾</p></div>
-      <div class="checks">${眼周.map(x => `<button class="chk" data-id="${x.id}"><span class="box">✓</span><span><b>${x.名}</b><small>${x.看}</small></span></button>`).join('')}</div>
+      <div class="checks">${眼周.map((x, i) => `<button class="chk ph" data-id="${x.id}"><span class="box">✓</span><img src="img/eye-${i + 1}.jpg" alt="${x.名}示意" loading="lazy"><span><b>${x.名}</b><small>${x.看}</small></span></button>`).join('')}</div>
       <button class="pill block" id="done" style="margin-top:18px">下一步</button>`;
     v.querySelectorAll('.chk').forEach(b => b.onclick = () => { const id = b.dataset.id; 選.has(id) ? 選.delete(id) : 選.add(id); b.classList.toggle('on', 選.has(id)); });
     v.querySelector('#done').onclick = () => 選.has('暗') ? 黑眼圈(v, [...選]) : go('result-eye', { 選: [...選] }, false);
@@ -843,6 +863,7 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
         <h2 style="margin-top:10px">${分 >= 85 ? '眼周很年輕' : 分 >= 55 ? '眼周開始需要照顧' : '眼周要多花一點心思了'}</h2>
         <p>勾了 ${中.length} 項：${中.map(x => x.名).join('、') || '都沒有'}</p>
       </div>
+      ${型.length ? `<div class="pics" style="grid-template-columns:repeat(${型.length},1fr)">${型.map(t => `<figure><img src="img/dark-${{ 血管型: 1, 色素型: 2, 結構型: 3 }[t]}.jpg" alt=""><figcaption>${t}</figcaption></figure>`).join('')}</div>` : ''}
       ${型.length ? `<div class="blk cream"><h3>妳的黑眼圈：${型.join(' ＋ ')}</h3><ul>${型.map(t => `<li><b>${t}</b> ~ ${黑眼圈說明[t].看}<br>${黑眼圈說明[t].建}</li>`).join('')}</ul></div>` : ''}
       ${中.filter(x => x.id !== '暗').length ? `<div class="blk cream"><h3>可以這樣照顧</h3><ul>${中.filter(x => x.id !== '暗').map(x => `<li><b>${x.名}</b> ~ ${x.建}</li>`).join('')}</ul></div>` : ''}
       <div class="cta cream"><h3>想學溫妮佛的眼周按摩？</h3><p>每天 1 分鐘 手法對了才不會越按越鬆</p>${聯絡鈕('加 LINE 領眼周保養菜單')}</div>
@@ -881,25 +902,29 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 
       <div class="ktitle" id="k-life"><h3>皮膚的一生</h3><span class="small">每個年紀 重點不一樣</span></div>
       <div class="life cream" style="padding:6px 16px">
-        <div><b>20–25<small>歲</small></b><p>油脂旺盛 容易長痘<em>清潔做對、開始養成防曬</em></p></div>
-        <div><b>26–30<small>歲</small></b><p>膠原蛋白開始慢慢流失 但還看不太出來<em>保濕和防曬是最划算的投資</em></p></div>
-        <div class="me"><b>31–40<small>歲</small></b><p>細紋、暗沉、毛孔變明顯 第一條法令紋出現<em>加入抗老保養、臉部按摩、作息規律</em></p></div>
-        <div><b>41–50<small>歲</small></b><p>鬆弛、斑點、輪廓開始往下走<em>加強保濕修護、提拉手法、定期諮詢專業</em></p></div>
-        <div><b>50+<small>歲</small></b><p>皮膚變薄、變乾<em>溫和、修護、補水比什麼都重要</em></p></div>
+        <div class="lp"><img src="img/life-1.jpg" alt="" loading="lazy"><b>20–25<small>歲</small></b><p>油脂旺盛 容易長痘<em>清潔做對、開始養成防曬</em></p></div>
+        <div class="lp"><img src="img/life-2.jpg" alt="" loading="lazy"><b>26–30<small>歲</small></b><p>膠原蛋白開始慢慢流失 但還看不太出來<em>保濕和防曬是最划算的投資</em></p></div>
+        <div class="lp me"><img src="img/life-3.jpg" alt="" loading="lazy"><b>31–40<small>歲</small></b><p>細紋、暗沉、毛孔變明顯 第一條法令紋出現<em>加入抗老保養、臉部按摩、作息規律</em></p></div>
+        <div class="lp"><img src="img/life-4.jpg" alt="" loading="lazy"><b>41–50<small>歲</small></b><p>鬆弛、斑點、輪廓開始往下走<em>加強保濕修護、提拉手法、定期諮詢專業</em></p></div>
+        <div class="lp"><img src="img/life-5.jpg" alt="" loading="lazy"><b>50+<small>歲</small></b><p>皮膚變薄、變乾<em>溫和、修護、補水比什麼都重要</em></p></div>
       </div>
 
       <div class="ktitle" id="k-layer"><h3>老化不只在皮膚表面</h3></div>
       <p class="small" style="margin:0 0 8px">臉的老化有 6 層 由外到內 ~ 保養品主要照顧的是最外面兩層</p>
+      <div class="layer-hero"><img src="img/layers.jpg" alt="臉部老化 6 個層次的剖面示意" loading="lazy">
+        ${[['表皮', 30, 66], ['真皮', 37, 60], ['脂肪', 47, 56], ['筋膜', 55, 50], ['肌肉', 62, 44], ['骨骼', 70, 37]].map(([t, x, y]) => `<span style="left:${x}%;top:${y}%">${t}</span>`).join('')}
+      </div>
       <div class="layers">
         ${[['#F6E3D6', '表皮層', '暗沉、粗糙', 'y', '保養照顧得到'], ['#EFC9BE', '真皮層', '細紋、鬆弛', 'y', '保養照顧得到'], ['#F3DDA9', '脂肪層', '凹陷、往下移', 'm', '作息、飲食'], ['#E9E1D6', '筋膜層', '組織下垂', 'm', '按摩、姿勢'], ['#D9A08F', '肌肉層', '表情紋加深', 'm', '按摩放鬆'], ['#E8DCC4', '骨骼層', '支撐變弱', 'm', '專業醫療']].map(([c, n, t, k, w]) => `<div class="layer"><i style="background:${c}"></i><b>${n}</b><span>${t}</span><u class="${k}">${w}</u></div>`).join('')}
       </div>
 
       <div class="ktitle" id="k-atlas"><h3>膚況圖鑑</h3><span class="small">先分清楚 才不會保養錯</span></div>
       <div class="atlas">
-        ${[['缺水', '細紋多、緊繃 毛孔看起來乾乾的', '化妝水後一定要鎖水'], ['出油', '毛孔圓圓大大、整臉油亮', '清爽保濕 不要過度清潔'], ['老化毛孔', '毛孔變成長長的水滴狀', '保濕＋防曬 加強彈性'], ['角質厚', '摸起來粗粗的、暗暗的', '每週一次溫和代謝角質'], ['乾燥脫皮', '看得到小小的白屑', '溫和清潔、加強乳霜'], ['閉口', '膚色的小凸起 摸得到', '不要擠 清潔和保濕做好'], ['粉刺', '黑頭、白頭 鼻子最多', '定期清潔 不要用力摳'], ['細毛', '臉上細細的毛 光線下看得到', '正常的 不用特別處理']].map(([n, t, w]) => `<div><span class="sw">${紋理(n)}</span><b>${n}</b><small>${t}</small><em>${w}</em></div>`).join('')}
+        ${[['缺水', '細紋多、緊繃 毛孔看起來乾乾的', '化妝水後一定要鎖水'], ['出油', '毛孔圓圓大大、整臉油亮', '清爽保濕 不要過度清潔'], ['老化毛孔', '毛孔變成長長的水滴狀', '保濕＋防曬 加強彈性'], ['角質厚', '摸起來粗粗的、暗暗的', '每週一次溫和代謝角質'], ['乾燥脫皮', '看得到小小的白屑', '溫和清潔、加強乳霜'], ['閉口', '膚色的小凸起 摸得到', '不要擠 清潔和保濕做好'], ['粉刺', '黑頭、白頭 鼻子最多', '定期清潔 不要用力摳'], ['細毛', '臉上細細的毛 光線下看得到', '正常的 不用特別處理']].map(([n, t, w]) => `<div><span class="sw pic"><img src="img/atlas-${['缺水', '出油', '老化毛孔', '角質厚', '乾燥脫皮', '閉口', '粉刺', '細毛'].indexOf(n) + 1}.jpg" alt="${n}示意" loading="lazy"></span><b>${n}</b><small>${t}</small><em>${w}</em></div>`).join('')}
       </div>
 
       <div class="ktitle" id="k-dark"><h3>黑眼圈有 3 型</h3></div>
+      <div class="pics" style="grid-template-columns:repeat(3,1fr)">${['血管型', '色素型', '結構型'].map((t, i) => `<figure><img src="img/dark-${i + 1}.jpg" alt="${t}黑眼圈示意" loading="lazy"><figcaption>${t}</figcaption></figure>`).join('')}</div>
       <div class="blk cream" style="margin-top:6px"><ul>${Object.entries(黑眼圈說明).map(([k, x]) => `<li><b>${k}</b> ~ ${x.看}<br><span class="small">${x.建}</span></li>`).join('')}</ul>
         <button class="pill ghost block" data-go="quiz-eye" style="margin-top:12px">測測看我是哪一型</button></div>
 
