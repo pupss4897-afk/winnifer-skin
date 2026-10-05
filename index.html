@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#F6F7FB">
+<meta name="theme-color" content="#F7F3EE">
 <title>Winnifer 養美研究室</title>
 <meta name="description" content="溫妮佛的 30+ 養美小工具：拍照看看今天的膚況、測出你的膚質、算算你的肌膚年齡，再給你一份適合你的保養重點">
 <meta property="og:type" content="website">
@@ -15,12 +15,12 @@
 <style>
 /* 科技時尚・韓系：冷白、全像漸層、黑色重點 ~ 刻意只有一套淺色 */
 :root{
-  --bg:#F6F7FB; --white:#FFFFFF; --ink:#111216; --mute:#6C7080; --soft:#9AA0B1; --line:rgba(17,18,22,.08);
-  --violet:#7A6BFF; --pink:#FF8FB8; --ice:#8FD3FF; --mint:#7FE3C4;
-  --holo:linear-gradient(120deg,#E8E3FF 0%,#D9F0FF 34%,#FFE4F0 68%,#FFF4DA 100%);
-  --holo-strong:linear-gradient(120deg,#B9ADFF 0%,#9EDBFF 35%,#FFB2D0 70%,#FFE3A6 100%);
+  --bg:#F7F3EE; --white:#FFFFFF; --ink:#3A3435; --mute:#7A7178; --soft:#ACA4AC; --line:rgba(58,52,53,.09); --wine:#765151; --gold:#B89A72; --lav:#EAE4ED;
+  --violet:#8C7898; --pink:#D8CFDD; --ice:#EAE4ED; --mint:#D8C7A8;
+  --holo:linear-gradient(125deg,#FFFFFF 0%,#F1ECF3 42%,#EAE4ED 70%,#F7F3EE 100%);
+  --holo-strong:linear-gradient(125deg,#B7A6C2 0%,#EAE4ED 38%,#DCCBAE 72%,#B89A72 100%);
   --sans:"Noto Sans TC",-apple-system,"PingFang TC",sans-serif; --latin:"Manrope","Helvetica Neue",Arial,sans-serif;
-  --card:0 1px 0 rgba(255,255,255,.9) inset,0 12px 32px rgba(40,44,80,.07);
+  --card:0 1px 0 rgba(255,255,255,.95) inset,0 14px 34px rgba(80,62,92,.08);
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -28,9 +28,9 @@ body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 var(--sans);-w
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit}
 [hidden]{display:none!important}
-.app{position:relative;max-width:460px;margin:0 auto;min-height:100%;padding:0 20px calc(98px + env(safe-area-inset-bottom,0px));overflow:hidden;background:var(--bg)}
+.app{position:relative;max-width:460px;margin:0 auto;min-height:100%;padding:0 20px calc(98px + env(safe-area-inset-bottom,0px));overflow-x:clip;background:var(--bg)}
 .app:before{content:"";position:absolute;width:420px;height:420px;right:-220px;top:-160px;border-radius:50%;background:var(--holo-strong);filter:blur(70px);opacity:.45;pointer-events:none}
-@media(min-width:520px){body{background:#ECEEF5}.app{box-shadow:0 0 60px rgba(40,44,80,.08)}}
+@media(min-width:520px){body{background:#ECE6EE}.app{box-shadow:0 0 60px rgba(80,62,92,.08)}}
 
 /* 頁首 */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;justify-content:space-between;margin:0 -20px;padding:14px 20px;background:rgba(246,247,251,.72);backdrop-filter:blur(18px) saturate(1.4);border-bottom:1px solid var(--line)}
@@ -43,14 +43,14 @@ button{font:inherit;color:inherit}
 
 /* 共用 */
 .eyebrow{display:inline-flex;align-items:center;gap:6px;font-family:var(--latin);font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--violet)}
-.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--holo-strong);box-shadow:0 0 0 3px rgba(122,107,255,.12)}
+.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--holo-strong);box-shadow:0 0 0 3px rgba(140,120,152,.16)}
 h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 .lead{color:var(--mute);font-size:14px;margin:8px 0 0}
 .section{position:relative;margin-top:34px}
 .section>h2{font-size:19px}
 .section>.lead{margin-bottom:14px}
 .cream{position:relative;background:rgba(255,255,255,.78);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.9);border-radius:22px;box-shadow:var(--card)}
-.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border:0;border-radius:16px;cursor:pointer;font-weight:700;font-size:15px;background:var(--ink);color:#fff;box-shadow:0 10px 24px rgba(17,18,22,.18)}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border:0;border-radius:16px;cursor:pointer;font-weight:700;font-size:15px;background:linear-gradient(180deg,#86605F,#765151);color:#fff;box-shadow:0 10px 24px rgba(118,81,81,.24)}
 .pill.ghost{background:var(--white);color:var(--ink);box-shadow:none;border:1px solid var(--line)}
 .pill.line{background:#06C755;box-shadow:0 10px 22px rgba(6,199,85,.22)}
 .pill.block{display:flex;width:100%}
@@ -60,15 +60,15 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 /* 首頁 */
 .hero{position:relative;padding:34px 2px 4px}
 .hero h1{font-size:34px;line-height:1.22;margin-top:12px}
-.hero h1 em{font-style:normal;background:var(--holo-strong);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 em{font-style:normal;background:linear-gradient(120deg,#8C7898,#A88BA8 50%,#B89A72);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .en{display:block;font-family:var(--latin);font-weight:300;font-size:13px;letter-spacing:.3em;color:var(--soft);margin-top:10px}
-.jar{position:relative;width:100%;height:190px;margin:24px 0 4px;border-radius:26px;overflow:hidden;background:#0F1016}
-.jar:before{content:"";position:absolute;width:210px;height:210px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:conic-gradient(from 200deg,#B9ADFF,#9EDBFF,#FFB2D0,#FFE3A6,#B9ADFF);filter:blur(28px);opacity:.85;animation:spin 14s linear infinite}
+.jar{position:relative;width:100%;height:190px;margin:24px 0 4px;border-radius:26px;overflow:hidden;background:linear-gradient(150deg,#5A4D62,#2F2A30)}
+.jar:before{content:"";position:absolute;width:210px;height:210px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:conic-gradient(from 200deg,#B7A6C2,#F4EFF6,#DCCBAE,#8C7898,#B7A6C2);filter:blur(28px);opacity:.85;animation:spin 14s linear infinite}
 .jar:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 0 49%,rgba(255,255,255,.06) 50%,transparent 51%) 0 0/100% 18px,linear-gradient(90deg,transparent 0 49%,rgba(255,255,255,.06) 50%,transparent 51%) 0 0/18px 100%}
 .jar span{position:absolute;inset:0;display:grid;place-content:center;text-align:center;color:#fff;z-index:1}
 .jar span b{font-family:var(--latin);font-size:46px;font-weight:300;letter-spacing:.04em;line-height:1}
 .jar span small{font-family:var(--latin);font-size:10.5px;font-weight:700;letter-spacing:.32em;opacity:.8;margin-top:8px}
-.jar i{position:absolute;left:0;right:0;height:2px;top:20%;z-index:1;background:linear-gradient(90deg,transparent,#fff,transparent);box-shadow:0 0 18px #9EDBFF;animation:scanline 3.2s ease-in-out infinite}
+.jar i{position:absolute;left:0;right:0;height:2px;top:20%;z-index:1;background:linear-gradient(90deg,transparent,#fff,transparent);box-shadow:0 0 18px #CDBEE0;animation:scanline 3.2s ease-in-out infinite}
 @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
 @keyframes scanline{0%,100%{top:16%}50%{top:82%}}
 .tools{position:relative;display:grid;gap:10px;margin-top:20px}
@@ -78,7 +78,7 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 .tool b{display:block;font-size:16px;font-weight:700}
 .tool small{display:block;color:var(--mute);font-size:12.5px;line-height:1.55}
 .tool i{font-style:normal;color:var(--soft);font-family:var(--latin);font-size:18px}
-.tool.first{background:#111216;color:#fff;border-color:#111216}
+.tool.first{background:linear-gradient(140deg,#8C7898,#5E5066);color:#fff;border-color:#7B6886}
 .tool.first small{color:rgba(255,255,255,.62)}
 .tool.first .ic{background:var(--holo-strong)}
 .tool.first i{color:rgba(255,255,255,.6)}
@@ -102,10 +102,10 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 .opts{display:grid;gap:9px}
 .opt{display:block;width:100%;text-align:left;padding:15px 18px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.85);cursor:pointer;font-size:15px;line-height:1.55;transition:transform .12s,border-color .2s,background .2s}
 .opt:active{transform:scale(.985)}
-.opt.on{border-color:var(--ink);background:var(--ink);color:#fff}
+.opt.on{border-color:var(--violet);background:var(--violet);color:#fff}
 .age-pick{padding:24px;text-align:center}
 .age-pick output{display:block;font-family:var(--latin);font-weight:300;font-size:72px;line-height:1}
-.age-pick input{width:100%;accent-color:var(--ink);margin:16px 0 4px}
+.age-pick input{width:100%;accent-color:var(--violet);margin:16px 0 4px}
 .qnav{display:flex;justify-content:space-between;margin-top:18px}
 .qnav button{border:0;background:none;color:var(--mute);cursor:pointer;font-size:14px;padding:6px 0}
 
@@ -134,7 +134,7 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 .meter .tr i{display:block;height:100%;border-radius:99px;background:var(--holo-strong)}
 .meter small{display:block;color:var(--mute);font-size:12.5px;margin-top:3px;line-height:1.6}
 .score{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;text-align:left;margin-bottom:16px}
-.score .ring{width:104px;height:104px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#7A6BFF var(--p),#ECEEF5 0)}
+.score .ring{width:104px;height:104px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#8C7898 0,#B89A72 var(--p),#EAE4ED 0)}
 .score .ring span{width:84px;height:84px;border-radius:50%;display:grid;place-content:center;background:#fff;text-align:center}
 .score .ring b{font-family:var(--latin);font-size:30px;font-weight:300;line-height:1}
 .score .ring small{font-family:var(--latin);font-size:9px;font-weight:800;letter-spacing:.2em;color:var(--soft)}
@@ -145,26 +145,26 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 .disclaim{position:relative;margin-top:18px;font-size:11.5px;color:var(--soft);line-height:1.75;text-align:center}
 
 /* 拍照 */
-.cam{position:relative;margin-top:16px;border-radius:26px;overflow:hidden;background:#0F1016;aspect-ratio:3/4}
+.cam{position:relative;margin-top:16px;border-radius:26px;overflow:hidden;background:#2F2A30;aspect-ratio:3/4}
 .cam video,.cam img.shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .cam video{transform:scaleX(-1)}
-.cam .mask{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 34% 30% at 50% 45%,transparent 98%,rgba(15,16,22,.6) 100%)}
+.cam .mask{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 34% 30% at 50% 45%,transparent 98%,rgba(47,42,48,.6) 100%)}
 .cam .oval{position:absolute;left:16%;right:16%;top:15%;height:60%;border:1.5px solid rgba(255,255,255,.85);border-radius:50%;pointer-events:none;box-shadow:0 0 30px rgba(158,219,255,.35)}
 .cam:before,.cam:after{content:"";position:absolute;z-index:2;width:28px;height:28px;border:2px solid rgba(255,255,255,.9);pointer-events:none}
 .cam:before{left:16px;top:16px;border-right:0;border-bottom:0;border-radius:8px 0 0 0}
 .cam:after{right:16px;bottom:16px;border-left:0;border-top:0;border-radius:0 0 8px 0}
-.cam .sweep{position:absolute;left:0;right:0;height:2px;z-index:2;background:linear-gradient(90deg,transparent,#fff,transparent);box-shadow:0 0 20px #9EDBFF;animation:scanline 2.6s ease-in-out infinite;pointer-events:none}
+.cam .sweep{position:absolute;left:0;right:0;height:2px;z-index:2;background:linear-gradient(90deg,transparent,#fff,transparent);box-shadow:0 0 20px #CDBEE0;animation:scanline 2.6s ease-in-out infinite;pointer-events:none}
 .cam .hint{position:absolute;left:0;right:0;bottom:18px;text-align:center;color:#fff;font-size:13px;text-shadow:0 1px 6px rgba(0,0,0,.5);z-index:2}
-.cam .idle{position:absolute;inset:0;display:grid;place-content:center;gap:10px;padding:24px;text-align:center;color:rgba(255,255,255,.7);background:radial-gradient(circle at 50% 42%,rgba(122,107,255,.35),transparent 60%),#0F1016}
+.cam .idle{position:absolute;inset:0;display:grid;place-content:center;gap:10px;padding:24px;text-align:center;color:rgba(255,255,255,.7);background:radial-gradient(circle at 50% 42%,rgba(140,120,152,.4),transparent 60%),#2F2A30}
 .cam .idle b{font-family:var(--latin);font-size:13px;font-weight:800;letter-spacing:.3em;color:#fff}
-.cam .busy{position:absolute;inset:0;z-index:3;display:grid;place-content:center;gap:8px;text-align:center;background:rgba(15,16,22,.45);color:#fff;font-family:var(--latin);font-size:12px;font-weight:800;letter-spacing:.3em}
+.cam .busy{position:absolute;inset:0;z-index:3;display:grid;place-content:center;gap:8px;text-align:center;background:rgba(47,42,48,.45);color:#fff;font-family:var(--latin);font-size:12px;font-weight:800;letter-spacing:.3em}
 .cam .mesh{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
-.cam .spot{position:absolute;z-index:2;transform:translate(-50%,-50%);border:1.5px solid rgba(255,255,255,.95);border-radius:50%;display:grid;place-items:center;color:#fff;font-size:10px;font-weight:700;background:rgba(122,107,255,.18);text-shadow:0 1px 3px rgba(0,0,0,.5);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(158,219,255,.15)}}
+.cam .spot{position:absolute;z-index:2;transform:translate(-50%,-50%);border:1.5px solid rgba(255,255,255,.95);border-radius:50%;display:grid;place-items:center;color:#fff;font-size:10px;font-weight:700;background:rgba(183,166,194,.28);text-shadow:0 1px 3px rgba(0,0,0,.5);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(183,166,194,.28)}}
 .cam-btns{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
 .tips{margin-top:12px;padding:16px 18px}
 .tips ul{margin:6px 0 0;padding-left:1.1em;font-size:13.5px}
-.privacy{position:relative;display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding:12px 14px;border-radius:14px;background:#EEF7F3;color:#3E6B5C;font-size:12.5px;line-height:1.7}
+.privacy{position:relative;display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding:12px 14px;border-radius:14px;background:#F1EDF3;color:#5F5168;font-size:12.5px;line-height:1.7}
 
 /* 保養 */
 .care{margin-top:10px;padding:0;overflow:hidden}
@@ -179,6 +179,48 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 .care ol li{margin:6px 0}
 .care .k{min-width:62px;font-family:var(--latin);font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 8px;border-radius:9px;background:var(--holo);text-align:center}
 
+/* 自測清單＋臉部圖 */
+.face-wrap{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:start}
+.face{width:120px;position:sticky;top:76px}
+.face svg{width:100%;display:block}
+.face .z{opacity:0;transition:opacity .25s}
+.face .z.on{opacity:1}
+.checks{display:grid;gap:8px}
+.chk{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;padding:12px 13px;border-radius:14px;border:1px solid var(--line);background:rgba(255,253,250,.9);cursor:pointer;text-align:left;width:100%}
+.chk .box{width:22px;height:22px;border-radius:7px;border:1.5px solid var(--soft);display:grid;place-items:center;font-size:13px;color:transparent;margin-top:1px}
+.chk.on{border-color:var(--violet);background:#F6F2F8}
+.chk.on .box{background:var(--violet);border-color:var(--violet);color:#fff}
+.chk b{display:block;font-size:14.5px}
+.chk small{display:block;color:var(--mute);font-size:12px;line-height:1.55}
+.tagx{display:inline-block;margin-left:6px;padding:0 6px;border-radius:5px;font-size:10px;font-weight:700;vertical-align:1px;background:var(--holo);color:var(--violet)}
+.count{font-family:var(--latin);font-weight:300;font-size:64px;line-height:1}
+/* 知識 */
+.life{position:relative;display:grid;gap:0;margin-top:6px}
+.life div{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.life div:first-child{border-top:0}
+.life div.me{background:linear-gradient(90deg,rgba(183,166,194,.28),transparent);border-radius:12px;padding-left:8px;margin-left:-8px}
+.life b{font-family:var(--latin);font-size:18px;font-weight:600;line-height:1.3}
+.life b small{display:block;font-family:var(--sans);font-size:10.5px;color:var(--soft);font-weight:500}
+.life p{margin:0;font-size:13.5px;line-height:1.65}
+.life p em{font-style:normal;display:block;color:var(--violet);font-size:12.5px;margin-top:2px}
+.layers{display:grid;gap:6px;margin-top:6px}
+.layer{display:grid;grid-template-columns:14px 74px 1fr auto;gap:10px;align-items:center;padding:10px 12px;border-radius:13px;background:rgba(255,253,250,.9);border:1px solid var(--line)}
+.layer i{width:14px;height:36px;border-radius:5px}
+.layer b{font-size:14px}
+.layer span{font-size:12.5px;color:var(--mute);line-height:1.5}
+.layer u{text-decoration:none;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:6px;white-space:nowrap}
+.layer u.y{background:#EAE4ED;color:#5F5168}
+.layer u.m{background:#F7F3EE;color:#9A9099}
+.atlas{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.atlas div{padding:12px;border-radius:14px;background:rgba(255,253,250,.9);border:1px solid var(--line)}
+.atlas b{display:block;font-size:14.5px}
+.atlas small{display:block;color:var(--mute);font-size:12px;line-height:1.55;margin-top:2px}
+.atlas em{display:block;font-style:normal;font-size:12px;color:var(--violet);margin-top:5px;line-height:1.5}
+.atlas .sw{display:block;height:34px;border-radius:9px;margin-bottom:8px;overflow:hidden}
+.mini-nav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:14px -20px 0;padding:0 20px 4px}
+.mini-nav a{flex:none;padding:8px 13px;border-radius:11px;border:1px solid var(--line);background:rgba(255,253,250,.9);font-size:13px;font-weight:700}
+.ktitle{display:flex;align-items:baseline;gap:8px;margin:30px 0 4px}
+.ktitle h3{font-size:19px}
 /* 底部導覽 */
 .nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);z-index:30;width:min(460px,100%);display:grid;grid-template-columns:repeat(4,1fr);padding:8px 10px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(246,247,251,.82);backdrop-filter:blur(18px) saturate(1.4);border-top:1px solid var(--line)}
 .nav button{border:0;background:none;display:grid;justify-items:center;gap:2px;font-size:11px;font-weight:700;color:var(--soft);cursor:pointer;padding:4px 0}
@@ -202,8 +244,8 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 <nav class="nav" id="nav" aria-label="主選單">
   <button data-go="home" class="on"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>首頁</button>
   <button data-go="scan"><svg viewBox="0 0 24 24"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3.5"/></svg>拍照測</button>
-  <button data-go="tests"><svg viewBox="0 0 24 24"><path d="M7 4h10v16H7z"/><path d="M10 8h4M10 12h4M10 16h2"/></svg>測驗</button>
-  <button data-go="care"><svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/></svg>保養</button>
+  <button data-go="tests"><svg viewBox="0 0 24 24"><path d="M7 4h10v16H7z"/><path d="M10 8h4M10 12h4M10 16h2"/></svg>自測</button>
+  <button data-go="care"><svg viewBox="0 0 24 24"><path d="M5 5h6a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H5z"/><path d="M19 5h-6a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h6z"/></svg>知識</button>
 </nav>
 
 <script>
@@ -218,7 +260,9 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
   const icon = {
     cam: '<svg viewBox="0 0 24 24"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3.5"/></svg>',
     drop: '<svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg>',
-    clock: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>'
+    clock: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>',
+    face: '<svg viewBox="0 0 24 24"><path d="M12 3c4.5 0 7 3.4 7 8 0 5-3.2 10-7 10s-7-5-7-10c0-4.6 2.5-8 7-8z"/><path d="M9 10.5h.01M15 10.5h.01M10 16c1.2.8 2.8.8 4 0"/></svg>',
+    eye: '<svg viewBox="0 0 24 24"><path d="M2.5 12S6 6 12 6s9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"/><circle cx="12" cy="12" r="2.6"/></svg>'
   };
   const 聯絡鈕 = (文 = '加 LINE 領完整保養建議') => LINE_URL
     ? `<a class="pill line block" href="${LINE_URL}" target="_blank" rel="noopener">${文}</a>`
@@ -228,7 +272,7 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
   function go(name, 參 = {}, 推 = true) {
     if (推) 歷史.push(name);
     app.classList.toggle('inner', !['home', 'tests', 'care', 'scan'].includes(name));
-    document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('on', b.dataset.go === name || (name.startsWith('quiz') && b.dataset.go === 'tests')));
+    document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('on', b.dataset.go === name || ((name.startsWith('quiz') || name.startsWith('result')) && b.dataset.go === 'tests')));
     停相機();
     main.innerHTML = ''; const v = document.createElement('div'); v.className = 'view'; main.append(v);
     views[name](v, 參);
@@ -254,6 +298,14 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
         <button class="tool cream" data-go="quiz-age"><span class="ic">${icon.clock}</span><span><b>我的肌膚年齡</b><small>12 題，看看皮膚比實際年齡大還是小</small></span><i>›</i></button>
       </div>
       <section class="section">
+        <h2>30+ 最多人在測</h2>
+        <p class="lead">對著鏡子勾一勾，1 分鐘就知道</p>
+        <div class="tools" style="margin-top:0">
+          <button class="tool cream" data-go="quiz-old9"><span class="ic">${icon.face}</span><span><b>9 大顯老元兇，妳中了幾條？</b><small>淚溝、法令紋、下顎線…對照臉部圖自己勾</small></span><i>›</i></button>
+          <button class="tool cream" data-go="quiz-eye"><span class="ic">${icon.eye}</span><span><b>眼周年輕度自測</b><small>乾、紋、暗、凹、陷、鬆＋黑眼圈是哪一型</small></span><i>›</i></button>
+        </div>
+      </section>
+      <section class="section">
         <h2>妳最在意的是？</h2>
         <p class="lead">點一個，看溫妮佛的日常保養重點</p>
         <div class="keys">${關心們.map(c => `<button data-care="${c.id}">${c.名}</button>`).join('')}</div>
@@ -273,6 +325,8 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
       <div class="tools">
         <button class="tool cream" data-go="quiz-type"><span class="ic">${icon.drop}</span><span><b>我是哪一種膚質？</b><small>8 題・約 1 分鐘</small></span><i>›</i></button>
         <button class="tool cream" data-go="quiz-age"><span class="ic">${icon.clock}</span><span><b>我的肌膚年齡</b><small>12 題・約 2 分鐘</small></span><i>›</i></button>
+        <button class="tool cream" data-go="quiz-old9"><span class="ic">${icon.face}</span><span><b>9 大顯老元兇，妳中了幾條？</b><small>對照臉部圖自己勾</small></span><i>›</i></button>
+        <button class="tool cream" data-go="quiz-eye"><span class="ic">${icon.eye}</span><span><b>眼周年輕度自測</b><small>6 個眼周老化訊號＋黑眼圈分型</small></span><i>›</i></button>
         <button class="tool cream" data-go="scan"><span class="ic">${icon.cam}</span><span><b>拍照看今天的膚況</b><small>用鏡頭看看透亮度和泛紅</small></span><i>›</i></button>
       </div>`;
     v.querySelectorAll('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
@@ -485,7 +539,7 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
     const 寬 = cam.clientWidth, 高 = cam.clientHeight, 比 = Math.max(寬 / W, 高 / H), 偏x = (W * 比 - 寬) / 2, 偏y = (H * 比 - 高) / 2;
     if (網格) {
       const m = document.createElement('canvas'); m.className = 'mesh'; m.width = 寬 * 2; m.height = 高 * 2; cam.append(m);
-      const mg = m.getContext('2d'); mg.scale(2, 2); mg.fillStyle = 'rgba(220,240,255,.85)'; mg.shadowColor = '#9EDBFF'; mg.shadowBlur = 4;
+      const mg = m.getContext('2d'); mg.scale(2, 2); mg.fillStyle = 'rgba(246,240,250,.92)'; mg.shadowColor = '#B7A6C2'; mg.shadowBlur = 4;
       網格.forEach(([x, y], n) => { if (n % 3) return; mg.beginPath(); mg.arc(x * 比 - 偏x, y * 比 - 偏y, .9, 0, 7); mg.fill(); });
     }
     for (const k of ['額頭', '左頰', '右頰', '鼻子', '下巴']) {
@@ -555,11 +609,11 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
     const 點 = (i, k) => { const a = -Math.PI / 2 + i * 2 * Math.PI / 5; return [150 + Math.cos(a) * 92 * k, 128 + Math.sin(a) * 92 * k]; };
     const 環 = k => 軸.map((_, i) => 點(i, k).join(',')).join(' ');
     const 雷達 = `<svg class="radar" viewBox="0 0 300 262" role="img" aria-label="膚況雷達圖">
-      <defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B9ADFF" stop-opacity=".75"/><stop offset=".5" stop-color="#9EDBFF" stop-opacity=".6"/><stop offset="1" stop-color="#FFB2D0" stop-opacity=".7"/></linearGradient></defs>
-      ${[.25, .5, .75, 1].map(k => `<polygon points="${環(k)}" fill="none" stroke="#E3E5EE" stroke-width="1"/>`).join('')}
-      ${軸.map((_, i) => `<line x1="150" y1="128" x2="${點(i, 1)[0]}" y2="${點(i, 1)[1]}" stroke="#E3E5EE"/>`).join('')}
-      <polygon points="${軸.map(([, v], i) => 點(i, Math.max(.06, v / 100)).join(',')).join(' ')}" fill="url(#rg)" stroke="#7A6BFF" stroke-width="1.5"/>
-      ${軸.map(([k, v], i) => { const [x, y] = 點(i, 1.2); return `<text x="${x}" y="${y + 4}" text-anchor="middle" font-size="12" font-weight="700" fill="#111216">${k} <tspan fill="#7A6BFF" font-family="Manrope">${v}</tspan></text>`; }).join('')}
+      <defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B7A6C2" stop-opacity=".75"/><stop offset=".5" stop-color="#EAE4ED" stop-opacity=".6"/><stop offset="1" stop-color="#DCCBAE" stop-opacity=".7"/></linearGradient></defs>
+      ${[.25, .5, .75, 1].map(k => `<polygon points="${環(k)}" fill="none" stroke="#E6E0E8" stroke-width="1"/>`).join('')}
+      ${軸.map((_, i) => `<line x1="150" y1="128" x2="${點(i, 1)[0]}" y2="${點(i, 1)[1]}" stroke="#E6E0E8"/>`).join('')}
+      <polygon points="${軸.map(([, v], i) => 點(i, Math.max(.06, v / 100)).join(',')).join(' ')}" fill="url(#rg)" stroke="#8C7898" stroke-width="1.5"/>
+      ${軸.map(([k, v], i) => { const [x, y] = 點(i, 1.2); return `<text x="${x}" y="${y + 4}" text-anchor="middle" font-size="12" font-weight="700" fill="#3A3435">${k} <tspan fill="#8C7898" font-family="Manrope">${v}</tspan></text>`; }).join('')}
     </svg>`;
     box.innerHTML = `<div class="result cream" style="text-align:left">
         <span class="eyebrow">Today's skin</span>
@@ -580,6 +634,122 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
     box.scrollIntoView({ behavior: 'smooth' });
   }
 
+  // ═════════════ 9 大顯老元兇 ═════════════
+  const 臉圖 = (畫) => `<svg viewBox="0 0 200 250" aria-hidden="true">
+      <path d="M100 22c40 0 66 30 66 78 0 52-28 106-66 112-38-6-66-60-66-112 0-48 26-78 66-78z" fill="#FFFFFF" stroke="#CFC3D3" stroke-width="1.6"/>
+      <path d="M78 214v26M122 214v26" stroke="#CFC3D3" stroke-width="1.6" fill="none"/>
+      <path d="M58 100q14-9 28 0M114 100q14-9 28 0" fill="none" stroke="#7A6E7A" stroke-width="2" stroke-linecap="round"/>
+      <path d="M100 112v28q-6 4-2 7h6" fill="none" stroke="#CFC3D3" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M84 172q16 9 32 0" fill="none" stroke="#C99A8A" stroke-width="2.2" stroke-linecap="round"/>
+      <g fill="rgba(140,120,152,.32)" stroke="#8C7898" stroke-width="1.2">${畫}</g>
+    </svg>`;
+  const 顯老 = [
+    { id: 'lid', 名: '上眼瞼下垂', 看: '眼皮蓋住雙眼皮摺痕，眼睛看起來變小', 建: '卸眼妝輕一點、不要用力揉眼；明顯影響視線可以諮詢眼科或整形外科醫師', 結: 1, z: '<ellipse cx="72" cy="96" rx="16" ry="6"/><ellipse cx="128" cy="96" rx="16" ry="6"/>' },
+    { id: 'tear', 名: '淚溝', 看: '眼頭下方往外斜的凹陷，看起來很累', 建: '睡飽、少吃太鹹減少浮腫；遮瑕可以修飾 ~ 這是結構問題，保養品幫助有限', 結: 1, z: '<ellipse cx="80" cy="117" rx="11" ry="4" transform="rotate(-25 80 117)"/><ellipse cx="120" cy="117" rx="11" ry="4" transform="rotate(25 120 117)"/>' },
+    { id: 'indian', 名: '印第安紋', 看: '從淚溝延伸到臉頰中間的斜線', 建: '臉部按摩放鬆、加強保濕；很明顯的可以諮詢專業醫師', 結: 1, z: '<ellipse cx="66" cy="134" rx="15" ry="4" transform="rotate(-38 66 134)"/><ellipse cx="134" cy="134" rx="15" ry="4" transform="rotate(38 134 134)"/>' },
+    { id: 'apple', 名: '蘋果肌下垂', 看: '笑起來最高的地方，位置往下掉了', 建: '由下往上的提拉按摩、每天防曬', z: '<ellipse cx="68" cy="146" rx="14" ry="10"/><ellipse cx="132" cy="146" rx="14" ry="10"/>' },
+    { id: 'nlf', 名: '法令紋', 看: '鼻翼兩側延伸到嘴角的紋路', 建: '保濕、先放鬆周圍再按摩，不要直接用力推；少側睡壓臉', z: '<ellipse cx="84" cy="158" rx="4" ry="15" transform="rotate(22 84 158)"/><ellipse cx="116" cy="158" rx="4" ry="15" transform="rotate(-22 116 158)"/>' },
+    { id: 'jowl', 名: '口角囊袋', 看: '嘴角下方鼓起一小團，看起來在嘟嘴', 建: '沿著下顎線往耳朵方向按摩、少低頭', z: '<ellipse cx="84" cy="188" rx="8" ry="7"/><ellipse cx="116" cy="188" rx="8" ry="7"/>' },
+    { id: 'hollow', 名: '面頰凹陷', 看: '顴骨下方凹下去，臉看起來比較瘦削', 建: '不要過度節食，營養均衡；凹陷明顯可以諮詢專業醫師', 結: 1, z: '<ellipse cx="46" cy="150" rx="9" ry="15"/><ellipse cx="154" cy="150" rx="9" ry="15"/>' },
+    { id: 'jaw', 名: '下顎線模糊', 看: '側臉下巴的輪廓線不清楚', 建: '用指節沿著下顎線往耳下推，每天早晚各 10 次', z: '<path d="M38 150q12 52 62 64q50-12 62-64" fill="none" stroke-width="7" stroke="rgba(140,120,152,.5)"/>' },
+    { id: 'chin', 名: '雙下巴', 看: '低頭或正面看，下巴下面多一層', 建: '抬頭挺胸、少低頭滑手機；舌頭頂上顎的小練習', z: '<ellipse cx="100" cy="224" rx="26" ry="8"/>' },
+  ];
+  views['quiz-old9'] = v => {
+    const 選 = new Set();
+    v.innerHTML = `<div class="quiz-head"><span class="eyebrow">Aging signs</span><h2>9 大顯老元兇<br>妳中了幾條？</h2><p class="lead">拿一面鏡子，在自然光下對照 ~ 有的就勾起來</p></div>
+      <div class="face-wrap"><div class="face" id="face">${臉圖(顯老.map(x => `<g class="z" data-z="${x.id}">${x.z}</g>`).join(''))}</div>
+      <div class="checks">${顯老.map(x => `<button class="chk" data-id="${x.id}"><span class="box">✓</span><span><b>${x.名}${x.結 ? '<span class="tagx">結構</span>' : ''}</b><small>${x.看}</small></span></button>`).join('')}</div></div>
+      <button class="pill block" id="done" style="margin-top:18px">看結果</button>`;
+    v.querySelectorAll('.chk').forEach(b => b.onclick = () => {
+      const id = b.dataset.id; 選.has(id) ? 選.delete(id) : 選.add(id);
+      b.classList.toggle('on', 選.has(id)); v.querySelector(`[data-z="${id}"]`).classList.toggle('on', 選.has(id));
+    });
+    v.querySelector('#done').onclick = () => go('result-old9', { 選: [...選] }, false);
+  };
+  views['result-old9'] = (v, { 選 }) => {
+    const 中 = 顯老.filter(x => 選.includes(x.id)), n = 中.length;
+    const 標 = n <= 2 ? '還很年輕，繼續保持' : n <= 5 ? '老化訊號開始出現了' : '是時候積極照顧了';
+    v.innerHTML = `<div class="result cream">
+        <span class="eyebrow">Your result</span>
+        <div class="count" style="margin-top:12px">${n}<small style="font-family:var(--sans);font-size:18px;font-weight:700"> / 9 條</small></div>
+        <h2 style="margin-top:8px">${標}</h2>
+        <div class="face" style="position:static;width:150px;margin:14px auto 0">${臉圖(中.map(x => `<g>${x.z}</g>`).join(''))}</div>
+      </div>
+      ${n ? `<div class="blk cream"><h3>妳中的這幾條，可以這樣照顧</h3><ul>${中.map(x => `<li><b>${x.名}</b> ~ ${x.建}</li>`).join('')}</ul></div>` : '<div class="blk cream"><h3>太棒了</h3><p class="small">一條都沒中 ~ 每天防曬和保濕，就是最好的凍齡保養</p></div>'}
+      ${中.some(x => x.結) ? '<div class="blk cream"><h3>什麼是「結構」問題？</h3><p class="small" style="font-size:13px">淚溝、凹陷這類，是皮膚底下的脂肪和骨頭支撐慢慢改變造成的 ~ 保養品主要照顧皮膚表面，這類問題能做的是作息、按摩和修飾，想更明顯改善可以諮詢專業醫師</p></div>' : ''}
+      <div class="cta cream"><h3>想要一份針對妳的保養菜單？</h3><p>把結果截圖傳給溫妮佛，告訴妳先從哪裡開始</p>${聯絡鈕('加 LINE 問溫妮佛')}</div>
+      <p class="disclaim">這是自我觀察的參考，不是醫療診斷 ~ 有疑問請找皮膚科或專業醫師</p>`;
+  };
+
+  // ═════════════ 眼周年輕度 ═════════════
+  const 眼周 = [
+    { id: '乾', 名: '乾燥缺水', 看: '眼周緊繃、上妝容易卡粉', 建: '眼周用專用的眼霜，早晚都擦，用無名指輕點' },
+    { id: '紋', 名: '乾紋細紋', 看: '笑或不笑都看得到細細的紋路', 建: '保濕是第一步，擦眼霜時不要拉扯皮膚' },
+    { id: '暗', 名: '黑眼圈', 看: '眼下看起來黑黑的、有陰影', 建: '下面幫妳判斷是哪一型，照顧方式不一樣' },
+    { id: '凹', 名: '淚溝', 看: '眼頭下方往外斜的凹痕', 建: '睡飽減少浮腫，遮瑕修飾；這是結構問題' },
+    { id: '陷', 名: '眼窩凹陷', 看: '上眼皮凹下去，眼睛看起來很累', 建: '作息規律、不要過度節食；明顯的可以諮詢專業醫師' },
+    { id: '鬆', 名: '眼皮鬆弛', 看: '眼尾往下垂，眼皮有點蓋住眼睛', 建: '卸妝輕柔、不揉眼睛，每天防曬' },
+  ];
+  views['quiz-eye'] = v => {
+    const 選 = new Set();
+    v.innerHTML = `<div class="quiz-head"><span class="eyebrow">Eye check</span><h2>眼周年輕度自測</h2><p class="lead">眼睛是最早透露年齡的地方 ~ 對著鏡子，有的就勾</p></div>
+      <div class="checks">${眼周.map(x => `<button class="chk" data-id="${x.id}"><span class="box">✓</span><span><b>${x.名}</b><small>${x.看}</small></span></button>`).join('')}</div>
+      <button class="pill block" id="done" style="margin-top:18px">下一步</button>`;
+    v.querySelectorAll('.chk').forEach(b => b.onclick = () => { const id = b.dataset.id; 選.has(id) ? 選.delete(id) : 選.add(id); b.classList.toggle('on', 選.has(id)); });
+    v.querySelector('#done').onclick = () => 選.has('暗') ? 黑眼圈(v, [...選]) : go('result-eye', { 選: [...選] }, false);
+  };
+  function 黑眼圈(v, 選) {
+    const 型 = {};
+    const 題 = [
+      { k: 'pull', q: '用手指把眼下的皮膚輕輕往外拉，黑眼圈的顏色？', a: [['變淡了，原本偏青紫色', '血管型'], ['沒什麼變，是咖啡色', '色素型'], ['說不上來', '']] },
+      { k: 'light', q: '抬起頭、臉朝上對著燈，黑眼圈？', a: [['陰影變淡或不見了', '結構型'], ['還是一樣', '']] },
+    ];
+    let i = 0;
+    const 畫 = () => {
+      const q = 題[i];
+      v.innerHTML = `<div class="quiz-head"><span class="eyebrow">Dark circles</span><h2>妳的黑眼圈是哪一型？</h2></div>
+        <div class="bar"><i style="width:${i * 50}%"></i></div><p class="q">${q.q}</p><div class="opts">${q.a.map((a, k) => `<button class="opt" data-k="${k}">${a[0]}</button>`).join('')}</div>`;
+      v.querySelectorAll('.opt').forEach(b => b.onclick = () => { const t = q.a[+b.dataset.k][1]; if (t) 型[t] = 1; if (++i < 題.length) 畫(); else go('result-eye', { 選, 型: Object.keys(型) }, false); });
+    };
+    畫();
+  }
+  const 黑眼圈說明 = {
+    血管型: { 看: '偏青紫色，熬夜後特別明顯', 建: '睡飽是關鍵；早上可以冷敷、輕輕按摩眼周幫助循環' },
+    色素型: { 看: '偏咖啡色，拉開皮膚顏色也不會變', 建: '眼周也要擦防曬、不要揉眼睛、卸眼妝要溫和' },
+    結構型: { 看: '是眼下凹陷造成的陰影', 建: '遮瑕選比膚色亮一點的修飾；保養品幫助有限，可以諮詢專業醫師' },
+  };
+  views['result-eye'] = (v, { 選, 型 = [] }) => {
+    const 中 = 眼周.filter(x => 選.includes(x.id)), 分 = Math.max(10, 100 - 中.length * 15);
+    v.innerHTML = `<div class="result cream">
+        <span class="eyebrow">Eye youth score</span>
+        <div class="score" style="justify-content:center;grid-template-columns:auto;margin:14px 0 0"><div class="ring" style="--p:${分}%;margin:0 auto"><span><b>${分}</b><small>SCORE</small></span></div></div>
+        <h2 style="margin-top:10px">${分 >= 85 ? '眼周很年輕' : 分 >= 55 ? '眼周開始需要照顧' : '眼周要多花一點心思了'}</h2>
+        <p>勾了 ${中.length} 項：${中.map(x => x.名).join('、') || '都沒有'}</p>
+      </div>
+      ${型.length ? `<div class="blk cream"><h3>妳的黑眼圈：${型.join(' ＋ ')}</h3><ul>${型.map(t => `<li><b>${t}</b> ~ ${黑眼圈說明[t].看}<br>${黑眼圈說明[t].建}</li>`).join('')}</ul></div>` : ''}
+      ${中.filter(x => x.id !== '暗').length ? `<div class="blk cream"><h3>可以這樣照顧</h3><ul>${中.filter(x => x.id !== '暗').map(x => `<li><b>${x.名}</b> ~ ${x.建}</li>`).join('')}</ul></div>` : ''}
+      <div class="cta cream"><h3>想學溫妮佛的眼周按摩？</h3><p>每天 1 分鐘，手法對了才不會越按越鬆</p>${聯絡鈕('加 LINE 領眼周保養菜單')}</div>
+      <p class="disclaim">這是自我觀察的參考，不是醫療診斷 ~ 眼睛有不舒服請找眼科醫師</p>`;
+  };
+
+  // 膚況圖鑑的手繪紋理（用亂數種子固定，每次畫一樣）
+  function 紋理(n) {
+    let seed = [...n].reduce((a, c) => a + c.charCodeAt(0), 0);
+    const r = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+    const 點 = (k, f) => Array.from({ length: k }, () => f(r() * 150, r() * 44)).join('');
+    const 底 = '<rect width="150" height="44" fill="#F3E3D6"/>';
+    const 圖 = {
+      缺水: 點(16, (x, y) => `<path d="M${x} ${y}l9 3" stroke="#C9A896" stroke-width=".8"/>`) + 點(18, (x, y) => `<circle cx="${x}" cy="${y}" r=".9" fill="#C9A896"/>`),
+      出油: 點(26, (x, y) => `<circle cx="${x}" cy="${y}" r="1.9" fill="#B9937A"/>`) + '<ellipse cx="95" cy="16" rx="34" ry="8" fill="#fff" opacity=".55"/>',
+      老化毛孔: 點(24, (x, y) => `<ellipse cx="${x}" cy="${y}" rx=".9" ry="2.6" transform="rotate(-25 ${x} ${y})" fill="#B9937A"/>`),
+      角質厚: 點(70, (x, y) => `<circle cx="${x}" cy="${y}" r="${.5 + r()}" fill="#B9A08A" opacity=".7"/>`),
+      乾燥脫皮: 點(14, (x, y) => `<path d="M${x} ${y}l5 -2 3 4 -6 1z" fill="#FFFDF8" stroke="#D8C2B2" stroke-width=".5"/>`),
+      閉口: 點(18, (x, y) => `<circle cx="${x}" cy="${y}" r="2.6" fill="#F8EAE0" stroke="#D9BBA8" stroke-width=".6"/>`),
+      粉刺: 點(22, (x, y) => `<circle cx="${x}" cy="${y}" r="1.4" fill="${r() > .5 ? '#5B4636' : '#FFF8EE'}" stroke="#C4A28C" stroke-width=".4"/>`),
+      細毛: 點(26, (x, y) => `<path d="M${x} ${y}q2 -3 5 -4" stroke="#CDB4A0" stroke-width=".6" fill="none"/>`),
+    };
+    return `<svg viewBox="0 0 150 44" preserveAspectRatio="xMidYMid slice" width="100%" height="34" aria-hidden="true">${底}${圖[n] || ''}</svg>`;
+  }
   // ═════════════ 保養 ═════════════
   const 關心們 = [
     { id: 'firm', 名: '緊緻', 英: 'Firming', 說: '皮膚摸起來有彈性、不鬆垮', 招: ['保濕是緊緻的基礎，水分足皮膚才撐得起來', '每天早上 3 分鐘臉部按摩，從下巴往耳朵方向推', '睡覺時盡量平躺，減少側睡壓臉', '防曬每天擦，紫外線會讓皮膚失去彈性'] },
@@ -589,10 +759,39 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
     { id: 'moist', 名: '保濕', 英: 'Hydration', 說: '所有保養的第一步', 招: ['洗完臉 3 分鐘內就擦化妝水，不要等到緊繃', '化妝水之後一定要用乳液或乳霜把水分鎖住', '冷氣房裡放一瓶保濕噴霧', '一天喝 2000cc 的水，從身體裡面補'] },
   ];
   views.care = (v, 參 = {}) => {
-    v.innerHTML = `<div class="quiz-head"><span class="eyebrow">Daily care</span><h2>溫妮佛的養美重點</h2><p class="lead">30+ 女生最在意的五件事，每天做一點點</p></div>
+    v.innerHTML = `<div class="quiz-head"><span class="eyebrow">Skin knowledge</span><h2>看懂皮膚，再開始保養</h2><p class="lead">30+ 女生最常問的，一次整理給妳</p></div>
+      <nav class="mini-nav"><a href="#k-life">皮膚的一生</a><a href="#k-layer">老化 6 層</a><a href="#k-atlas">膚況圖鑑</a><a href="#k-dark">黑眼圈 3 型</a><a href="#k-care">保養重點</a></nav>
+
+      <div class="ktitle" id="k-life"><h3>皮膚的一生</h3><span class="small">每個年紀，重點不一樣</span></div>
+      <div class="life cream" style="padding:6px 16px">
+        <div><b>20–25<small>歲</small></b><p>油脂旺盛，容易長痘<em>清潔做對、開始養成防曬</em></p></div>
+        <div><b>26–30<small>歲</small></b><p>膠原蛋白開始慢慢流失，但還看不太出來<em>保濕和防曬是最划算的投資</em></p></div>
+        <div class="me"><b>31–40<small>歲</small></b><p>細紋、暗沉、毛孔變明顯，第一條法令紋出現<em>加入抗老保養、臉部按摩、作息規律</em></p></div>
+        <div><b>41–50<small>歲</small></b><p>鬆弛、斑點、輪廓開始往下走<em>加強保濕修護、提拉手法、定期諮詢專業</em></p></div>
+        <div><b>50+<small>歲</small></b><p>皮膚變薄、變乾<em>溫和、修護、補水比什麼都重要</em></p></div>
+      </div>
+
+      <div class="ktitle" id="k-layer"><h3>老化不只在皮膚表面</h3></div>
+      <p class="small" style="margin:0 0 8px">臉的老化有 6 層，由外到內 ~ 保養品主要照顧的是最外面兩層</p>
+      <div class="layers">
+        ${[['#F6E3D6', '表皮層', '暗沉、粗糙', 'y', '保養照顧得到'], ['#EFC9BE', '真皮層', '細紋、鬆弛', 'y', '保養照顧得到'], ['#F3DDA9', '脂肪層', '凹陷、往下移', 'm', '作息、飲食'], ['#E9E1D6', '筋膜層', '組織下垂', 'm', '按摩、姿勢'], ['#D9A08F', '肌肉層', '表情紋加深', 'm', '按摩放鬆'], ['#E8DCC4', '骨骼層', '支撐變弱', 'm', '專業醫療']].map(([c, n, t, k, w]) => `<div class="layer"><i style="background:${c}"></i><b>${n}</b><span>${t}</span><u class="${k}">${w}</u></div>`).join('')}
+      </div>
+
+      <div class="ktitle" id="k-atlas"><h3>膚況圖鑑</h3><span class="small">先分清楚，才不會保養錯</span></div>
+      <div class="atlas">
+        ${[['缺水', '細紋多、緊繃，毛孔看起來乾乾的', '化妝水後一定要鎖水'], ['出油', '毛孔圓圓大大、整臉油亮', '清爽保濕，不要過度清潔'], ['老化毛孔', '毛孔變成長長的水滴狀', '保濕＋防曬，加強彈性'], ['角質厚', '摸起來粗粗的、暗暗的', '每週一次溫和代謝角質'], ['乾燥脫皮', '看得到小小的白屑', '溫和清潔、加強乳霜'], ['閉口', '膚色的小凸起，摸得到', '不要擠，清潔和保濕做好'], ['粉刺', '黑頭、白頭，鼻子最多', '定期清潔，不要用力摳'], ['細毛', '臉上細細的毛，光線下看得到', '正常的，不用特別處理']].map(([n, t, w]) => `<div><span class="sw">${紋理(n)}</span><b>${n}</b><small>${t}</small><em>${w}</em></div>`).join('')}
+      </div>
+
+      <div class="ktitle" id="k-dark"><h3>黑眼圈有 3 型</h3></div>
+      <div class="blk cream" style="margin-top:6px"><ul>${Object.entries(黑眼圈說明).map(([k, x]) => `<li><b>${k}</b> ~ ${x.看}<br><span class="small">${x.建}</span></li>`).join('')}</ul>
+        <button class="pill ghost block" data-go="quiz-eye" style="margin-top:12px">測測看我是哪一型</button></div>
+
+      <div class="ktitle" id="k-care"><h3>溫妮佛的養美重點</h3><span class="small">每天做一點點</span></div>
       ${關心們.map(c => `<details class="care cream" id="care-${c.id}" ${參.open === c.id ? 'open' : ''}><summary><span class="k">${c.英}</span><span><b>${c.名}</b><small>${c.說}</small></span><i>＋</i></summary><div class="body"><ol>${c.招.map(x => `<li>${x}</li>`).join('')}</ol></div></details>`).join('')}
       <div class="cta cream"><h3>想看溫妮佛示範？</h3><p>臉部按摩、法令紋、提拉手法，IG 上都有影片</p><a class="pill ghost block" href="${IG_URL}" target="_blank" rel="noopener">看溫妮佛的按摩影片</a><div style="height:10px"></div>${LINE_URL ? 聯絡鈕('加 LINE 問保養問題') : ''}</div>
       <p class="disclaim">以上是日常保養分享，不是醫療建議 ~ 有皮膚問題請找皮膚科醫師</p>`;
+    v.querySelectorAll('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
+    v.querySelectorAll('.mini-nav a').forEach(a => a.onclick = e => { e.preventDefault(); document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth', block: 'start' }); });
     if (參.open) setTimeout(() => document.getElementById('care-' + 參.open)?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
   };
 
