@@ -265,6 +265,25 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 .layer-hero span{position:absolute;font-size:10.5px;font-weight:800;color:#3A3435;background:rgba(255,255,255,.88);padding:2px 7px;border-radius:7px;white-space:nowrap}
 .atlas .sw.pic{height:auto;aspect-ratio:1}
 .atlas .sw.pic img{width:100%;height:100%;object-fit:cover;display:block}
+/* 溫妮佛懶人包 */
+.guides{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;margin:10px 0 0;padding:0 0 6px;scroll-snap-type:x mandatory}
+.club{position:relative;overflow:hidden;padding:22px 20px;border-radius:24px;background:linear-gradient(140deg,#8C7898,#5E5066);color:#fff;box-shadow:0 14px 30px rgba(94,80,102,.25)}
+.club:after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,#DCCBAE,transparent 70%);opacity:.45}
+.club .eyebrow{color:#EAE4ED}
+.club h3{font-size:21px;margin:8px 0 6px}
+.club p{margin:0 0 14px;font-size:13.5px;line-height:1.75;color:rgba(255,255,255,.85)}
+.club ul{list-style:none;padding:0;margin:0 0 16px;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.club li{font-size:12.5px;padding:7px 10px;border-radius:10px;background:rgba(255,255,255,.12)}
+.club a{position:relative;z-index:1;display:flex;justify-content:center;padding:14px;border-radius:16px;background:#fff;color:#5E5066;font-weight:800;font-size:15px}
+.guide{flex:none;width:62%;scroll-snap-align:start;border:0;padding:0;background:none;text-align:left;cursor:pointer}
+.guide img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top;border-radius:18px;display:block;box-shadow:var(--card)}
+.guide b{display:block;font-size:14.5px;margin-top:8px}
+.guide small{display:block;font-size:12px;color:var(--mute)}
+.guide-full{margin-top:12px}
+.guide-full img{width:100%;border-radius:18px;display:block;box-shadow:var(--card);cursor:zoom-in}
+.lightbox{position:fixed;inset:0;z-index:60;background:rgba(30,26,28,.92);overflow:auto;padding:calc(54px + env(safe-area-inset-top,0px)) 0 30px}
+.lightbox img{display:block;width:100%;max-width:600px;margin:0 auto}
+.lightbox button{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:14px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;font-size:20px;cursor:pointer}
 /* 底部導覽 */
 .nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);z-index:30;width:min(460px,100%);display:grid;grid-template-columns:repeat(4,1fr);padding:8px 10px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(246,247,251,.82);backdrop-filter:blur(18px) saturate(1.4);border-top:1px solid var(--line)}
 .nav button{border:0;background:none;display:grid;justify-items:center;gap:2px;font-size:11px;font-weight:700;color:var(--soft);cursor:pointer;padding:4px 0}
@@ -299,6 +318,8 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
   // 第一屏的生活照：放好圖片檔後填檔名（例如 'winnifer-hero.jpg'） 沒有的話會顯示奶油白光影
   const HERO_PHOTO = 'winnifer-hero.jpg';
   const IG_URL = 'https://www.instagram.com/hiwinnifer';
+  const CLUB_URL = 'https://line.me/ti/g2/dFjKnAevaCbaGmXJ9-v2DKw4PB0bJY8LI-5yBw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default';
+  const 社群卡 = () => `<div class="club"><span class="eyebrow">Winnifer's club</span><h3>養美凍齡溫室 🌿</h3><p>一群 30+ 想把自己養漂亮的女生<br>每天一起打卡保養 互相提醒</p><ul><li>保養問題直接問</li><li>按摩手法示範</li><li>每週養美小任務</li><li>好物優先分享</li></ul><a href="${CLUB_URL}" target="_blank" rel="noopener">加入養美凍齡溫室 →</a></div>`;
   const $ = s => document.querySelector(s);
   const main = $('#main'), app = $('#app');
   let 歷史 = [];
@@ -353,6 +374,12 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
         <button data-go="life"><span class="n">03</span><b>生活養美</b><small>Life</small><i>氣色・睡眠・一日作息</i></button>
       </div>
 
+      <section class="section">
+        <h2>溫妮佛的養美懶人包</h2>
+        <p class="lead">點開看大圖 可以截圖收藏</p>
+        ${懶人包列('g-home')}
+      </section>
+      <section class="section">${社群卡()}</section>
       <section class="section">
         <h2>30+ 最多人在測</h2>
         <p class="lead">對著鏡子勾一勾 1 分鐘就知道</p>
@@ -446,6 +473,8 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
         <div><b>22:00</b><p>卸妝、保養、臉部按摩<em>3 分鐘由下往上提拉</em></p></div>
         <div class="me"><b>23:30</b><p>放下手機 準備睡覺<em>睡滿 7 小時 是最便宜的保養品</em></p></div>
       </div>
+      <div class="guide-full"><img src="img/guide-1.jpg" alt="女生養脾胃 氣色真的差很多" data-g="1" loading="lazy"></div>
+      <div class="guide-full"><img src="img/guide-2.jpg" alt="想要好氣色 我不只養身體" data-g="2" loading="lazy"></div>
       <div class="ktitle"><h3>好氣色的 5 個習慣</h3></div>
       <div class="atlas">
         ${[['睡得好', '12 點前睡、睡滿 7 小時'], ['喝夠水', '一天 2000cc 小口慢慢喝'], ['少糖', '甜食和含糖飲料 是讓皮膚變老的推手'], ['動一動', '每週 3 次讓自己流點汗'], ['心情好', '每天留 10 分鐘給自己']].map(([n, t]) => `<div><b>${n}</b><small>${t}</small></div>`).join('')}
@@ -770,6 +799,22 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
     box.scrollIntoView({ behavior: 'smooth' });
   }
 
+  // ═════════════ 溫妮佛懶人包 ═════════════
+  const 懶人包 = [
+    { 圖: 1, 名: '女生養脾胃 氣色真的差很多', 小: '日常先做好這 5 件事' },
+    { 圖: 2, 名: '想要好氣色 我不只養身體', 小: '內養＋外養 睡前習慣' },
+    { 圖: 3, 名: '每天 5 分鐘輪廓按摩', 小: '5 個動作在家跟著按' },
+    { 圖: 4, 名: '法令紋保養懶人包', 小: '按摩方向和日常重點' },
+  ];
+  function 懶人包列(id) { return `<div class="guides" id="${id}">${懶人包.map(g => `<button class="guide" data-g="${g.圖}"><img src="img/guide-${g.圖}-cover.jpg" alt="${g.名}" loading="lazy"><b>${g.名}</b><small>${g.小}</small></button>`).join('')}</div>`; }
+  function 看大圖(n) {
+    const d = document.createElement('div'); d.className = 'lightbox';
+    d.innerHTML = `<button aria-label="關閉">×</button><img src="img/guide-${n}.jpg" alt="">`;
+    d.onclick = e => { if (e.target === d || e.target.tagName === 'BUTTON') d.remove(); };
+    document.body.append(d);
+  }
+  document.addEventListener('click', e => { const g = e.target.closest('[data-g]'); if (g) 看大圖(g.dataset.g); });
+
   // ═════════════ 9 大顯老元兇 ═════════════
   const 臉圖 = (畫) => `<svg viewBox="0 0 200 250" aria-hidden="true">
       <path d="M100 22c40 0 66 30 66 78 0 52-28 106-66 112-38-6-66-60-66-112 0-48 26-78 66-78z" fill="#FFFFFF" stroke="#CFC3D3" stroke-width="1.6"/>
@@ -898,6 +943,8 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
   ];
   views.care = (v, 參 = {}) => {
     v.innerHTML = `<div class="quiz-head"><span class="eyebrow">Skin knowledge</span><h2>看懂皮膚 再開始保養</h2><p class="lead">30+ 女生最常問的 一次整理給妳</p></div>
+      <div class="ktitle" style="margin-top:18px"><h3>溫妮佛的懶人包</h3><span class="small">點開看大圖</span></div>
+      ${懶人包列('g-know')}
       <nav class="mini-nav"><a href="#k-life">皮膚的一生</a><a href="#k-layer">老化 6 層</a><a href="#k-atlas">膚況圖鑑</a><a href="#k-dark">黑眼圈 3 型</a><a href="#k-care">保養重點</a></nav>
 
       <div class="ktitle" id="k-life"><h3>皮膚的一生</h3><span class="small">每個年紀 重點不一樣</span></div>
@@ -928,6 +975,10 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
       <div class="blk cream" style="margin-top:6px"><ul>${Object.entries(黑眼圈說明).map(([k, x]) => `<li><b>${k}</b> ~ ${x.看}<br><span class="small">${x.建}</span></li>`).join('')}</ul>
         <button class="pill ghost block" data-go="quiz-eye" style="margin-top:12px">測測看我是哪一型</button></div>
 
+      <div class="ktitle"><h3>跟著溫妮佛按摩</h3></div>
+      <div class="guide-full"><img src="img/guide-3.jpg" alt="每天 5 分鐘輪廓按摩" data-g="3" loading="lazy"></div>
+      <div class="guide-full"><img src="img/guide-4.jpg" alt="法令紋保養懶人包" data-g="4" loading="lazy"></div>
+      <div class="section" style="margin-top:22px">${社群卡()}</div>
       <div class="ktitle" id="k-care"><h3>溫妮佛的養美重點</h3><span class="small">每天做一點點</span></div>
       ${關心們.map(c => `<details class="care cream" id="care-${c.id}" ${參.open === c.id ? 'open' : ''}><summary><span class="k">${c.英}</span><span><b>${c.名}</b><small>${c.說}</small></span><i>＋</i></summary><div class="body"><ol>${c.招.map(x => `<li>${x}</li>`).join('')}</ol></div></details>`).join('')}
       <div class="cta cream"><h3>想看溫妮佛示範？</h3><p>臉部按摩、法令紋、提拉手法 IG 上都有影片</p><a class="pill ghost block" href="${IG_URL}" target="_blank" rel="noopener">看溫妮佛的按摩影片</a><div style="height:10px"></div>${LINE_URL ? 聯絡鈕('加 LINE 問保養問題') : ''}</div>
