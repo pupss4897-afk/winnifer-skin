@@ -384,6 +384,7 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
   function go(name, 參 = {}, 推 = true) {
     if (推) 歷史.push(name);
     app.classList.toggle('inner', !['home', 'tests', 'care', 'scan', 'shop'].includes(name));
+    if (name.startsWith('good')) document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('on', b.dataset.go === 'shop'));
     app.classList.toggle('is-home', name === 'home');
     document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('on', b.dataset.go === name || (['skin', 'body', 'life'].includes(name) && b.dataset.go === 'home') || ((name.startsWith('quiz') || name.startsWith('result')) && b.dataset.go === 'tests') || (name.startsWith('note') && b.dataset.go === 'care')));
     停相機();
@@ -850,8 +851,8 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 
   // ═════════════ 溫妮佛養美筆記 ═════════════
   const 筆記們 = [
-    { 圖: 1, 頁: 'note-1', 封: 'n1-hero', 名: '女生養脾胃 氣色真的差很多', 小: '日常先做好這 5 件事' },
-    { 圖: 2, 頁: 'note-2', 封: 'n2-hero', 名: '想要好氣色 我不只養身體', 小: '內養＋外養 睡前習慣' },
+    { 圖: 1, 頁: 'note-1', 封: 'w-cafe-cover', 名: '女生養脾胃 氣色真的差很多', 小: '日常先做好這 5 件事' },
+    { 圖: 2, 頁: 'note-2', 封: 'w-cafe-cover', 名: '想要好氣色 我不只養身體', 小: '內養＋外養 睡前習慣' },
     { 圖: 3, 頁: 'note-3', 封: 'n3-2', 名: '每天 5 分鐘輪廓按摩', 小: '5 個動作在家跟著按' },
     { 圖: 4, 頁: 'note-4', 封: 'n4-hero', 名: '法令紋日常保養', 小: '按摩方向和日常重點' },
   ];
@@ -863,12 +864,12 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
       <p class="disclaim">以上是日常保養與生活習慣分享 不是醫療建議 ~ 有身體或皮膚狀況請先詢問醫師</p>`;
   views['note-1'] = v => {
     const 五 = [['三餐規律', '幫助維持消化與能量穩定'], ['蛋白質吃夠', '維持體力 肌肉與日常營養需求'], ['少空腹咖啡 少冰冷刺激', '腸胃敏感的人比較不容易增加不適'], ['飯後走一走', '幫助餐後消化 也增加日常活動量'], ['少熬夜 睡眠顧好', '隔天精神 氣色看起來會差很多']];
-    v.innerHTML = 筆記頭('n1-hero', 'Beauty note 01', '女生養脾胃<br>氣色真的差很多', '從生活小習慣 養出穩定的好氣色') +
+    v.innerHTML = 筆記頭('w-cafe', 'Beauty note 01', '女生養脾胃<br>氣色真的差很多', '從生活小習慣 養出穩定的好氣色') +
       `<div class="ktitle"><h3>日常可以先做好這 5 件事</h3></div><div class="steps">${五.map(([t, d], i) => `<div class="step"><img src="img/n1-${i + 1}.jpg" alt="" loading="lazy"><div><span class="no">0${i + 1}</span><b>${t}</b><p>${d}</p></div></div>`).join('')}</div>
       <div class="quote"><p>「養」不是今天喝一杯補湯就完成<br>而是把 <b>吃飯 睡眠 活動</b><br>慢慢養成習慣</p><span>— WINNIFER</span></div>` + 筆記尾(1);
   };
   views['note-2'] = v => {
-    v.innerHTML = 筆記頭('n2-hero', 'Beauty note 02', '想要好氣色<br>我不只養身體', '內外並行 養出穩定透亮的自己') +
+    v.innerHTML = 筆記頭('w-cafe', 'Beauty note 02', '想要好氣色<br>我不只養身體', '內外並行 養出穩定透亮的自己') +
       `<div class="twin">
         <div><img src="img/n2-in.jpg" alt="" loading="lazy"><small>INNER CARE</small><h3>內養</h3><p class="small" style="margin:0 0 8px">把狀態養回來</p><ul><li>飲食均衡<span>補充身體所需營養</span></li><li>補充足夠水分<span>幫助代謝 維持好狀態</span></li><li>規律睡眠<span>讓氣色與精神更穩定</span></li><li>適度活動 少久坐<span>促進循環 維持代謝</span></li></ul></div>
         <div><img src="img/n2-out.jpg" alt="" loading="lazy"><small>OUTER CARE</small><h3>外養</h3><p class="small" style="margin:0 0 8px">把疲憊感卸下來</p><ul><li>做好清潔＋補水<span>維持肌膚乾淨透亮</span></li><li>精華油加強保濕<span>以油養膚 讓肌膚更柔嫩</span></li><li>睡前 3–5 分鐘臉部按摩<span>幫助放鬆</span></li><li>白天做好防曬<span>減少外在刺激</span></li></ul></div>
@@ -907,10 +908,7 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
   // ═════════════ 選美好物（溫妮佛自己在用的）═════════════
   // 新增商品：在這裡加一筆 圖片放 img/ 資料夾 連結填商品頁或 LINE
   const 好物們 = [
-    { 類: '精華油', 英: 'Face oil', 名: '【待填】按摩精華油', 說: '按摩前一定會用 讓手法更滑順 不拉扯肌膚', 用: '每晚化妝水後取 2–3 滴 搭配 5 分鐘輪廓按摩', 圖: '', 連: '' },
-    { 類: '面膜', 英: 'Mask', 名: '【待填】保濕面膜', 說: '熬夜或換季時的加強保濕', 用: '每週 2–3 次 敷完接著擦乳液把水分鎖住', 圖: '', 連: '' },
-    { 類: '按摩工具', 英: 'Tool', 名: '【待填】臉部按摩滾輪', 說: '手酸的時候用它輔助 力道比較平均', 用: '搭配精華油 由下往上 由內往外輕推', 圖: '', 連: '' },
-    { 類: '防曬', 英: 'Sunscreen', 名: '【待填】日常防曬', 說: '每天出門前的最後一步 陰天也擦', 用: '每 2–3 小時補一次', 圖: '', 連: '' },
+    { 類: '精華油', 英: 'Face oil', 名: 'd\'odeurs 1094 精華油 × 溫潤經絡梳', 說: '每天按摩一定會用 一瓶可以代替精華液 乳液 乳霜的步驟', 用: '洗臉後取 3–5 滴 搭配經絡梳按摩 3 分鐘', 圖: 'do-product.jpg', 頁: 'good-1094' },
   ];
   const 好物圖示 = '<svg viewBox="0 0 48 48"><path d="M20 6h8v6h-8z"/><path d="M17 12h14l2 6v22a2 2 0 0 1-2 2H17a2 2 0 0 1-2-2V18z"/><path d="M15 24h18"/></svg>';
   views.shop = v => {
@@ -920,10 +918,37 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
       <div class="goods" id="goods"></div>
       <div class="cta cream"><h3>不知道哪個適合妳？</h3><p>先做膚質測驗 再告訴溫妮佛妳的結果</p><button class="pill ghost block" data-go="quiz-type">測我的膚質</button><div style="height:10px"></div>${聯絡鈕('加 LINE 問溫妮佛')}</div>
       <p class="disclaim">以上是個人使用分享 每個人膚況不同 使用前請先在耳後試用 ~ 化粧品不能取代醫療</p>`;
-    const 畫 = c => { v.querySelector('#goods').innerHTML = 好物們.filter(x => c === '全部' || x.類 === c).map(x => `<div class="good"><div class="ph">${x.圖 ? `<img src="img/${x.圖}" alt="${x.名}" loading="lazy">` : 好物圖示}</div><div><span class="cat">${x.英}</span><b>${x.名}</b><p>${x.說}</p><div class="how"><b style="display:inline;font-size:12px">我的用法</b> ${x.用}</div><a href="${x.連 || LINE_URL}" target="_blank" rel="noopener">${x.連 ? '看看這個 →' : '私訊溫妮佛 →'}</a></div></div>`).join(''); };
+    const 畫 = c => { v.querySelector('#goods').innerHTML = 好物們.filter(x => c === '全部' || x.類 === c).map(x => `<div class="good"><div class="ph">${x.圖 ? `<img src="img/${x.圖}" alt="${x.名}" loading="lazy">` : 好物圖示}</div><div><span class="cat">${x.英}</span><b>${x.名}</b><p>${x.說}</p><div class="how"><b style="display:inline;font-size:12px">我的用法</b> ${x.用}</div>${x.頁 ? `<a href="#" data-goodpage="${x.頁}">看我怎麼用 →</a>` : `<a href="${LINE_URL}" target="_blank" rel="noopener">私訊溫妮佛 →</a>`}</div></div>`).join(''); };
     v.querySelectorAll('.shop-tabs button').forEach(b => b.onclick = () => { v.querySelectorAll('.shop-tabs button').forEach(x => x.classList.toggle('on', x === b)); 畫(b.dataset.c); });
     v.querySelectorAll('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
+    v.addEventListener('click', e => { const g = e.target.closest('[data-goodpage]'); if (g) { e.preventDefault(); go(g.dataset.goodpage); } });
+    v.querySelector('#goods').insertAdjacentHTML('afterend', '<p class="small" style="text-align:center;margin-top:12px">面膜 按摩工具 防曬 更多愛用品整理中</p>');
     畫('全部');
+  };
+  const 下單網址 = 'https://line.me/R/oaMessage/@211fjpse/?' + encodeURIComponent('我要訂一組 1094 精華油＋溫潤經絡梳（溫妮佛推薦 折扣碼 141534）');
+  views['good-1094'] = v => {
+    v.innerHTML = `<div class="note-hero"><img src="img/do-hero.jpg" alt="d'odeurs 1094 精華油" style="object-position:center 60%"></div>
+      <div class="note-head"><span class="eyebrow">Winnifer's pick · Face oil</span><h2>1094 精華油<br>× 溫潤經絡梳</h2><p>d'odeurs ・ 我每天按摩都會用的那一瓶</p></div>
+      <div class="quote" style="margin-top:18px"><p>保養不用做很多<br><b>一滴油 三分鐘</b><br>把每天的保養變成一種享受</p><span>— WINNIFER</span></div>
+      <div class="ktitle"><h3>為什麼我在用</h3></div>
+      <div class="twin">
+        <div><small>SIMPLE</small><h3>一瓶就夠</h3><p class="small" style="margin:6px 0 0">可以代替精華液 乳液 乳霜的步驟 早上趕時間也不會偷懶</p></div>
+        <div><small>MASSAGE</small><h3>按摩不拉扯</h3><p class="small" style="margin:6px 0 0">質地輕 推得開 搭配經絡梳按摩很滑順 按完不黏膩</p></div>
+      </div>
+      <div class="ktitle"><h3>我的用法 3 步驟</h3></div>
+      <div class="steps">
+        <div class="step"><img src="img/n3-s1.jpg" alt="" loading="lazy"><div><span class="no">01</span><b>淨膚 輕拍</b><p>洗臉後 用化妝水或精露輕拍全臉</p></div></div>
+        <div class="step"><img src="img/n3-s2.jpg" alt="" loading="lazy"><div><span class="no">02</span><b>滴油 按摩</b><p>取 3–5 滴精華油 搭配溫潤經絡梳由下往上 由內往外</p><span class="tm">約 3 分鐘</span></div></div>
+        <div class="step"><img src="img/n3-s3.jpg" alt="" loading="lazy"><div><span class="no">03</span><b>鎖水</b><p>再輕拍一次化妝水 或濕敷 10 分鐘</p></div></div>
+      </div>
+      <div class="ktitle"><h3>裡面有什麼</h3></div>
+      <div class="pics" style="grid-template-columns:repeat(3,1fr)">${[['lotus', '蓮花'], ['pear', '仙人掌籽油'], ['baobab', '猴麵包樹油']].map(([k, t]) => `<figure><img src="img/do-ingr_${k}.jpg" alt="${t}" loading="lazy"><figcaption>${t}</figcaption></figure>`).join('')}</div>
+      <p class="small">以荷荷芭油 向日葵油為基底 加入玫瑰 薰衣草 永久花等多種植物精油的複方配方 配方獲經濟部專利</p>
+      <div class="ktitle"><h3>一瓶還可以這樣用</h3></div>
+      <div class="flow"><div><b>日常保養</b>取代乳液乳霜</div><div><b>妝前</b>底妝加一滴更服貼</div><div><b>局部</b>唇部 手肘乾燥處</div><div><b>髮尾</b>抹一點柔順有光澤</div></div>
+      <div class="good" style="margin-top:18px;grid-template-columns:110px 1fr"><div class="ph" style="width:110px;height:130px"><img src="img/do-product.jpg" alt=""></div><div><span class="cat">The set</span><b>1094 精華油 30mL ＋ 溫潤經絡梳</b><p>市售價 NT$2,770</p><div class="how">溫妮佛專屬折扣碼 <b style="display:inline;color:var(--wine)">141534</b></div><a href="${下單網址}" target="_blank" rel="noopener">加 LINE 下單 →</a></div></div>
+      <div class="blk cream"><h3>使用前看一下</h3><ul><li>含微量羅勒 馬鬱蘭 迷迭香 百里香 丁香精油 <b>蠶豆症患者請勿使用</b></li><li>僅供外用 使用後如有不適請立即停用</li><li>第一次使用先在耳後試 2–3 天</li><li>保存三年 開封後建議半年內用完</li></ul></div>
+      <p class="disclaim">以上是個人使用分享 每個人膚況不同 化粧品不能取代醫療</p>`;
   };
 
   // ═════════════ 9 大顯老元兇 ═════════════
