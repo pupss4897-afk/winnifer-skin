@@ -179,6 +179,32 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 .care ol li{margin:6px 0}
 .care .k{min-width:62px;font-family:var(--latin);font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 8px;border-radius:9px;background:var(--holo);text-align:center}
 
+/* 第一屏 */
+.hero1{position:relative;margin:0 -20px;min-height:min(640px,calc(100svh - 150px));display:flex;align-items:flex-end;overflow:hidden}
+.first-img{position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(247,243,238,0) 40%,rgba(247,243,238,.9) 82%,#F7F3EE 100%),
+  linear-gradient(105deg,transparent 0 30%,rgba(255,255,255,.55) 30% 33%,transparent 33% 46%,rgba(255,255,255,.45) 46% 49%,transparent 49%),
+  radial-gradient(120% 80% at 75% 20%,#FFFFFF 0,#F4EFEA 45%,#E9E1E7 100%)}
+.first-img.has{background:linear-gradient(180deg,rgba(247,243,238,0) 45%,rgba(247,243,238,.92) 85%,#F7F3EE 100%),var(--photo) center/cover no-repeat}
+.first-txt{position:relative;padding:0 24px 30px;width:100%}
+.hero1 h1{font-size:38px;line-height:1.25;font-weight:900;letter-spacing:.02em}
+.hero1 p{margin:12px 0 20px;font-size:14.5px;color:var(--mute);letter-spacing:.06em}
+.hero1 .pill{padding:15px 26px;font-size:15.5px}
+.app.is-home .top{background:rgba(247,243,238,.5)}
+.belief{position:relative;margin:34px 0 0;padding:30px 24px;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.belief p{margin:14px 0 0;font-size:19px;line-height:1.9;font-weight:500;color:var(--ink)}
+.belief p b{font-weight:900;background:linear-gradient(120deg,#8C7898,#B89A72);-webkit-background-clip:text;background-clip:text;color:transparent}
+.belief .sig{display:block;margin-top:12px;font-family:var(--latin);font-size:12px;letter-spacing:.2em;color:var(--soft)}
+.doors{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:22px}
+.doors button{display:grid;justify-items:start;gap:2px;padding:16px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.9);background:linear-gradient(160deg,#FFFFFF,#F1ECF3);box-shadow:var(--card);text-align:left;cursor:pointer;min-height:150px}
+.doors .n{font-family:var(--latin);font-size:11px;font-weight:800;letter-spacing:.2em;color:var(--gold)}
+.doors b{font-size:16px;font-weight:900;margin-top:16px}
+.doors small{font-family:var(--latin);font-size:11px;letter-spacing:.18em;color:var(--violet);text-transform:uppercase}
+.doors i{font-style:normal;font-size:11.5px;line-height:1.5;color:var(--mute);margin-top:8px}
+.doors button:focus-visible{outline:3px solid var(--violet);outline-offset:3px}
+.wall{padding:16px 18px}
+.wall b{font-size:15px}
+.wall p{margin:4px 0 0;font-size:13px;color:var(--mute)}
 /* 自測清單＋臉部圖 */
 .face-wrap{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:start}
 .face{width:120px;position:sticky;top:76px}
@@ -251,7 +277,9 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
 <script>
 (() => {
   // ── 設定：溫妮佛的 LINE 官方帳號連結（還沒有的話留空，按鈕會改成 IG）──
-  const LINE_URL = '';
+  const LINE_URL = 'https://agentone.metaepoch.life/link/channels/Z6GoGaOl';
+  // 第一屏的生活照：放好圖片檔後填檔名（例如 'winnifer-hero.jpg'），沒有的話會顯示奶油白光影
+  const HERO_PHOTO = '';
   const IG_URL = 'https://www.instagram.com/hiwinnifer';
   const $ = s => document.querySelector(s);
   const main = $('#main'), app = $('#app');
@@ -265,14 +293,15 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
     eye: '<svg viewBox="0 0 24 24"><path d="M2.5 12S6 6 12 6s9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"/><circle cx="12" cy="12" r="2.6"/></svg>'
   };
   const 聯絡鈕 = (文 = '加 LINE 領完整保養建議') => LINE_URL
-    ? `<a class="pill line block" href="${LINE_URL}" target="_blank" rel="noopener">${文}</a>`
+    ? `<a class="pill block" href="${LINE_URL}" target="_blank" rel="noopener">${文} →</a>`
     : `<a class="pill block" href="${IG_URL}" target="_blank" rel="noopener">到 IG 私訊溫妮佛「保養」</a>`;
 
   // ── 畫面切換 ──
   function go(name, 參 = {}, 推 = true) {
     if (推) 歷史.push(name);
     app.classList.toggle('inner', !['home', 'tests', 'care', 'scan'].includes(name));
-    document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('on', b.dataset.go === name || ((name.startsWith('quiz') || name.startsWith('result')) && b.dataset.go === 'tests')));
+    app.classList.toggle('is-home', name === 'home');
+    document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('on', b.dataset.go === name || (['skin', 'body', 'life'].includes(name) && b.dataset.go === 'home') || ((name.startsWith('quiz') || name.startsWith('result')) && b.dataset.go === 'tests')));
     停相機();
     main.innerHTML = ''; const v = document.createElement('div'); v.className = 'view'; main.append(v);
     views[name](v, 參);
@@ -285,41 +314,129 @@ h1,h2,h3{font-weight:900;margin:0;letter-spacing:-.01em;text-wrap:balance}
   const views = {};
   views.home = v => {
     v.innerHTML = `
+      <section class="hero1" style="${HERO_PHOTO ? `--photo:url('${HERO_PHOTO}')` : ''}">
+        <div class="first-img ${HERO_PHOTO ? 'has' : ''}" role="img" aria-label="溫妮佛的生活照"></div>
+        <div class="first-txt">
+          <h1>人生苦短，<br>漂亮優先。</h1>
+          <p>30+ 不動刀養美 × 保養 × 狀態管理</p>
+          <a class="pill" href="${LINE_URL}" target="_blank" rel="noopener">開始我的養美計畫 →</a>
+        </div>
+      </section>
+
+      <section class="belief">
+        <span class="eyebrow">Winnifer's belief</span>
+        <p>我不是教妳對抗年齡，<br>而是陪妳把自己的狀態，<br><b>慢慢養回來。</b></p>
+        <span class="sig">— Winnifer 溫妮佛</span>
+      </section>
+
+      <div class="doors">
+        <button data-go="skin"><span class="n">01</span><b>肌膚養美</b><small>Skin</small><i>拍照測膚況・膚質・肌膚年齡</i></button>
+        <button data-go="body"><span class="n">02</span><b>體態養美</b><small>Body</small><i>體態自測・每天 5 分鐘</i></button>
+        <button data-go="life"><span class="n">03</span><b>生活養美</b><small>Life</small><i>氣色・睡眠・一日作息</i></button>
+      </div>
+
+      <section class="section">
+        <h2>30+ 最多人在測</h2>
+        <p class="lead">對著鏡子勾一勾，1 分鐘就知道</p>
+        <div class="tools" style="margin-top:0">
+          <button class="tool cream first" data-go="scan"><span class="ic">${icon.cam}</span><span><b>拍照看今天的膚況<span class="tag">AI</span></b><small>透亮・均勻・泛紅・油光・細緻，照片不上傳</small></span><i>›</i></button>
+          <button class="tool cream" data-go="quiz-old9"><span class="ic">${icon.face}</span><span><b>9 大顯老元兇，妳中了幾條？</b><small>淚溝、法令紋、下顎線…對照臉部圖自己勾</small></span><i>›</i></button>
+          <button class="tool cream" data-go="quiz-age"><span class="ic">${icon.clock}</span><span><b>我的肌膚年齡</b><small>12 題，看看皮膚比實際年齡大還是小</small></span><i>›</i></button>
+        </div>
+      </section>
+      <section class="section">
+        <div class="about cream">
+          <span class="av">W</span>
+          <div><b>Winnifer 溫妮佛｜養美教主</b><p>獻給相信漂亮是一種生活態度的女人 ~ 30+ 養美、保養、生活</p></div>
+          <div class="row"><a class="pill ghost" href="${IG_URL}" target="_blank" rel="noopener">追蹤 IG</a><a class="pill" href="${LINE_URL}" target="_blank" rel="noopener">加 LINE</a></div>
+        </div>
+      </section>`;
+    v.querySelectorAll('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
+  };
+
+  // ═════════════ 肌膚養美（原本的首頁內容）═════════════
+  views.skin = v => {
+    v.innerHTML = `
       <section class="hero">
-        <span class="eyebrow">AI Skin Lab · 30+</span>
+        <span class="eyebrow">01 · Skin</span>
         <h1>今天的妳<br>皮膚<em>幾歲</em>了？</h1>
         <span class="en">KNOW YOUR SKIN FIRST</span>
         <div class="jar" aria-hidden="true"><i></i><span><b>SKIN</b><small>SCAN · TYPE · AGE</small></span></div>
         <p class="lead">30 歲之後，保養不是越多越好 ~ 先看懂自己的皮膚，再對症照顧</p>
       </section>
       <div class="tools">
-        <button class="tool cream first" data-go="scan"><span class="ic">${icon.cam}</span><span><b>拍照看今天的膚況<span class="tag">推薦</span></b><small>透亮・均勻・泛紅・油光・細緻，照片不上傳</small></span><i>›</i></button>
+        <button class="tool cream first" data-go="scan"><span class="ic">${icon.cam}</span><span><b>拍照看今天的膚況<span class="tag">AI</span></b><small>透亮・均勻・泛紅・油光・細緻，照片不上傳</small></span><i>›</i></button>
         <button class="tool cream" data-go="quiz-type"><span class="ic">${icon.drop}</span><span><b>我是哪一種膚質？</b><small>8 題，1 分鐘測出乾、油、混合或敏感肌</small></span><i>›</i></button>
         <button class="tool cream" data-go="quiz-age"><span class="ic">${icon.clock}</span><span><b>我的肌膚年齡</b><small>12 題，看看皮膚比實際年齡大還是小</small></span><i>›</i></button>
+        <button class="tool cream" data-go="quiz-old9"><span class="ic">${icon.face}</span><span><b>9 大顯老元兇，妳中了幾條？</b><small>對照臉部圖自己勾</small></span><i>›</i></button>
+        <button class="tool cream" data-go="quiz-eye"><span class="ic">${icon.eye}</span><span><b>眼周年輕度自測</b><small>6 個眼周老化訊號＋黑眼圈分型</small></span><i>›</i></button>
       </div>
-      <section class="section">
-        <h2>30+ 最多人在測</h2>
-        <p class="lead">對著鏡子勾一勾，1 分鐘就知道</p>
-        <div class="tools" style="margin-top:0">
-          <button class="tool cream" data-go="quiz-old9"><span class="ic">${icon.face}</span><span><b>9 大顯老元兇，妳中了幾條？</b><small>淚溝、法令紋、下顎線…對照臉部圖自己勾</small></span><i>›</i></button>
-          <button class="tool cream" data-go="quiz-eye"><span class="ic">${icon.eye}</span><span><b>眼周年輕度自測</b><small>乾、紋、暗、凹、陷、鬆＋黑眼圈是哪一型</small></span><i>›</i></button>
-        </div>
-      </section>
       <section class="section">
         <h2>妳最在意的是？</h2>
         <p class="lead">點一個，看溫妮佛的日常保養重點</p>
         <div class="keys">${關心們.map(c => `<button data-care="${c.id}">${c.名}</button>`).join('')}</div>
-      </section>
-      <section class="section">
-        <div class="about cream">
-          <span class="av">W</span>
-          <div><b>Winnifer 溫妮佛｜養美教主</b><p>人生苦短，漂亮優先 ~ 分享 30+ 抗老保養、臉部按摩和氣色養成的日常</p></div>
-          <div class="row"><a class="pill ghost" href="${IG_URL}" target="_blank" rel="noopener">追蹤 IG</a>${LINE_URL ? `<a class="pill line" href="${LINE_URL}" target="_blank" rel="noopener">加 LINE</a>` : ''}</div>
-        </div>
       </section>`;
     v.querySelectorAll('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
     v.querySelectorAll('[data-care]').forEach(b => b.onclick = () => { 歷史 = []; go('care', { open: b.dataset.care }); });
   };
+
+  // ═════════════ 體態養美 ═════════════
+  const 體態題 = [
+    { id: 'head', 名: '烏龜頸', 看: '靠牆站時，後腦勺碰不到牆', 招: '收下巴練習：下巴往後收、像做雙下巴，停 5 秒做 10 次' },
+    { id: 'shoulder', 名: '圓肩', 看: '手自然垂下時，手背朝前', 招: '雙手扶門框，身體往前傾，伸展胸口 30 秒' },
+    { id: 'back', 名: '駝背', 看: '側面照鏡子，上背明顯拱起', 招: '貓牛式：四足跪姿，拱背、塌背慢慢做 10 次' },
+    { id: 'pelvis', 名: '骨盆前傾', 看: '小腹凸出、腰和牆之間空隙超過一個手掌', 招: '臀橋：躺著屈膝把臀部抬起，停 3 秒做 15 次' },
+    { id: 'uneven', 名: '高低肩', 看: '正面照鏡子，兩邊肩膀不一樣高', 招: '包包左右輪流背，滑手機時兩手輪流拿' },
+    { id: 'neck', 名: '肩頸僵硬', 看: '常常覺得脖子、肩膀很緊', 招: '每小時起來轉轉肩膀，熱敷肩頸 10 分鐘' },
+  ];
+  views.body = v => {
+    const 選 = new Set();
+    v.innerHTML = `<div class="quiz-head"><span class="eyebrow">02 · Body</span><h2>體態養美</h2><p class="lead">體態好，氣質和臉部線條都會跟著變好 ~ 先靠牆站 1 分鐘，看看自己</p></div>
+      <div class="wall cream"><b>靠牆站測試</b><p>腳跟、臀部、肩膀、後腦勺貼牆，自然站好 ~ 哪裡碰不到、哪裡很吃力，就勾起來</p></div>
+      <div class="checks" style="margin-top:12px">${體態題.map(x => `<button class="chk" data-id="${x.id}"><span class="box">✓</span><span><b>${x.名}</b><small>${x.看}</small></span></button>`).join('')}</div>
+      <button class="pill block" id="done" style="margin-top:16px">看我的體態建議</button>
+      <div id="out"></div>
+      <div class="ktitle"><h3>每天 5 分鐘・養美伸展</h3></div>
+      <div class="life cream" style="padding:6px 16px">
+        <div><b>1<small>分鐘</small></b><p>靠牆站<em>找回正確站姿的感覺</em></p></div>
+        <div><b>1<small>分鐘</small></b><p>收下巴＋轉肩膀<em>放鬆肩頸、拉回往前的頭</em></p></div>
+        <div><b>1<small>分鐘</small></b><p>門框胸口伸展<em>打開圓肩</em></p></div>
+        <div><b>1<small>分鐘</small></b><p>貓牛式<em>活動整條背</em></p></div>
+        <div><b>1<small>分鐘</small></b><p>臀橋<em>喚醒臀部，幫骨盆找回位置</em></p></div>
+      </div>
+      <div class="cta cream"><h3>想跟著溫妮佛一起練？</h3><p>皮拉提斯、伸展和體態小練習，加 LINE 收到每週練習菜單</p>${聯絡鈕('加 LINE 領體態練習菜單')}</div>
+      <p class="disclaim">動作請在不會痛的範圍內做 ~ 有受傷、疼痛或特殊狀況，請先詢問醫師或物理治療師</p>`;
+    v.querySelectorAll('.chk').forEach(b => b.onclick = () => { const id = b.dataset.id; 選.has(id) ? 選.delete(id) : 選.add(id); b.classList.toggle('on', 選.has(id)); });
+    v.querySelector('#done').onclick = () => {
+      const 中 = 體態題.filter(x => 選.has(x.id));
+      v.querySelector('#out').innerHTML = `<div class="blk cream" style="margin-top:14px"><h3>${中.length ? `妳勾了 ${中.length} 項，先從這些開始` : '妳的體態很好 ~ 每天的伸展繼續保持'}</h3>${中.length ? `<ul>${中.map(x => `<li><b>${x.名}</b> ~ ${x.招}</li>`).join('')}</ul>` : ''}</div>`;
+      v.querySelector('#out').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
+  };
+
+  // ═════════════ 生活養美 ═════════════
+  views.life = v => {
+    v.innerHTML = `<div class="quiz-head"><span class="eyebrow">03 · Life</span><h2>生活養美</h2><p class="lead">好氣色不是畫出來的，是每天慢慢養出來的</p></div>
+      <div class="ktitle" style="margin-top:14px"><h3>溫妮佛的一日養美作息</h3></div>
+      <div class="life cream" style="padding:6px 16px">
+        <div><b>07:00</b><p>起床先喝一杯溫水<em>拉開窗簾曬一下早晨的陽光，人會比較有精神</em></p></div>
+        <div><b>08:00</b><p>早餐有蛋白質<em>蛋、豆漿、無糖優格，少一點精緻澱粉</em></p></div>
+        <div><b>10:00</b><p>出門前防曬<em>陰天也要擦，每 2～3 小時補一次</em></p></div>
+        <div><b>15:00</b><p>下午補水、站起來動一動<em>用無糖茶取代手搖飲</em></p></div>
+        <div><b>19:00</b><p>晚餐清淡、七分飽<em>吃完散步 15 分鐘</em></p></div>
+        <div><b>22:00</b><p>卸妝、保養、臉部按摩<em>3 分鐘由下往上提拉</em></p></div>
+        <div class="me"><b>23:30</b><p>放下手機，準備睡覺<em>睡滿 7 小時，是最便宜的保養品</em></p></div>
+      </div>
+      <div class="ktitle"><h3>好氣色的 5 個習慣</h3></div>
+      <div class="atlas">
+        ${[['睡得好', '12 點前睡、睡滿 7 小時'], ['喝夠水', '一天 2000cc，小口慢慢喝'], ['少糖', '甜食和含糖飲料，是讓皮膚變老的推手'], ['動一動', '每週 3 次讓自己流點汗'], ['心情好', '每天留 10 分鐘給自己']].map(([n, t]) => `<div><b>${n}</b><small>${t}</small></div>`).join('')}
+        <div style="background:var(--lav)"><b>想知道妳的習慣幾分？</b><small>測肌膚年齡，就能看到生活習慣怎麼影響皮膚</small><em data-go="quiz-age" style="cursor:pointer;font-weight:700">去測測看 ›</em></div>
+      </div>
+      <div class="cta cream"><h3>想要一份妳的養美作息表？</h3><p>告訴溫妮佛妳的作息，幫妳排一份做得到的版本</p>${聯絡鈕('加 LINE 領我的養美作息')}</div>
+      <p class="disclaim">以上是生活習慣分享，不是醫療建議 ~ 有身體狀況請先詢問醫師</p>`;
+    v.querySelectorAll('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
+  };
+
   views.tests = v => {
     v.innerHTML = `<div class="quiz-head"><span class="eyebrow">Self test</span><h2>養美小測驗</h2><p class="lead">不用化妝、不用拍照，回答幾題就知道</p></div>
       <div class="tools">
